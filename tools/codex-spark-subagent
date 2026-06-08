@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+usage() {
+  cat <<'EOF'
+Usage:
+  codex-spark-subagent <name> <prompt>
+
+Compatibility wrapper for:
+  codex-model-subagent gpt-5.3-codex-spark <name> <prompt>
+EOF
+}
+
+if [[ $# -lt 2 ]]; then
+  usage >&2
+  exit 2
+fi
+
+script_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+exec "$script_dir/codex-model-subagent" gpt-5.3-codex-spark "$@"
