@@ -1,0 +1,89 @@
+{
+  "skill_name": "ru-dev",
+  "cases": [
+    {
+      "id": "ru-dev-positive-commit-message",
+      "prompt": "Составь сообщение коммита по-русски для исправления обработки пустого ответа API.",
+      "should_trigger": true,
+      "rationale": "Нужно сформулировать русское сообщение коммита."
+    },
+    {
+      "id": "ru-dev-positive-commit-message-from-english-draft",
+      "prompt": "Проверь сообщение коммита `fix empty API response` и перепиши его по правилам проекта.",
+      "should_trigger": true,
+      "rationale": "Сообщение коммита должно запускать ru-dev независимо от языка черновика."
+    },
+    {
+      "id": "ru-dev-positive-git-commit-command",
+      "prompt": "Подготовь `git commit -m \"update auth docs\"` по правилам проекта.",
+      "should_trigger": true,
+      "rationale": "Подготовка команды коммита должна запускать ru-dev даже при англоязычном черновике."
+    },
+    {
+      "id": "ru-dev-positive-work-report",
+      "prompt": "Напиши краткий отчёт по-русски: что изменено в коде, чем проверено и какие риски остались.",
+      "should_trigger": true,
+      "rationale": "Нужен русский отчёт о разработческой задаче."
+    },
+    {
+      "id": "ru-dev-positive-code-comment",
+      "prompt": "Помоги написать русский комментарий к коду, который объясняет, почему повторная попытка отключена.",
+      "should_trigger": true,
+      "rationale": "Нужно сформулировать комментарий в коде на русском."
+    },
+    {
+      "id": "ru-dev-positive-error-message",
+      "prompt": "Сформулируй по-русски сообщение об ошибке для случая, когда токен API истёк.",
+      "should_trigger": true,
+      "rationale": "Нужно создать русское сообщение об ошибке в контексте разработки."
+    },
+    {
+      "id": "ru-dev-positive-technical-decision",
+      "prompt": "Опиши по-русски техническое решение: почему переносим проверку прав доступа в middleware.",
+      "should_trigger": true,
+      "rationale": "Нужно описать техническое решение на русском."
+    },
+    {
+      "id": "ru-dev-positive-pr-summary-without-review-word",
+      "prompt": "Подготовь русское описание изменений для pull request: добавлена валидация входных данных и тесты.",
+      "should_trigger": true,
+      "rationale": "Нужно сформулировать русское описание изменений в разработке."
+    },
+    {
+      "id": "ru-dev-negative-general-russian-message",
+      "prompt": "Сформулируй по-русски короткий ответ пользователю: мы получили заявку и вернёмся завтра.",
+      "should_trigger": false,
+      "rationale": "Это общий русский текст без контекста разработки."
+    },
+    {
+      "id": "ru-dev-negative-literary-editing",
+      "prompt": "Отредактируй русский абзац из рассказа, сохрани спокойный тон и образность.",
+      "should_trigger": false,
+      "rationale": "Это художественная редактура, а не разработка ПО."
+    },
+    {
+      "id": "ru-dev-negative-legal-russian-text",
+      "prompt": "Проверь русский текст согласия на обработку персональных данных.",
+      "should_trigger": false,
+      "rationale": "Это юридический текст, а не разработческая документация."
+    },
+    {
+      "id": "ru-dev-negative-code-only",
+      "prompt": "Rename the TypeScript function getUserData to fetchUserProfile across the codebase.",
+      "should_trigger": false,
+      "rationale": "Задача про код без создания русского текста."
+    },
+    {
+      "id": "ru-dev-negative-shell-command",
+      "prompt": "Run `git status --short` and tell me if the worktree is clean.",
+      "should_trigger": false,
+      "rationale": "Запрос на выполнение команды без русскоязычного разработческого текста."
+    },
+    {
+      "id": "ru-dev-negative-language-question",
+      "prompt": "Как лучше заменить слово practically в русском тексте?",
+      "should_trigger": false,
+      "rationale": "Это общий вопрос о русском языке для ru-lang."
+    }
+  ]
+}
