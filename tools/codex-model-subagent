@@ -1,0 +1,88 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+usage() {
+  cat <<'EOF'
+Usage:
+  codex-model-subagent <model> <name> <prompt>
+
+Runs a bounded Codex child process on the selected model and stores JSONL
+telemetry plus the final message under /tmp by default.
+
+Environment:
+  CODEX_SUBAGENT_OUT_DIR     Output directory, default /tmp/<repo-name>-subagents
+  CODEX_SUBAGENT_SANDBOX     read-only or workspace-write, default read-only.
+                           workspace-write is allowed only for cheap_patch_worker.
+  CODEX_SUBAGENT_USAGE_LINE  Print one-line usage summary, default 1
+EOF
+}
+
+if [[ $# -lt 3 ]]; then
+  usage >&2
+  exit 2
+fi
+
+model="$1"
+name="$2"
+shift 2
+
+case "$model" in
+  gpt-5.3-codex-spark|gpt-5.4-mini|gpt-5.4|gpt-5.5)
+    ;;
+  *)
+    echo "Unsupported subagent model: $model" >&2
+    exit 2
+    ;;
+esac
+
+case "$name" in
+  *[!A-Za-z0-9._-]*|'')
+    echo "Invalid subagent name: $name" >&2
+    exit 2
+    ;;
+esac
+
+repo_root="$(git rev-parse --show-toplevel)"
+repo_name="$(basename "$repo_root")"
+script_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+out_dir="${CODEX_SUBAGENT_OUT_DIR:-/tmp/${repo_name}-subagents}"
+sandbox="${CODEX_SUBAGENT_SANDBOX:-read-only}"
+case "$sandbox" in
+  read-only|workspace-write)
+    ;;
+  *)
+    echo "Unsupported CODEX_SUBAGENT_SANDBOX: $sandbox" >&2
+    exit 2
+    ;;
+esac
+
+if [[ "$sandbox" == "workspace-write" && "$name" != "cheap_patch_worker" ]]; then
+  echo "workspace-write is allowed only for cheap_patch_worker" >&2
+  exit 2
+fi
+
+mkdir -p "$out_dir"
+
+timestamp="$(date -u +%Y%m%dT%H%M%SZ)"
+safe_model="${model//[^A-Za-z0-9._-]/_}"
+jsonl="$out_dir/${timestamp}-${safe_model}-${name}.jsonl"
+final="$out_dir/${timestamp}-${safe_model}-${name}.final.txt"
+
+codex exec \
+  --json \
+  --color never \
+  -C "$repo_root" \
+  -m "$model" \
+  -s "$sandbox" \
+  -o "$final" \
+  "$*" > "$jsonl"
+
+if [[ "${CODEX_SUBAGENT_USAGE_LINE:-1}" != "0" ]]; then
+  usage_report="$repo_root/tools/codex-usage-report"
+  if [[ ! -x "$usage_report" ]]; then
+    usage_report="$script_dir/codex-usage-report"
+  fi
+  "$usage_report" --line "$jsonl"
+fi
+
+printf 'jsonl=%s\nfinal=%s\n' "$jsonl" "$final"
