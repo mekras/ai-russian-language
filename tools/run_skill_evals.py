@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import argparse
 import json
 import os
 import re
@@ -11,23 +12,52 @@ import sys
 from pathlib import Path
 
 
-MODEL = "gpt-5.3-codex-spark"
+PRIMARY_MODEL = "gpt-5.3-codex-spark"
 ROOT = Path(__file__).resolve().parent.parent
 COMPOSE_DATASET = ROOT / "skills" / "ru-lang" / "evals" / "compose.jsonl"
 CODEX_SUBAGENT = ROOT / "tools" / "codex-model-subagent"
 RU_LANG_SKILL = ROOT / "skills" / "ru-lang" / "SKILL.md"
+RU_LANG_BASE_LANGUAGE = ROOT / "skills" / "ru-lang" / "references" / "base-language.md"
+RU_LANG_TECHNICAL = ROOT / "skills" / "ru-lang" / "references" / "technical-russian.md"
+RU_LANG_REPLACEMENTS = ROOT / "skills" / "ru-lang" / "assets" / "term-replacements.md"
+RU_LANG_HYBRIDS = ROOT / "skills" / "ru-lang" / "assets" / "hybrid-examples.md"
 TRIGGER_FIELDS = {
     "id": str,
     "prompt": str,
     "should_trigger": bool,
     "rationale": str,
 }
+COMPOSE_TEXT_FIELDS = ("id", "input")
+COMPOSE_ORACLE_FIELDS = (
+    "forbidden_substrings",
+    "required_substrings",
+    "required_any_substrings",
+)
+MAX_MODEL_ATTEMPTS = 3
+ANSI_RESET = "\033[0m"
+ANSI_GREEN = "\033[32m"
+ANSI_RED = "\033[31m"
+
+
+def use_color() -> bool:
+    return sys.stdout.isatty() and os.environ.get("NO_COLOR") is None and os.environ.get("TERM") != "dumb"
+
+
+def colorize(text: str, color: str) -> str:
+    if not use_color():
+        return text
+    return f"{color}{text}{ANSI_RESET}"
+
+
+def print_info(label: str, detail: str = "") -> None:
+    suffix = f": {detail}" if detail else ""
+    print(f"Запуск - {label}{suffix}", flush=True)
 
 
 def print_result(ok: bool, label: str, detail: str = "") -> None:
-    status = "ok" if ok else "ne ok"
+    status = colorize("Пройден", ANSI_GREEN) if ok else colorize("Провален", ANSI_RED)
     suffix = f": {detail}" if detail else ""
-    print(f"{status} - {label}{suffix}")
+    print(f"{status} - {label}{suffix}", flush=True)
 
 
 def read_skill_name(skill_path: Path) -> str | None:
@@ -94,20 +124,91 @@ def load_trigger_cases(skill_dir: Path) -> tuple[str, str, list[dict[str, object
     return skill_name, skill_path.read_text(encoding="utf-8"), cases
 
 
-def load_compose_cases() -> list[dict[str, str]]:
-    cases: list[dict[str, str]] = []
-    with COMPOSE_DATASET.open(encoding="utf-8") as stream:
-        for line_number, line in enumerate(stream, start=1):
-            if not line.strip():
-                continue
-            record = json.loads(line)
-            errors = []
-            for field in ("id", "input", "forbidden_terms"):
-                if not isinstance(record.get(field), str) or not record[field].strip():
-                    errors.append(f"{field} должно быть непустой строкой")
-            if errors:
-                raise ValueError(f"{COMPOSE_DATASET}:{line_number}: {', '.join(errors)}")
-            cases.append(record)
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        description="Запуск проверок навыков через модельные вызовы Codex.",
+    )
+    parser.add_argument(
+        "--checks",
+        choices=("all", "triggers", "compose"),
+        default="all",
+        help="Какие проверки запускать: все, только triggers или только compose.",
+    )
+    parser.add_argument(
+        "--without-skill",
+        action="store_true",
+        help="Запускать compose-проверки без подстановки текста навыка ru-lang.",
+    )
+    return parser.parse_args()
+
+
+def validate_string_list(
+    value: object,
+    *,
+    label: str,
+    allow_empty: bool = False,
+) -> list[str]:
+    if value is None:
+        return []
+    if not isinstance(value, list):
+        raise ValueError(f"{label}: значение должно быть массивом строк")
+    items: list[str] = []
+    for index, item in enumerate(value):
+        if not isinstance(item, str) or not item.strip():
+            raise ValueError(f"{label}[{index}]: значение должно быть непустой строкой")
+        items.append(item)
+    if not allow_empty and not items:
+        raise ValueError(f"{label}: массив не должен быть пустым")
+    return items
+
+
+def load_compose_cases() -> list[dict[str, object]]:
+    cases: list[dict[str, object]] = []
+    decoder = json.JSONDecoder()
+    content = COMPOSE_DATASET.read_text(encoding="utf-8")
+    position = 0
+    while position < len(content):
+        while position < len(content) and content[position].isspace():
+            position += 1
+        if position >= len(content):
+            break
+        try:
+            record, position = decoder.raw_decode(content, position)
+        except json.JSONDecodeError as exc:
+            raise ValueError(f"{COMPOSE_DATASET}:{exc.lineno}: {exc.msg}") from exc
+        line_number = content.count("\n", 0, position) + 1
+        if not isinstance(record, dict):
+            raise ValueError(f"{COMPOSE_DATASET}:{line_number}: корень примера должен быть объектом")
+        errors = []
+        for field in COMPOSE_TEXT_FIELDS:
+            if not isinstance(record.get(field), str) or not record[field].strip():
+                errors.append(f"{field} должно быть непустой строкой")
+        if errors:
+            raise ValueError(f"{COMPOSE_DATASET}:{line_number}: {', '.join(errors)}")
+        oracle = record.get("oracle")
+        if not isinstance(oracle, dict):
+            raise ValueError(f"{COMPOSE_DATASET}:{line_number}: oracle должен быть объектом")
+        normalized_oracle: dict[str, list[str]] = {}
+        for field in COMPOSE_ORACLE_FIELDS:
+            values = validate_string_list(
+                oracle.get(field),
+                label=f"{COMPOSE_DATASET}:{line_number}: oracle.{field}",
+                allow_empty=True,
+            )
+            if values:
+                normalized_oracle[field] = values
+        if not normalized_oracle:
+            raise ValueError(
+                f"{COMPOSE_DATASET}:{line_number}: oracle должен содержать хотя бы одно правило",
+            )
+        unexpected_fields = sorted(set(oracle) - set(COMPOSE_ORACLE_FIELDS))
+        if unexpected_fields:
+            unexpected = ", ".join(unexpected_fields)
+            raise ValueError(
+                f"{COMPOSE_DATASET}:{line_number}: неожиданные поля oracle: {unexpected}",
+            )
+        record["oracle"] = normalized_oracle
+        cases.append(record)
     if not cases:
         raise ValueError(f"{COMPOSE_DATASET}: набор данных должен содержать хотя бы один пример")
     return cases
@@ -117,30 +218,50 @@ def safe_name(case_id: str) -> str:
     return re.sub(r"[^A-Za-z0-9._-]+", "_", case_id)
 
 
-def run_codex_prompt(name: str, prompt: str) -> tuple[str, str]:
-    print_result(True, f"запуск {name}", f"модель={MODEL}")
+def load_ru_lang_materials() -> str:
+    parts = [
+        ("SKILL.md", RU_LANG_SKILL.read_text(encoding="utf-8")),
+        ("references/base-language.md", RU_LANG_BASE_LANGUAGE.read_text(encoding="utf-8")),
+        ("references/technical-russian.md", RU_LANG_TECHNICAL.read_text(encoding="utf-8")),
+        ("assets/term-replacements.md", RU_LANG_REPLACEMENTS.read_text(encoding="utf-8")),
+        ("assets/hybrid-examples.md", RU_LANG_HYBRIDS.read_text(encoding="utf-8")),
+    ]
+    return "\n\n".join(f"# {title}\n\n{text}" for title, text in parts)
+
+
+def run_codex_prompt(name: str, prompt: str) -> tuple[str, str, str]:
     env = os.environ.copy()
     env["CODEX_SUBAGENT_USAGE_LINE"] = "0"
-    result = subprocess.run(
-        [str(CODEX_SUBAGENT), MODEL, safe_name(name), prompt],
-        cwd=ROOT,
-        env=env,
-        text=True,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.STDOUT,
-        check=False,
-    )
-    if result.returncode != 0:
-        raise RuntimeError(result.stdout.strip())
+    last_error = ""
+    for attempt in range(1, MAX_MODEL_ATTEMPTS + 1):
+        label = name if attempt == 1 else f"{name} (повтор {attempt}/{MAX_MODEL_ATTEMPTS})"
+        print_info(label, f"модель={PRIMARY_MODEL}")
+        result = subprocess.run(
+            [str(CODEX_SUBAGENT), PRIMARY_MODEL, safe_name(name), prompt],
+            cwd=ROOT,
+            env=env,
+            text=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            check=False,
+        )
+        if result.returncode != 0:
+            last_error = result.stdout.strip() or (
+                f"процесс Codex завершился с кодом {result.returncode} без вывода"
+            )
+            continue
 
-    final_path = None
-    for line in result.stdout.splitlines():
-        if line.startswith("final="):
-            final_path = Path(line.removeprefix("final="))
-            break
-    if final_path is None:
-        raise RuntimeError(f"{name}: запускатель Codex не вернул путь к итоговому файлу")
-    return final_path.read_text(encoding="utf-8"), str(final_path)
+        final_path = None
+        for line in result.stdout.splitlines():
+            if line.startswith("final="):
+                final_path = Path(line.removeprefix("final="))
+                break
+        if final_path is None:
+            last_error = "процесс Codex не вернул путь к итоговому файлу"
+            continue
+        return final_path.read_text(encoding="utf-8"), str(final_path), PRIMARY_MODEL
+
+    raise RuntimeError(f"{name}: {last_error}")
 
 
 def extract_json_object(text: str) -> dict[str, object]:
@@ -167,7 +288,7 @@ def validate_trigger_cases(skill_dir: Path) -> bool:
         f"Навык:\n{skill_text}\n\n"
         f"Запросы:\n{json.dumps(prompt_cases, ensure_ascii=False, indent=2)}"
     )
-    output, final_path = run_codex_prompt(f"{skill_name}-triggers", prompt)
+    output, final_path, used_model = run_codex_prompt(f"{skill_name}-triggers", prompt)
     response = extract_json_object(output)
     results = response.get("results")
     if not isinstance(results, list):
@@ -188,63 +309,108 @@ def validate_trigger_cases(skill_dir: Path) -> bool:
         expected = bool(case["should_trigger"])
         if case_id not in actual:
             ok = False
-            print_result(False, case_id, f"в ответе модели нет решения; output={final_path}")
+            print_result(False, case_id, f"в ответе модели нет решения; файл={final_path}")
             continue
         if actual[case_id] != expected:
             ok = False
             print_result(
                 False,
                 case_id,
-                f"ожидалось {expected}, получено {actual[case_id]}; output={final_path}",
+                f"ожидалось {expected}, получено {actual[case_id]}; файл={final_path}",
             )
         else:
-            print_result(True, case_id, f"модель={MODEL}")
-    print_result(ok, f"{skill_name} triggers", f"output={final_path}")
+            print_result(True, case_id, f"модель={used_model}")
+    print_result(ok, f"{skill_name}: проверка срабатывания", f"файл={final_path}")
     return ok
 
 
-def run_compose_case(case: dict[str, str]) -> tuple[str, str]:
-    skill_text = RU_LANG_SKILL.read_text(encoding="utf-8")
-    prompt = (
-        "Примени навык ru-lang к пользовательскому запросу.\n"
-        "Ответь только содержательным результатом, без пояснений про проверку.\n\n"
-        f"Навык ru-lang:\n{skill_text}\n\n"
-        f"Запрос пользователя:\n{case['input']}"
-    )
+def run_compose_case(case: dict[str, object], *, with_skill: bool) -> tuple[str, str, str]:
+    if with_skill:
+        skill_text = load_ru_lang_materials()
+        prompt = (
+            "Примени навык ru-lang к пользовательскому запросу.\n"
+            "Ответь только содержательным результатом, без пояснений про проверку.\n\n"
+            f"Навык ru-lang:\n{skill_text}\n\n"
+            f"Запрос пользователя:\n{case['input']}"
+        )
+    else:
+        prompt = (
+            "Ответь на пользовательский запрос по-русски.\n"
+            "Ответь только содержательным результатом, без пояснений про проверку.\n\n"
+            f"Запрос пользователя:\n{case['input']}"
+        )
     return run_codex_prompt(case["id"], prompt)
 
 
-def validate_compose_cases() -> bool:
+def validate_compose_cases(*, with_skill: bool) -> bool:
     ok = True
     for case in load_compose_cases():
-        output, final_path = run_compose_case(case)
-        forbidden_terms = [
-            term.strip() for term in case["forbidden_terms"].split("|") if term.strip()
-        ]
+        output, final_path, used_model = run_compose_case(case, with_skill=with_skill)
+        oracle = case["oracle"]
         output_folded = output.casefold()
-        found_terms = [term for term in forbidden_terms if term.casefold() in output_folded]
-        if found_terms:
+        found_forbidden = [
+            term
+            for term in oracle.get("forbidden_substrings", [])
+            if term.casefold() in output_folded
+        ]
+        missing_required = [
+            term
+            for term in oracle.get("required_substrings", [])
+            if term.casefold() not in output_folded
+        ]
+        required_any = oracle.get("required_any_substrings", [])
+        missing_required_any = bool(required_any) and not any(
+            term.casefold() in output_folded for term in required_any
+        )
+
+        details = []
+        if found_forbidden:
+            details.append(f"найдены запрещённые формы: {', '.join(found_forbidden)}")
+        if missing_required:
+            details.append(f"нет обязательных фрагментов: {', '.join(missing_required)}")
+        if missing_required_any:
+            details.append(
+                "нет ни одного допустимого фрагмента из набора: "
+                + ", ".join(required_any),
+            )
+
+        if details:
             ok = False
             print_result(
                 False,
                 case["id"],
-                f"найдены запрещённые формы: {', '.join(found_terms)}; output={final_path}",
+                f"{'; '.join(details)}; файл={final_path}",
             )
         else:
-            print_result(True, case["id"], f"модель={MODEL}; output={final_path}")
-    print_result(ok, "ru-lang compose")
+            mode_label = "с навыком" if with_skill else "без навыка"
+            print_result(True, case["id"], f"{mode_label}; модель={used_model}; файл={final_path}")
+    summary_label = (
+        "ru-lang: проверка русских формулировок с навыком"
+        if with_skill
+        else "ru-lang: проверка русских формулировок без навыка"
+    )
+    print_result(ok, summary_label)
     return ok
 
 
 def main() -> int:
+    args = parse_args()
     try:
-        checks = [
-            validate_trigger_cases(ROOT / "skills" / "ru-lang"),
-            validate_trigger_cases(ROOT / "skills" / "ru-dev"),
-            validate_compose_cases(),
-        ]
+        if args.without_skill and args.checks != "compose":
+            raise ValueError("Режим --without-skill поддержан только вместе с --checks compose")
+
+        checks = []
+        if args.checks in {"all", "triggers"}:
+            checks.extend(
+                [
+                    validate_trigger_cases(ROOT / "skills" / "ru-lang"),
+                    validate_trigger_cases(ROOT / "skills" / "ru-dev"),
+                ],
+            )
+        if args.checks in {"all", "compose"}:
+            checks.append(validate_compose_cases(with_skill=not args.without_skill))
     except Exception as exc:
-        print_result(False, "skill evals", str(exc))
+        print_result(False, "проверки навыков", str(exc))
         return 1
     return 0 if all(checks) else 1
 

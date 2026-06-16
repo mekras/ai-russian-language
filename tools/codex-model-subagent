@@ -67,7 +67,9 @@ timestamp="$(date -u +%Y%m%dT%H%M%SZ)"
 safe_model="${model//[^A-Za-z0-9._-]/_}"
 jsonl="$out_dir/${timestamp}-${safe_model}-${name}.jsonl"
 final="$out_dir/${timestamp}-${safe_model}-${name}.final.txt"
+stderr_file="$out_dir/${timestamp}-${safe_model}-${name}.stderr.txt"
 
+set +e
 codex exec \
   --json \
   --color never \
@@ -75,7 +77,20 @@ codex exec \
   -m "$model" \
   -s "$sandbox" \
   -o "$final" \
-  "$*" > "$jsonl"
+  "$*" > "$jsonl" 2> "$stderr_file"
+status=$?
+set -e
+
+if [[ $status -ne 0 ]]; then
+  if [[ -s "$stderr_file" ]]; then
+    cat "$stderr_file" >&2
+  fi
+  if [[ -s "$jsonl" ]]; then
+    tail -n 20 "$jsonl" >&2
+  fi
+  printf 'jsonl=%s\nstderr=%s\n' "$jsonl" "$stderr_file" >&2
+  exit "$status"
+fi
 
 if [[ "${CODEX_SUBAGENT_USAGE_LINE:-1}" != "0" ]]; then
   usage_report="$repo_root/tools/codex-usage-report"
@@ -85,4 +100,4 @@ if [[ "${CODEX_SUBAGENT_USAGE_LINE:-1}" != "0" ]]; then
   "$usage_report" --line "$jsonl"
 fi
 
-printf 'jsonl=%s\nfinal=%s\n' "$jsonl" "$final"
+printf 'jsonl=%s\nstderr=%s\nfinal=%s\n' "$jsonl" "$stderr_file" "$final"

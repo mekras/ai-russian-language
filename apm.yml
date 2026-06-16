@@ -9,7 +9,7 @@ target:
 type: "skill"
 dependencies:
   apm:
-    - talkstream/ru-text#v1.8.0
+    - talkstream/ru-text#^1.8.0
   mcp: []
 scripts:
   tests: "python tools/run_skill_evals.py"

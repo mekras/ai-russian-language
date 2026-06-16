@@ -1,35 +1,237 @@
 {
   "id": "ru-lang-compose-md-files",
   "input": "Дай обобщённое название для файлов с расширением .md.",
-  "forbidden_terms": "Markdown-файлы|MD-файлы|md-файлы|.md-файлы"
+  "oracle": {
+    "forbidden_substrings": [
+      "Markdown-файлы",
+      "MD-файлы",
+      "md-файлы",
+      ".md-файлы"
+    ],
+    "required_any_substrings": [
+      "Markdown",
+      "формате Markdown"
+    ]
+  }
 }
 {
   "id": "ru-lang-compose-json-file",
   "input": "Как кратко назвать файл с данными в формате JSON для настроек интеграции? Дай один нейтральный вариант.",
-  "forbidden_terms": "JSON-файл|json-файл"
+  "oracle": {
+    "forbidden_substrings": [
+      "JSON-файл",
+      "json-файл"
+    ],
+    "required_any_substrings": [
+      "JSON"
+    ]
+  }
 }
 {
   "id": "ru-lang-compose-docker-image",
   "input": "Как по-русски назвать результат сборки Docker, который потом запускают как контейнер? Дай один нейтральный вариант.",
-  "forbidden_terms": "Docker-образ|docker-образ"
+  "oracle": {
+    "forbidden_substrings": [
+      "Docker-образ",
+      "docker-образ"
+    ]
+  }
 }
 {
   "id": "ru-lang-compose-typescript-component",
   "input": "Придумай короткое название для части приложения, написанной на TypeScript и отвечающей за профиль пользователя.",
-  "forbidden_terms": "TypeScript-компонент|typescript-компонент|TS-компонент"
+  "oracle": {
+    "forbidden_substrings": [
+      "TypeScript-компонент",
+      "typescript-компонент",
+      "TS-компонент",
+      "user-profile"
+    ]
+  }
 }
 {
   "id": "ru-lang-compose-entrypoint",
   "input": "Как кратко назвать место, с которого программа начинает выполнение? Дай один технический вариант по-русски.",
-  "forbidden_terms": "entrypoint|энтрипоинт"
+  "oracle": {
+    "forbidden_substrings": [
+      "entrypoint",
+      "энтрипоинт"
+    ],
+    "required_substrings": [
+      "точка входа"
+    ]
+  }
 }
 {
   "id": "ru-lang-compose-checklist",
   "input": "Как назвать список действий, который команда проходит перед выпуском релиза? Дай один нейтральный вариант.",
-  "forbidden_terms": "чек-лист|чеклист"
+  "oracle": {
+    "forbidden_substrings": [
+      "чек-лист",
+      "чеклист"
+    ]
+  }
 }
 {
   "id": "ru-lang-compose-retry",
   "input": "Как назвать действие, когда операция запускается ещё раз после временного сбоя? Дай один нейтральный вариант.",
-  "forbidden_terms": "ретрай"
+  "oracle": {
+    "forbidden_substrings": [
+      "ретрай"
+    ],
+    "required_any_substrings": [
+      "повтор",
+      "попытк"
+    ]
+  }
+}
+{
+  "id": "ru-lang-compose-dev-dependency-and-samples",
+  "input": "Напиши одно короткое предложение по-русски для отчёта о проверках навыка: добавили dev-зависимость для sample-объектов и нашли непроходящие samples.",
+  "oracle": {
+    "forbidden_substrings": [
+      "dev-зависимость",
+      "sample-объект",
+      "samples"
+    ],
+    "required_substrings": [
+      "зависимость для разработки",
+      "пример"
+    ]
+  }
+}
+{
+  "id": "ru-lang-compose-read-only-status",
+  "input": "Напиши одно короткое предложение по-русски для статуса: подагент наткнулся на ожидаемое ограничение своего read-only режима, и сейчас запускаю один bounded read-only.",
+  "oracle": {
+    "forbidden_substrings": [
+      "read-only",
+      "bounded"
+    ],
+    "required_substrings": [
+      "только для чтения"
+    ],
+    "required_any_substrings": [
+      "ограничен"
+    ]
+  }
+}
+{
+  "id": "ru-lang-compose-apm-inspect-impact-audit",
+  "input": "Напиши две короткие фразы по-русски для отчёта о проверках навыка: проверили APM-скрипт и Inspect-модуль, нашли навыки без влияния-аудита.",
+  "oracle": {
+    "forbidden_substrings": [
+      "APM-скрипт",
+      "Inspect-модуль",
+      "влияния-аудита"
+    ],
+    "required_substrings": [
+      "скрипт APM",
+      "модуль Inspect"
+    ],
+    "required_any_substrings": [
+      "аудита влияния",
+      "влияния на аудит"
+    ]
+  }
+}
+{
+  "id": "ru-lang-compose-eval-runner-oracle",
+  "input": "Напиши короткий статус по-русски: обновили eval-файлы и раннер; модельный runner есть, но oracle результата и oracle проверки пока оценивают не всё.",
+  "oracle": {
+    "forbidden_substrings": [
+      "eval-файл",
+      "раннер",
+      "runner",
+      "oracle результата",
+      "oracle проверки"
+    ],
+    "required_substrings": [
+      "средство запуска",
+      "эталон"
+    ],
+    "required_any_substrings": [
+      "файлы eval",
+      "файлы `eval`",
+      "ожидаемому результату"
+    ]
+  }
+}
+{
+  "id": "ru-lang-compose-case-word",
+  "input": "Напиши короткий статус по-русски: разобрали спорный кейс и добавили ещё два кейса для проверки навыка.",
+  "oracle": {
+    "forbidden_substrings": [
+      "кейс"
+    ],
+    "required_any_substrings": [
+      "случай",
+      "ситуац",
+      "пример",
+      "сценари"
+    ]
+  }
+}
+{
+  "id": "ru-lang-compose-json-mcp-python",
+  "input": "Напиши короткий статус по-русски: добавили JSON-сценарии, MCP-инструменты и Python-валидаторы.",
+  "oracle": {
+    "forbidden_substrings": [
+      "JSON-сценар",
+      "MCP-инстру",
+      "Python-валид"
+    ],
+    "required_substrings": [
+      "сценарии JSON",
+      "инструменты MCP",
+      "валидаторы Python"
+    ]
+  }
+}
+{
+  "id": "ru-lang-compose-json-judge-oracle",
+  "input": "Сформулируй по-русски два коротких пункта для проверки eval-сценария. Нужно сказать, что результат должен возвращать валидный JSON, а judge должен сверять ответ с oracle результата по eval-кейсам.",
+  "oracle": {
+    "forbidden_substrings": [
+      "валидн",
+      "judge",
+      "oracle",
+      "eval-кейс"
+    ],
+    "required_substrings": [
+      "JSON"
+    ]
+  }
+}
+{
+  "id": "ru-lang-compose-trigger-and-result-scenarios",
+  "input": "Напиши короткий статус по-русски: обновили trigger-кейсы и result-сценарий для проверки навыка.",
+  "oracle": {
+    "forbidden_substrings": [
+      "trigger-кейс",
+      "result-сценар"
+    ],
+    "required_any_substrings": [
+      "срабатывания",
+      "условия срабатывания",
+      "сценарий результата",
+      "итоговый сценарий"
+    ]
+  }
+}
+{
+  "id": "ru-lang-compose-russian-quotes-and-yo",
+  "input": "Исправь короткую русскую фразу, замени кавычки на русские и сохрани смысл: “мы получили заявку и вернемся завтра”.",
+  "oracle": {
+    "forbidden_substrings": [
+      "“",
+      "”",
+      "вернемся"
+    ],
+    "required_substrings": [
+      "«",
+      "»",
+      "вернёмся"
+    ]
+  }
 }
