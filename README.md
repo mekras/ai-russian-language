@@ -18,13 +18,7 @@
 Установить всю коллекцию:
 
 ```bash
-apm install --global github.com/mekras/ai-russian-language#^1.0.0
-```
-
-Установить только выбранные навыки:
-
-```bash
-apm install --global github.com/mekras/ai-russian-language#master --skill ru-lang
+apm install --global github.com/mekras/ai-russian-language#^1.1.0
 ```
 
 Обновить уже установленную коллекцию:
