@@ -47,6 +47,12 @@ apm outdated --global
 
 ## Разработка
 
+Запуск проверок:
+
+```bash
+apm run tests
+```
+
 Публикуемые навыки лежат в `skills/<name>/`.
 При добавлении или изменении навыка:
 
@@ -54,18 +60,6 @@ apm outdated --global
 2. Синхронизируйте `agents/openai.yaml`, если меняется назначение навыка.
 3. Добавьте или обновите `evals/triggers.json`.
 4. При заметных изменениях обновите [CHANGELOG.md](./CHANGELOG.md).
-
-Локальная проверка структуры триггеров:
-
-```bash
-python3 tools/validate-trigger-evals.py --require-all
-```
-
-Та же проверка через `APM`:
-
-```bash
-apm run validate-triggers
-```
 
 ## Лицензия
 

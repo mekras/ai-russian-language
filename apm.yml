@@ -9,8 +9,7 @@ target:
 type: "skill"
 dependencies:
   apm:
-    - talkstream/ru-text
+    - talkstream/ru-text#v1.8.0
   mcp: []
 scripts:
-  start: "python3 tools/validate-trigger-evals.py --require-all"
-  validate-triggers: "python3 tools/validate-trigger-evals.py --require-all"
+  tests: "python tools/run_skill_evals.py"

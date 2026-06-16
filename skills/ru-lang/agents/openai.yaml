@@ -1,6 +1,6 @@
 interface:
   display_name: "ru-lang"
-  short_description: "Базовые правила русского текста"
+  short_description: "Правила использования русского языка"
   default_prompt: "Используй $ru-lang для проверки русского текста."
 
 policy:

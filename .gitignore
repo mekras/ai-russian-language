@@ -1,4 +1,5 @@
 *.py[cod]
 /.idea
+/.inspect
 /__pycache__
-/apm_modules
+apm_modules/
