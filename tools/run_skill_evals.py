@@ -32,6 +32,7 @@ COMPOSE_ORACLE_FIELDS = (
     "forbidden_substrings",
     "required_substrings",
     "required_any_substrings",
+    "required_any_groups",
 )
 MAX_MODEL_ATTEMPTS = 3
 ANSI_RESET = "\033[0m"
@@ -166,6 +167,17 @@ def validate_string_list(
     return items
 
 
+def validate_string_groups(value: object, *, label: str) -> list[list[str]]:
+    if value is None:
+        return []
+    if not isinstance(value, list):
+        raise ValueError(f"{label}: значение должно быть массивом массивов строк")
+    groups: list[list[str]] = []
+    for index, group in enumerate(value):
+        groups.append(validate_string_list(group, label=f"{label}[{index}]"))
+    return groups
+
+
 def load_compose_cases() -> list[dict[str, object]]:
     cases: list[dict[str, object]] = []
     decoder = json.JSONDecoder()
@@ -192,8 +204,12 @@ def load_compose_cases() -> list[dict[str, object]]:
         oracle = record.get("oracle")
         if not isinstance(oracle, dict):
             raise ValueError(f"{COMPOSE_DATASET}:{line_number}: oracle должен быть объектом")
-        normalized_oracle: dict[str, list[str]] = {}
-        for field in COMPOSE_ORACLE_FIELDS:
+        normalized_oracle: dict[str, object] = {}
+        for field in (
+            "forbidden_substrings",
+            "required_substrings",
+            "required_any_substrings",
+        ):
             values = validate_string_list(
                 oracle.get(field),
                 label=f"{COMPOSE_DATASET}:{line_number}: oracle.{field}",
@@ -201,6 +217,12 @@ def load_compose_cases() -> list[dict[str, object]]:
             )
             if values:
                 normalized_oracle[field] = values
+        required_any_groups = validate_string_groups(
+            oracle.get("required_any_groups"),
+            label=f"{COMPOSE_DATASET}:{line_number}: oracle.required_any_groups",
+        )
+        if required_any_groups:
+            normalized_oracle["required_any_groups"] = required_any_groups
         if not normalized_oracle:
             raise ValueError(
                 f"{COMPOSE_DATASET}:{line_number}: oracle должен содержать хотя бы одно правило",
@@ -372,6 +394,12 @@ def validate_compose_cases(*, with_skill: bool, case_id: str | None = None) -> b
         missing_required_any = bool(required_any) and not any(
             term.casefold() in output_folded for term in required_any
         )
+        required_any_groups = oracle.get("required_any_groups", [])
+        missing_required_any_groups = [
+            group
+            for group in required_any_groups
+            if not any(term.casefold() in output_folded for term in group)
+        ]
 
         details = []
         if found_forbidden:
@@ -382,6 +410,12 @@ def validate_compose_cases(*, with_skill: bool, case_id: str | None = None) -> b
             details.append(
                 "нет ни одного допустимого фрагмента из набора: "
                 + ", ".join(required_any),
+            )
+        if missing_required_any_groups:
+            details.extend(
+                "нет ни одного допустимого фрагмента из группы: "
+                + ", ".join(group)
+                for group in missing_required_any_groups
             )
 
         if details:
