@@ -139,6 +139,10 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="Запускать compose-проверки без подстановки текста навыка ru-lang.",
     )
+    parser.add_argument(
+        "--case",
+        help="Запустить один compose-сценарий по id. Используется только с --checks compose.",
+    )
     return parser.parse_args()
 
 
@@ -342,9 +346,15 @@ def run_compose_case(case: dict[str, object], *, with_skill: bool) -> tuple[str,
     return run_codex_prompt(case["id"], prompt)
 
 
-def validate_compose_cases(*, with_skill: bool) -> bool:
+def validate_compose_cases(*, with_skill: bool, case_id: str | None = None) -> bool:
     ok = True
-    for case in load_compose_cases():
+    cases = load_compose_cases()
+    if case_id is not None:
+        cases = [case for case in cases if case["id"] == case_id]
+        if not cases:
+            raise ValueError(f"{COMPOSE_DATASET}: compose-сценарий {case_id!r} не найден")
+
+    for case in cases:
         output, final_path, used_model = run_compose_case(case, with_skill=with_skill)
         oracle = case["oracle"]
         output_folded = output.casefold()
@@ -398,6 +408,8 @@ def main() -> int:
     try:
         if args.without_skill and args.checks != "compose":
             raise ValueError("Режим --without-skill поддержан только вместе с --checks compose")
+        if args.case and args.checks != "compose":
+            raise ValueError("Фильтр --case поддержан только вместе с --checks compose")
 
         checks = []
         if args.checks in {"all", "triggers"}:
@@ -408,7 +420,7 @@ def main() -> int:
                 ],
             )
         if args.checks in {"all", "compose"}:
-            checks.append(validate_compose_cases(with_skill=not args.without_skill))
+            checks.append(validate_compose_cases(with_skill=not args.without_skill, case_id=args.case))
     except Exception as exc:
         print_result(False, "проверки навыков", str(exc))
         return 1
