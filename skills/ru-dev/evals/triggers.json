@@ -20,6 +20,24 @@
       "rationale": "Подготовка команды коммита должна запускать ru-dev даже при англоязычном черновике."
     },
     {
+      "id": "ru-dev-positive-commit-request-do-commit",
+      "prompt": "Делай коммит.",
+      "should_trigger": true,
+      "rationale": "Запрос на выполнение коммита требует сформулировать сообщение коммита по правилам ru-dev."
+    },
+    {
+      "id": "ru-dev-positive-commit-request-imperative",
+      "prompt": "Коммить.",
+      "should_trigger": true,
+      "rationale": "Короткая команда на коммит всё равно требует применить ru-dev к сообщению коммита."
+    },
+    {
+      "id": "ru-dev-positive-commit-request-noun",
+      "prompt": "Коммит.",
+      "should_trigger": true,
+      "rationale": "Лаконичный запрос на коммит подразумевает подготовку сообщения коммита и должен запускать ru-dev."
+    },
+    {
       "id": "ru-dev-positive-work-report",
       "prompt": "Напиши краткий отчёт по-русски: что изменено в коде, чем проверено и какие риски остались.",
       "should_trigger": true,

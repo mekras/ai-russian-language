@@ -1,0 +1,14 @@
+lockfile_version: '2'
+generated_at: '2026-06-17T08:58:43.128424+00:00'
+apm_version: 0.19.0
+dependencies:
+- repo_url: talkstream/ru-text
+  host: github.com
+  resolved_commit: ffacdb942ca15d4cb33f27a6a7512e70e3c1dcf4
+  resolved_ref: v1.8.0
+  version: 1.8.0
+  package_type: marketplace_plugin
+  content_hash: sha256:bc546b39af2f18917c3ddad49191700687fbb0fd6c4f6c4a968be8168d361f53
+  constraint: ^1.8.0
+  resolved_tag: v1.8.0
+  resolved_at: '2026-06-17T08:58:42+00:00'
