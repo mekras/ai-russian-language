@@ -1,5 +1,5 @@
 name: ai-russian-language
-version: 1.1.2
+version: 1.2.0
 description: "Коллекция переносимых навыков для русского языка в агентной разработке"
 author: "mekras"
 license: "MIT"
@@ -7,9 +7,10 @@ target:
   - claude
   - codex
 type: "skill"
+includes: auto
 dependencies:
   apm:
     - talkstream/ru-text#^1.8.0
   mcp: []
 scripts:
-  tests: "python tools/run_skill_evals.py"
+  tests: "sh -c 'set -e; target=\"${APM_EVAL_PATH:-.apm/skills}\"; python3 tools/validate-trigger-evals.py \"$target\" --require-all; python3 tools/validate-skill-result-evals.py \"$target\"; python3 tools/run_skill_evals.py \"$target\"'"

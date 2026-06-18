@@ -5,7 +5,7 @@
 
 # Русский язык
 
-Используй навыки [ru-lang](skills/ru-lang) и [ru-dev](skills/ru-dev).
+Используй навыки [ru-lang](.apm/skills/ru-lang) и [ru-dev](.apm/skills/ru-dev).
 
 # Подагенты Codex
 

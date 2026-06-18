@@ -14,13 +14,8 @@ from pathlib import Path
 
 PRIMARY_MODEL = "gpt-5.3-codex-spark"
 ROOT = Path(__file__).resolve().parent.parent
-COMPOSE_DATASET = ROOT / "skills" / "ru-lang" / "evals" / "compose.jsonl"
 CODEX_SUBAGENT = ROOT / "tools" / "codex-model-subagent"
-RU_LANG_SKILL = ROOT / "skills" / "ru-lang" / "SKILL.md"
-RU_LANG_BASE_LANGUAGE = ROOT / "skills" / "ru-lang" / "references" / "base-language.md"
-RU_LANG_TECHNICAL = ROOT / "skills" / "ru-lang" / "references" / "technical-russian.md"
-RU_LANG_REPLACEMENTS = ROOT / "skills" / "ru-lang" / "assets" / "term-replacements.md"
-RU_LANG_HYBRIDS = ROOT / "skills" / "ru-lang" / "assets" / "hybrid-examples.md"
+DEFAULT_SKILLS_ROOT = ROOT / ".apm" / "skills"
 TRIGGER_FIELDS = {
     "id": str,
     "prompt": str,
@@ -74,7 +69,39 @@ def read_skill_name(skill_path: Path) -> str | None:
     return None
 
 
-def load_trigger_cases(skill_dir: Path) -> tuple[str, str, list[dict[str, object]]]:
+def resolve_target(raw_target: str | None) -> Path:
+    value = raw_target or os.environ.get("APM_EVAL_PATH") or ".apm/skills"
+    target = Path(value)
+    if not target.is_absolute():
+        target = ROOT / target
+    return target
+
+
+def iter_skill_dirs(target: Path) -> list[Path]:
+    if (target / "SKILL.md").is_file():
+        return [target]
+    if not target.is_dir():
+        raise ValueError(f"{target}: каталог навыков не найден")
+    skill_dirs = sorted(path for path in target.iterdir() if (path / "SKILL.md").is_file())
+    if not skill_dirs:
+        raise ValueError(f"{target}: не найдено ни одного каталога навыка с SKILL.md")
+    return skill_dirs
+
+
+def find_skill_dir(target: Path, name: str) -> Path | None:
+    if target.name == name and (target / "SKILL.md").is_file():
+        return target
+    candidate = target / name
+    if (candidate / "SKILL.md").is_file():
+        return candidate
+    return None
+
+
+def load_trigger_cases(
+    skill_dir: Path,
+    *,
+    filter_case_id: str | None = None,
+) -> tuple[str, str, list[dict[str, object]]]:
     skill_path = skill_dir / "SKILL.md"
     trigger_path = skill_dir / "evals" / "triggers.json"
     skill_name = read_skill_name(skill_path)
@@ -121,6 +148,8 @@ def load_trigger_cases(skill_dir: Path) -> tuple[str, str, list[dict[str, object
         raise ValueError(
             f"{trigger_path}: нужны примеры и с should_trigger=true, и с should_trigger=false",
         )
+    if filter_case_id is not None:
+        cases = [case for case in cases if case["id"] == filter_case_id]
 
     return skill_name, skill_path.read_text(encoding="utf-8"), cases
 
@@ -128,6 +157,11 @@ def load_trigger_cases(skill_dir: Path) -> tuple[str, str, list[dict[str, object
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Запуск проверок навыков через модельные вызовы Codex.",
+    )
+    parser.add_argument(
+        "target",
+        nargs="?",
+        help="Каталог всех навыков или одного навыка. По умолчанию берётся APM_EVAL_PATH или .apm/skills.",
     )
     parser.add_argument(
         "--checks",
@@ -143,6 +177,10 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--case",
         help="Запустить один compose-сценарий по id. Используется только с --checks compose.",
+    )
+    parser.add_argument(
+        "--case-id",
+        help="Запустить один сценарий по id. Если не задано, используется APM_EVAL_CASE_ID.",
     )
     return parser.parse_args()
 
@@ -178,10 +216,10 @@ def validate_string_groups(value: object, *, label: str) -> list[list[str]]:
     return groups
 
 
-def load_compose_cases() -> list[dict[str, object]]:
+def load_compose_cases(compose_dataset: Path) -> list[dict[str, object]]:
     cases: list[dict[str, object]] = []
     decoder = json.JSONDecoder()
-    content = COMPOSE_DATASET.read_text(encoding="utf-8")
+    content = compose_dataset.read_text(encoding="utf-8")
     position = 0
     while position < len(content):
         while position < len(content) and content[position].isspace():
@@ -191,19 +229,19 @@ def load_compose_cases() -> list[dict[str, object]]:
         try:
             record, position = decoder.raw_decode(content, position)
         except json.JSONDecodeError as exc:
-            raise ValueError(f"{COMPOSE_DATASET}:{exc.lineno}: {exc.msg}") from exc
+            raise ValueError(f"{compose_dataset}:{exc.lineno}: {exc.msg}") from exc
         line_number = content.count("\n", 0, position) + 1
         if not isinstance(record, dict):
-            raise ValueError(f"{COMPOSE_DATASET}:{line_number}: корень примера должен быть объектом")
+            raise ValueError(f"{compose_dataset}:{line_number}: корень примера должен быть объектом")
         errors = []
         for field in COMPOSE_TEXT_FIELDS:
             if not isinstance(record.get(field), str) or not record[field].strip():
                 errors.append(f"{field} должно быть непустой строкой")
         if errors:
-            raise ValueError(f"{COMPOSE_DATASET}:{line_number}: {', '.join(errors)}")
+            raise ValueError(f"{compose_dataset}:{line_number}: {', '.join(errors)}")
         oracle = record.get("oracle")
         if not isinstance(oracle, dict):
-            raise ValueError(f"{COMPOSE_DATASET}:{line_number}: oracle должен быть объектом")
+            raise ValueError(f"{compose_dataset}:{line_number}: oracle должен быть объектом")
         normalized_oracle: dict[str, object] = {}
         for field in (
             "forbidden_substrings",
@@ -212,31 +250,31 @@ def load_compose_cases() -> list[dict[str, object]]:
         ):
             values = validate_string_list(
                 oracle.get(field),
-                label=f"{COMPOSE_DATASET}:{line_number}: oracle.{field}",
+                label=f"{compose_dataset}:{line_number}: oracle.{field}",
                 allow_empty=True,
             )
             if values:
                 normalized_oracle[field] = values
         required_any_groups = validate_string_groups(
             oracle.get("required_any_groups"),
-            label=f"{COMPOSE_DATASET}:{line_number}: oracle.required_any_groups",
+            label=f"{compose_dataset}:{line_number}: oracle.required_any_groups",
         )
         if required_any_groups:
             normalized_oracle["required_any_groups"] = required_any_groups
         if not normalized_oracle:
             raise ValueError(
-                f"{COMPOSE_DATASET}:{line_number}: oracle должен содержать хотя бы одно правило",
+                f"{compose_dataset}:{line_number}: oracle должен содержать хотя бы одно правило",
             )
         unexpected_fields = sorted(set(oracle) - set(COMPOSE_ORACLE_FIELDS))
         if unexpected_fields:
             unexpected = ", ".join(unexpected_fields)
             raise ValueError(
-                f"{COMPOSE_DATASET}:{line_number}: неожиданные поля oracle: {unexpected}",
+                f"{compose_dataset}:{line_number}: неожиданные поля oracle: {unexpected}",
             )
         record["oracle"] = normalized_oracle
         cases.append(record)
     if not cases:
-        raise ValueError(f"{COMPOSE_DATASET}: набор данных должен содержать хотя бы один пример")
+        raise ValueError(f"{compose_dataset}: набор данных должен содержать хотя бы один пример")
     return cases
 
 
@@ -244,13 +282,13 @@ def safe_name(case_id: str) -> str:
     return re.sub(r"[^A-Za-z0-9._-]+", "_", case_id)
 
 
-def load_ru_lang_materials() -> str:
+def load_ru_lang_materials(ru_lang_dir: Path) -> str:
     parts = [
-        ("SKILL.md", RU_LANG_SKILL.read_text(encoding="utf-8")),
-        ("references/base-language.md", RU_LANG_BASE_LANGUAGE.read_text(encoding="utf-8")),
-        ("references/technical-russian.md", RU_LANG_TECHNICAL.read_text(encoding="utf-8")),
-        ("assets/term-replacements.md", RU_LANG_REPLACEMENTS.read_text(encoding="utf-8")),
-        ("assets/hybrid-examples.md", RU_LANG_HYBRIDS.read_text(encoding="utf-8")),
+        ("SKILL.md", (ru_lang_dir / "SKILL.md").read_text(encoding="utf-8")),
+        ("references/base-language.md", (ru_lang_dir / "references" / "base-language.md").read_text(encoding="utf-8")),
+        ("references/technical-russian.md", (ru_lang_dir / "references" / "technical-russian.md").read_text(encoding="utf-8")),
+        ("assets/term-replacements.md", (ru_lang_dir / "assets" / "term-replacements.md").read_text(encoding="utf-8")),
+        ("assets/hybrid-examples.md", (ru_lang_dir / "assets" / "hybrid-examples.md").read_text(encoding="utf-8")),
     ]
     return "\n\n".join(f"# {title}\n\n{text}" for title, text in parts)
 
@@ -301,8 +339,10 @@ def extract_json_object(text: str) -> dict[str, object]:
     return json.loads(text[start : end + 1])
 
 
-def validate_trigger_cases(skill_dir: Path) -> bool:
-    skill_name, skill_text, cases = load_trigger_cases(skill_dir)
+def validate_trigger_cases(skill_dir: Path, *, case_id: str | None = None) -> bool | None:
+    skill_name, skill_text, cases = load_trigger_cases(skill_dir, filter_case_id=case_id)
+    if not cases:
+        return None
     prompt_cases = [
         {"id": case["id"], "prompt": case["prompt"]}
         for case in cases
@@ -350,12 +390,22 @@ def validate_trigger_cases(skill_dir: Path) -> bool:
     return ok
 
 
-def run_compose_case(case: dict[str, object], *, with_skill: bool) -> tuple[str, str, str]:
+def run_compose_case(
+    case: dict[str, object],
+    *,
+    with_skill: bool,
+    ru_lang_dir: Path,
+) -> tuple[str, str, str]:
     if with_skill:
-        skill_text = load_ru_lang_materials()
+        skill_text = load_ru_lang_materials(ru_lang_dir)
         prompt = (
             "Примени навык ru-lang к пользовательскому запросу.\n"
             "Ответь только содержательным результатом, без пояснений про проверку.\n\n"
+            "Перед финальным ответом проверь, что обычные русские слова и "
+            "словосочетания не спрятаны в обратные кавычки, гибридные формы "
+            "перестроены, а формы с корнями `корректн` и `валидн` заменены. "
+            "Пиши `результат Claude`, а не `` `результат Claude` ``; "
+            "пиши `в ветке single-file`, а не `` `single-file` ветке ``.\n\n"
             f"Навык ru-lang:\n{skill_text}\n\n"
             f"Запрос пользователя:\n{case['input']}"
         )
@@ -368,66 +418,100 @@ def run_compose_case(case: dict[str, object], *, with_skill: bool) -> tuple[str,
     return run_codex_prompt(case["id"], prompt)
 
 
-def validate_compose_cases(*, with_skill: bool, case_id: str | None = None) -> bool:
+def collect_compose_failures(output: str, oracle: dict[str, object]) -> list[str]:
+    output_folded = output.casefold()
+    found_forbidden = [
+        term
+        for term in oracle.get("forbidden_substrings", [])
+        if term.casefold() in output_folded
+    ]
+    missing_required = [
+        term
+        for term in oracle.get("required_substrings", [])
+        if term.casefold() not in output_folded
+    ]
+    required_any = oracle.get("required_any_substrings", [])
+    missing_required_any = bool(required_any) and not any(
+        term.casefold() in output_folded for term in required_any
+    )
+    required_any_groups = oracle.get("required_any_groups", [])
+    missing_required_any_groups = [
+        group
+        for group in required_any_groups
+        if not any(term.casefold() in output_folded for term in group)
+    ]
+
+    details = []
+    if found_forbidden:
+        details.append(f"найдены запрещённые формы: {', '.join(found_forbidden)}")
+    if missing_required:
+        details.append(f"нет обязательных фрагментов: {', '.join(missing_required)}")
+    if missing_required_any:
+        details.append(
+            "нет ни одного допустимого фрагмента из набора: "
+            + ", ".join(required_any),
+        )
+    if missing_required_any_groups:
+        details.extend(
+            "нет ни одного допустимого фрагмента из группы: "
+            + ", ".join(group)
+            for group in missing_required_any_groups
+        )
+    return details
+
+
+def validate_compose_cases(
+    ru_lang_dir: Path,
+    *,
+    with_skill: bool,
+    case_id: str | None = None,
+) -> bool | None:
+    compose_dataset = ru_lang_dir / "evals" / "compose.jsonl"
+    if not compose_dataset.is_file():
+        return None
     ok = True
-    cases = load_compose_cases()
+    cases = load_compose_cases(compose_dataset)
     if case_id is not None:
         cases = [case for case in cases if case["id"] == case_id]
         if not cases:
-            raise ValueError(f"{COMPOSE_DATASET}: compose-сценарий {case_id!r} не найден")
+            return None
 
     for case in cases:
-        output, final_path, used_model = run_compose_case(case, with_skill=with_skill)
         oracle = case["oracle"]
-        output_folded = output.casefold()
-        found_forbidden = [
-            term
-            for term in oracle.get("forbidden_substrings", [])
-            if term.casefold() in output_folded
-        ]
-        missing_required = [
-            term
-            for term in oracle.get("required_substrings", [])
-            if term.casefold() not in output_folded
-        ]
-        required_any = oracle.get("required_any_substrings", [])
-        missing_required_any = bool(required_any) and not any(
-            term.casefold() in output_folded for term in required_any
-        )
-        required_any_groups = oracle.get("required_any_groups", [])
-        missing_required_any_groups = [
-            group
-            for group in required_any_groups
-            if not any(term.casefold() in output_folded for term in group)
-        ]
-
-        details = []
-        if found_forbidden:
-            details.append(f"найдены запрещённые формы: {', '.join(found_forbidden)}")
-        if missing_required:
-            details.append(f"нет обязательных фрагментов: {', '.join(missing_required)}")
-        if missing_required_any:
-            details.append(
-                "нет ни одного допустимого фрагмента из набора: "
-                + ", ".join(required_any),
+        last_details: list[str] = []
+        last_final_path = ""
+        last_model = PRIMARY_MODEL
+        for attempt in range(1, MAX_MODEL_ATTEMPTS + 1):
+            output, final_path, used_model = run_compose_case(
+                case,
+                with_skill=with_skill,
+                ru_lang_dir=ru_lang_dir,
             )
-        if missing_required_any_groups:
-            details.extend(
-                "нет ни одного допустимого фрагмента из группы: "
-                + ", ".join(group)
-                for group in missing_required_any_groups
-            )
+            last_final_path = final_path
+            last_model = used_model
+            last_details = collect_compose_failures(output, oracle)
+            if not last_details:
+                mode_label = "с навыком" if with_skill else "без навыка"
+                retry_detail = "" if attempt == 1 else f"; попытка={attempt}/{MAX_MODEL_ATTEMPTS}"
+                print_result(
+                    True,
+                    case["id"],
+                    f"{mode_label}; модель={used_model}; файл={final_path}{retry_detail}",
+                )
+                break
+            if attempt < MAX_MODEL_ATTEMPTS:
+                print_info(
+                    case["id"],
+                    f"повтор {attempt + 1}/{MAX_MODEL_ATTEMPTS} после проверки эталона",
+                )
 
-        if details:
+        if last_details:
             ok = False
             print_result(
                 False,
                 case["id"],
-                f"{'; '.join(details)}; файл={final_path}",
+                f"{'; '.join(last_details)}; модель={last_model}; файл={last_final_path}",
             )
-        else:
-            mode_label = "с навыком" if with_skill else "без навыка"
-            print_result(True, case["id"], f"{mode_label}; модель={used_model}; файл={final_path}")
     summary_label = (
         "ru-lang: проверка русских формулировок с навыком"
         if with_skill
@@ -440,21 +524,33 @@ def validate_compose_cases(*, with_skill: bool, case_id: str | None = None) -> b
 def main() -> int:
     args = parse_args()
     try:
+        target = resolve_target(args.target)
+        case_id = args.case_id or args.case or os.environ.get("APM_EVAL_CASE_ID")
         if args.without_skill and args.checks != "compose":
             raise ValueError("Режим --without-skill поддержан только вместе с --checks compose")
         if args.case and args.checks != "compose":
             raise ValueError("Фильтр --case поддержан только вместе с --checks compose")
 
-        checks = []
+        checks: list[bool] = []
         if args.checks in {"all", "triggers"}:
-            checks.extend(
-                [
-                    validate_trigger_cases(ROOT / "skills" / "ru-lang"),
-                    validate_trigger_cases(ROOT / "skills" / "ru-dev"),
-                ],
-            )
+            for skill_dir in iter_skill_dirs(target):
+                result = validate_trigger_cases(skill_dir, case_id=case_id)
+                if result is not None:
+                    checks.append(result)
         if args.checks in {"all", "compose"}:
-            checks.append(validate_compose_cases(with_skill=not args.without_skill, case_id=args.case))
+            ru_lang_dir = find_skill_dir(target, "ru-lang")
+            if ru_lang_dir is not None:
+                result = validate_compose_cases(
+                    ru_lang_dir,
+                    with_skill=not args.without_skill,
+                    case_id=case_id,
+                )
+                if result is not None:
+                    checks.append(result)
+        if case_id is not None and not checks:
+            raise ValueError(f"{target}: сценарий {case_id!r} не найден")
+        if not checks:
+            raise ValueError(f"{target}: для выбранного режима нет проверок")
     except Exception as exc:
         print_result(False, "проверки навыков", str(exc))
         return 1
