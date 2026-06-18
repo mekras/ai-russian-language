@@ -311,3 +311,108 @@
     ]
   }
 }
+{
+  "id": "ru-lang-compose-network-diagnostics-regression-019ed966",
+  "input": "Напиши короткий диагностический отчёт по-русски по сессии 019ed966-03f7-7bb1-9436-fe945f4ceebe: проверил DNS-маршрутизацию; линк sb-tun идёт DNS-маршрутом через stub 127.0.0.53; пустой AAAA-ответ нормален; DNS-прокси ломает A-запрос; upstream не держит TCP fallback; DNS-пакеты и DNS-настройки проверены; Конфиг sing-box в degraded mode; cache сброшен; legacy resolver временно переведён на 127.0.0.54.",
+  "oracle": {
+    "forbidden_substrings": [
+      "DNS-маршрут",
+      "DNS-маршрутизац",
+      "DNS-прокси",
+      "DNS-пакет",
+      "DNS-настрой",
+      "AAAA-ответ",
+      "AAAA`‑ответ",
+      "AAAA`-ответ",
+      "A-запрос",
+      "A`‑запрос",
+      "A`-запрос",
+      "линк",
+      "stub",
+      "upstream",
+      "Конфиг sing-box",
+      "конфиг sing-box",
+      "degraded mode",
+      "cache",
+      "legacy",
+      "корректн"
+    ],
+    "required_any_groups": [
+      [
+        "маршрутизац",
+        "маршрут"
+      ],
+      [
+        "DNS"
+      ],
+      [
+        "ответ AAAA",
+        "ответ `AAAA`"
+      ],
+      [
+        "запрос A",
+        "запрос `A`",
+        "запроса A",
+        "запроса `A`"
+      ],
+      [
+        "прокси DNS",
+        "прокси-резолвер"
+      ],
+      [
+        "вышестоящ"
+      ],
+      [
+        "настройки",
+        "конфигурац"
+      ],
+      [
+        "кеш"
+      ],
+      [
+        "пониженными возможностями",
+        "ухудшенный режим"
+      ]
+    ]
+  }
+}
+{
+  "id": "ru-lang-compose-apm-single-file-claude-regression-019ed983",
+  "input": "Напиши короткий технический вывод по-русски по сессии 019ed983-3844-7a12-9434-e433c53105f6: исправление в APM CLI — в single-file ветке не сбрасывать target и не проводить Claude-результат через config.output_path = AGENTS.md.",
+  "oracle": {
+    "forbidden_substrings": [
+      "single-file ветк",
+      "`ветка single-file`",
+      "`ветки single-file`",
+      "`ветк",
+      "Claude-результат",
+      "результат `Claude`",
+      "конфиг",
+      "корректн",
+      "валидн"
+    ],
+    "required_any_groups": [
+      [
+        "ветке single-file",
+        "ветке `single-file`",
+        "ветки single-file",
+        "ветки `single-file`",
+        "ветке режима single-file",
+        "ветке одиночного режима"
+      ],
+      [
+        "результат Claude",
+        "результат для Claude"
+      ],
+      [
+        "target"
+      ],
+      [
+        "config.output_path"
+      ],
+      [
+        "AGENTS.md"
+      ]
+    ]
+  }
+}
