@@ -1,7 +1,7 @@
 interface:
   display_name: "ru-dev"
   short_description: "Русский текст в разработке ПО"
-  default_prompt: "Используй $ru-dev для текста о разработке ПО; для сообщений коммитов применяй навык независимо от языка черновика."
+  default_prompt: "Используй $ru-dev для текста о разработке ПО; для сообщений коммитов, выпуска версий и команд git commit -m применяй навык независимо от языка черновика."
 
 policy:
   allow_implicit_invocation: true

@@ -20,6 +20,24 @@
       "rationale": "Подготовка команды коммита должна запускать ru-dev даже при англоязычном черновике."
     },
     {
+      "id": "ru-dev-positive-git-commit-release-command",
+      "prompt": "Перед выполнением `git commit -m \"Release 0.1.0\"` проверь сообщение по правилам проекта.",
+      "should_trigger": true,
+      "rationale": "Англоязычное сообщение коммита выпуска должно запускать ru-dev до выполнения Git-команды."
+    },
+    {
+      "id": "ru-dev-positive-release-version-request",
+      "prompt": "Оформи релиз 0.1.0: коммит, тег и итоговый отчёт.",
+      "should_trigger": true,
+      "rationale": "Выпуск версии включает сообщение коммита и русскоязычный отчёт о разработческой задаче."
+    },
+    {
+      "id": "ru-dev-positive-bump-and-release",
+      "prompt": "Bump version to 0.1.0 and release it.",
+      "should_trigger": true,
+      "rationale": "Англоязычная команда на повышение версии и выпуск требует русских формулировок коммита и отчёта."
+    },
+    {
       "id": "ru-dev-positive-commit-request-do-commit",
       "prompt": "Делай коммит.",
       "should_trigger": true,

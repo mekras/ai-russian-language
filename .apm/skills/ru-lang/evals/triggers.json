@@ -86,6 +86,12 @@
       "rationale": "ru-lang нужен как базовый слой; ru-dev должен добавить правила разработки."
     },
     {
+      "id": "ru-lang-positive-release-report-base-layer",
+      "prompt": "Напиши по-русски статус выпуска: релиз 0.1.0, bump не нужен, git-состояние чистое.",
+      "should_trigger": true,
+      "rationale": "Нужен русский технический отчёт с заменой англоязычных и гибридных рабочих форм."
+    },
+    {
       "id": "ru-lang-negative-sql-only",
       "prompt": "Напиши только SQL-запрос без пояснений: выбрать активных пользователей из таблицы users.",
       "should_trigger": false,

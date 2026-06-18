@@ -1,4 +1,6 @@
 *.py[cod]
+/.agents
+/.claude
 /.idea
 /.inspect
 /__pycache__
