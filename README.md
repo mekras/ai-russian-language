@@ -41,10 +41,23 @@ apm outdated --global
 
 ## Разработка
 
-Запуск проверок:
+Детерминированный гейт без вызовов модели и сети:
 
 ```bash
 apm run tests
+```
+
+Опциональный модельный прогон качества навыков:
+
+```bash
+apm run evals
+```
+
+Модельный прогон можно сузить до одного навыка или сценария:
+
+```bash
+APM_EVAL_PATH=.apm/skills/ru-lang apm run evals
+APM_EVAL_PATH=.apm/skills/ru-lang APM_EVAL_CASE_ID=<id> apm run evals
 ```
 
 Публикуемые навыки лежат в `.apm/skills/<name>/`.

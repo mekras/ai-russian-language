@@ -10,4 +10,5 @@ dependencies:
     - talkstream/ru-text#^1.8.0
   mcp: []
 scripts:
-  tests: "sh -c 'set -e; target=\"${APM_EVAL_PATH:-.apm/skills}\"; python3 tools/validate-trigger-evals.py \"$target\" --require-all; python3 tools/validate-skill-result-evals.py \"$target\"; python3 tools/run_skill_evals.py \"$target\"'"
+  tests: "sh -c 'set -e; target=\"${APM_EVAL_PATH:-.apm/skills}\"; python3 tools/validate-trigger-evals.py \"$target\" --require-all; python3 tools/validate-skill-result-evals.py \"$target\"'"
+  evals: "python3 tools/run_skill_evals.py \"${APM_EVAL_PATH:-.apm/skills}\""
