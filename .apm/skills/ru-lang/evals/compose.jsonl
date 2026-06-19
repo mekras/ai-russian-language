@@ -86,6 +86,21 @@
   }
 }
 {
+  "id": "ru-lang-compose-deploy",
+  "input": "Напиши короткий статус по-русски: после деплоя проверили логи, затем запустили smoke test и подтвердили, что откат не нужен.",
+  "oracle": {
+    "forbidden_substrings": [
+      "деплой",
+      "deploy",
+      "smoke test"
+    ],
+    "required_any_substrings": [
+      "развёртыв",
+      "развертыв"
+    ]
+  }
+}
+{
   "id": "ru-lang-compose-dev-dependency-and-samples",
   "input": "Напиши одно короткое предложение по-русски для отчёта о проверках навыка: добавили dev-зависимость для sample-объектов и нашли непроходящие samples.",
   "oracle": {

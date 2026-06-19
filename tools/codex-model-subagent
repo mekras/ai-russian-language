@@ -76,7 +76,7 @@ codex exec \
   -C "$repo_root" \
   -m "$model" \
   -s "$sandbox" \
-  -c 'approvals_reviewer="auto_review"' \
+  -c 'approvals_reviewer="guardian_subagent"' \
   -o "$final" \
   "$*" > "$jsonl" 2> "$stderr_file"
 status=$?
