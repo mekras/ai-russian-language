@@ -18,7 +18,7 @@
 Установить всю коллекцию:
 
 ```bash
-apm install --global github.com/mekras/ai-russian-language#^1.2.5
+apm install --global github.com/mekras/ai-russian-language#^1.2.6
 ```
 
 Обновить уже установленную коллекцию:
