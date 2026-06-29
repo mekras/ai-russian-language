@@ -293,6 +293,32 @@ def load_ru_lang_materials(ru_lang_dir: Path) -> str:
     return "\n\n".join(f"# {title}\n\n{text}" for title, text in parts)
 
 
+def load_ru_dev_materials(ru_dev_dir: Path) -> str:
+    ru_lang_dir = ru_dev_dir.parent / "ru-lang"
+    if not (ru_lang_dir / "SKILL.md").is_file():
+        raise ValueError("для ru-dev не найден соседний навык ru-lang")
+    parts = [
+        ("ru-lang", load_ru_lang_materials(ru_lang_dir)),
+        ("ru-dev/SKILL.md", (ru_dev_dir / "SKILL.md").read_text(encoding="utf-8")),
+        (
+            "ru-dev/references/development-text.md",
+            (ru_dev_dir / "references" / "development-text.md").read_text(encoding="utf-8"),
+        ),
+    ]
+    return "\n\n".join(f"# {title}\n\n{text}" for title, text in parts)
+
+
+def load_skill_materials(skill_dir: Path) -> tuple[str, str]:
+    skill_name = read_skill_name(skill_dir / "SKILL.md")
+    if not skill_name:
+        raise ValueError(f"{skill_dir / 'SKILL.md'}: не найдено имя навыка во frontmatter")
+    if skill_name == "ru-lang":
+        return skill_name, load_ru_lang_materials(skill_dir)
+    if skill_name == "ru-dev":
+        return skill_name, load_ru_dev_materials(skill_dir)
+    raise ValueError(f"{skill_dir}: сценарии результата не поддержаны для навыка {skill_name!r}")
+
+
 def run_codex_prompt(name: str, prompt: str) -> tuple[str, str, str]:
     env = os.environ.copy()
     env["CODEX_SUBAGENT_USAGE_LINE"] = "0"
@@ -394,19 +420,30 @@ def run_compose_case(
     case: dict[str, object],
     *,
     with_skill: bool,
-    ru_lang_dir: Path,
+    skill_dir: Path,
 ) -> tuple[str, str, str]:
     if with_skill:
-        skill_text = load_ru_lang_materials(ru_lang_dir)
+        skill_name, skill_text = load_skill_materials(skill_dir)
         prompt = (
-            "Примени навык ru-lang к пользовательскому запросу.\n"
+            f"Примени навык {skill_name} к пользовательскому запросу.\n"
             "Ответь только содержательным результатом, без пояснений про проверку.\n\n"
-            "Перед финальным ответом проверь, что обычные русские слова и "
-            "словосочетания не спрятаны в обратные кавычки, гибридные формы "
-            "перестроены, а формы с корнями `корректн` и `валидн` заменены. "
-            "Пиши `результат Claude`, а не `` `результат Claude` ``; "
-            "пиши `в ветке single-file`, а не `` `single-file` ветке ``.\n\n"
-            f"Навык ru-lang:\n{skill_text}\n\n"
+        )
+        if skill_name == "ru-lang":
+            prompt += (
+                "Перед финальным ответом проверь, что обычные русские слова и "
+                "словосочетания не спрятаны в обратные кавычки, гибридные формы "
+                "перестроены, а формы с корнями `корректн` и `валидн` заменены. "
+                "Пиши `результат Claude`, а не `` `результат Claude` ``; "
+                "пиши `в ветке single-file`, а не `` `single-file` ветке ``.\n\n"
+            )
+        elif skill_name == "ru-dev":
+            prompt += (
+                "Если ответ содержит код с пользовательскими строками, сохраняй "
+                "идентификаторы и технические элементы, но по умолчанию делай "
+                "пользовательский вывод русскоязычным.\n\n"
+            )
+        prompt += (
+            f"Навык {skill_name}:\n{skill_text}\n\n"
             f"Запрос пользователя:\n{case['input']}"
         )
     else:
@@ -461,14 +498,15 @@ def collect_compose_failures(output: str, oracle: dict[str, object]) -> list[str
 
 
 def validate_compose_cases(
-    ru_lang_dir: Path,
+    skill_dir: Path,
     *,
     with_skill: bool,
     case_id: str | None = None,
 ) -> bool | None:
-    compose_dataset = ru_lang_dir / "evals" / "compose.jsonl"
+    compose_dataset = skill_dir / "evals" / "compose.jsonl"
     if not compose_dataset.is_file():
         return None
+    skill_name = read_skill_name(skill_dir / "SKILL.md") or skill_dir.name
     ok = True
     cases = load_compose_cases(compose_dataset)
     if case_id is not None:
@@ -485,7 +523,7 @@ def validate_compose_cases(
             output, final_path, used_model = run_compose_case(
                 case,
                 with_skill=with_skill,
-                ru_lang_dir=ru_lang_dir,
+                skill_dir=skill_dir,
             )
             last_final_path = final_path
             last_model = used_model
@@ -513,9 +551,9 @@ def validate_compose_cases(
                 f"{'; '.join(last_details)}; модель={last_model}; файл={last_final_path}",
             )
     summary_label = (
-        "ru-lang: проверка русских формулировок с навыком"
+        f"{skill_name}: проверка результата с навыком"
         if with_skill
-        else "ru-lang: проверка русских формулировок без навыка"
+        else f"{skill_name}: проверка результата без навыка"
     )
     print_result(ok, summary_label)
     return ok
@@ -538,10 +576,9 @@ def main() -> int:
                 if result is not None:
                     checks.append(result)
         if args.checks in {"all", "compose"}:
-            ru_lang_dir = find_skill_dir(target, "ru-lang")
-            if ru_lang_dir is not None:
+            for skill_dir in iter_skill_dirs(target):
                 result = validate_compose_cases(
-                    ru_lang_dir,
+                    skill_dir,
                     with_skill=not args.without_skill,
                     case_id=case_id,
                 )
