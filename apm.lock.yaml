@@ -1,12 +1,12 @@
-lockfile_version: '1'
-generated_at: '2026-07-01T08:59:51.703818+00:00'
-apm_version: 0.22.0
+lockfile_version: '2'
+generated_at: '2026-07-03T17:04:11.024910+00:00'
+apm_version: 0.23.1
 dependencies:
 - repo_url: talkstream/ru-text
   name: ru-text
   host: github.com
   resolved_commit: 6d8f13cef9eec7145cadc8f88ef523076e88ac24
-  resolved_ref: ^1.8.0
+  resolved_ref: v1.10.0
   version: 1.10.0
   package_type: marketplace_plugin
   deployed_files:
@@ -70,7 +70,9 @@ dependencies:
     .claude/skills/ru-text/references/typography.md: sha256:474efb4258cffcb85ca9ca1bc7a0a46052e8e1b5712318b268b9a62ba17d591d
     .claude/skills/ru-text/references/ux-writing.md: sha256:7802bc126bff4f754e4eeb0f8b986dd967ac876c038d23a0a63b5846248b4cee
   content_hash: sha256:5a5987e731dcd35ffab55fa8d1b4a43fb8fff4eadb13a12660c655b61e6b3285
-  constraint: ^1.8.0
+  constraint: ^1.10.0
+  resolved_tag: v1.10.0
+  resolved_at: '2026-07-03T17:04:07+00:00'
   declared_license: MIT
 local_deployed_files:
 - .agents/skills/ru-dev
