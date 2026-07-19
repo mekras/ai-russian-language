@@ -4,4 +4,7 @@
 /.idea
 /.inspect
 /__pycache__
+*.local.*
+*.local
+*.tmp.*
 apm_modules/

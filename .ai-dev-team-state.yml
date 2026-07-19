@@ -1,0 +1,35 @@
+product: mekras/ai-dev-team
+applied_version: 0.18.0
+updated_at: 2026-07-19
+
+project:
+  apm:
+    role: publisher
+    client_instructions: preserve_handwritten_local_rules
+  license: MIT
+
+setup:
+  visibility: public
+  git:
+    enabled: true
+  changelog:
+    status: present
+    path: CHANGELOG.md
+  client_instructions:
+    status: handwritten_local_rules_preserved
+    files:
+      - AGENTS.md
+  knowledge:
+    status: present
+    path: knowledge/
+  decision_records:
+    status: present
+    journals:
+      - kind: DR
+        path: docs/DR/
+        record_pattern: DR-NNNN.md
+        index: docs/DR/README.md
+    acceptance: owner_approval
+    priority_factors:
+      - reliability_of_rules
+      - context_efficiency
