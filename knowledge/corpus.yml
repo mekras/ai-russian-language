@@ -1,0 +1,82 @@
+contract_version: 1
+
+tracked_data:
+  root: data
+  source_pattern: data/<source>/source.yml
+  source_map_pattern: data/<source>/source-map.yml
+  source_unit_pattern: data/<source>/<units>/<unit>/item.yml
+  statement_pattern: data/<source>/<units>/<unit>/statements.yml
+  derived_statement_pattern: analysis/<analysis>/derived-statements.yml
+
+local_data:
+  gitignore_rules: ["*.local.*", "*.local", "*.tmp.*"]
+  local_file_pattern: "*.local.*"
+  local_dir_pattern: "*.local"
+  temporary_file_pattern: "*.tmp.*"
+
+artifact_storage:
+  tracked:
+    - "Карты источников, разрешённые нормализованные тексты и небольшие полезные вложения."
+  local_or_temporary:
+    - "Тяжёлые медиа, полные текстовые выгрузки без права публикации и временные файлы."
+  external_reference:
+    - "Источники, которые нельзя или неразумно копировать в корпус."
+
+storage_strategies:
+  full_copy: "Полный первичный слой можно хранить и сверять в корпусе."
+  local_only: "Сырьё хранится вне Git; в корпусе остаются метаданные и разрешённые производные артефакты."
+  index_only: "В Git хранится только индекс единиц; получение выполняется точечно по запросу."
+  external_reference: "Корпус хранит внешний локатор и ограничения без локальной копии."
+
+retrieval_modes:
+  synced: "Материал синхронизируется проектной командой или адаптером."
+  on_demand: "Материал получается точечно для выбранной единицы источника."
+  external_reference: "Агент обращается к первоисточнику по проектному правилу без локальной копии."
+  blocked: "Получение заблокировано до решения человека или появления доступа."
+
+copy_policies:
+  full_copy_allowed: "Полную копию можно хранить в корпусе."
+  fragments_only: "Можно хранить только выбранные фрагменты с проверкой ограничений."
+  metadata_only: "Можно хранить только метаданные, локаторы и ограничения."
+  no_bulk_copy: "Нельзя делать массовую копию; разрешено точечное обращение."
+  local_only: "Материал можно хранить только вне отслеживаемого слоя."
+
+access_policy:
+  source_default_field: access.default
+  item_field: access
+  format: free_text
+  rules:
+    - "У источника должен быть текст доступа по умолчанию."
+    - "У каждой единицы источника должен быть текстовый доступ."
+
+source_units:
+  website:
+    unit: page
+    path_pattern: data/<source>/pages/<slug>
+  document:
+    unit: file_or_section
+    path_pattern: data/<source>/documents/<slug>
+  other:
+    unit: item
+    path_pattern: data/<source>/items/<slug>
+
+indexes:
+  sources: catalog.yml
+  items: index/items.yml
+  statements: index/statements.yml
+
+workflow_stages:
+  - indexed
+  - needs_fetch
+  - fetched
+  - normalized
+  - statements_extracted
+  - source_checked
+  - blocked
+  - rejected
+
+sensitive_data_policy:
+  rules:
+    - "Не добавлять в Git токены, cookies, сессии, пароли и закрытые ссылки."
+    - "Хранить пути в отслеживаемых файлах только в репо-относительном виде."
+    - "Не добавлять в Git полные локальные книги, полные текстовые выгрузки и личные абсолютные пути без явного разрешения."
