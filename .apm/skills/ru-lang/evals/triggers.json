@@ -83,19 +83,43 @@
       "id": "ru-lang-positive-commit-message-base-layer",
       "prompt": "Составь сообщение коммита по-русски для изменения в обработке ошибок.",
       "should_trigger": true,
-      "rationale": "ru-lang нужен как базовый слой; ru-dev должен добавить правила разработки."
+      "rationale": "Нужно сформулировать русское сообщение коммита по правилам набора разработки."
     },
     {
       "id": "ru-lang-positive-technical-report-base-layer",
       "prompt": "Напиши краткий отчёт по-русски: что изменено в коде, чем проверено и какие риски остались.",
       "should_trigger": true,
-      "rationale": "ru-lang нужен как базовый слой; ru-dev должен добавить правила разработки."
+      "rationale": "Нужен русский технический отчёт в контексте разработки."
     },
     {
       "id": "ru-lang-positive-release-report-base-layer",
       "prompt": "Напиши по-русски статус выпуска: релиз 0.1.0, bump не нужен, git-состояние чистое.",
       "should_trigger": true,
       "rationale": "Нужен русский технический отчёт с заменой англоязычных и гибридных рабочих форм."
+    },
+    {
+      "id": "ru-lang-positive-commit-message-from-english-draft",
+      "prompt": "Проверь сообщение коммита `fix empty API response` и перепиши его по правилам проекта.",
+      "should_trigger": true,
+      "rationale": "Сообщение коммита должно запускать единый навык независимо от языка черновика."
+    },
+    {
+      "id": "ru-lang-positive-release-from-english-request",
+      "prompt": "Bump version to 0.1.0 and release it.",
+      "should_trigger": true,
+      "rationale": "Англоязычный запрос на выпуск требует русских формулировок коммита и отчёта по правилам разработки."
+    },
+    {
+      "id": "ru-lang-positive-user-facing-code-output",
+      "prompt": "Сгенерируй код обработчика, который показывает пользователю сообщение об ошибке и подсказку по следующему шагу. Если не сказано иное, текст должен быть на русском.",
+      "should_trigger": true,
+      "rationale": "Нужно создать код с русскоязычным пользовательским выводом."
+    },
+    {
+      "id": "ru-lang-positive-code-comment",
+      "prompt": "Помоги написать русский комментарий к коду, который объясняет, почему повторная попытка отключена.",
+      "should_trigger": true,
+      "rationale": "Нужно сформулировать русский комментарий в коде."
     },
     {
       "id": "ru-lang-negative-sql-only",

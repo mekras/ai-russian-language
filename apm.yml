@@ -4,11 +4,17 @@ description: "Коллекция переносимых навыков для р
 author: "mekras"
 license: "MIT"
 type: "skill"
+target:
+  - claude
+  - codex
 includes: auto
 dependencies:
   apm:
-    - talkstream/ru-text#^1.10.0
+    - talkstream/ru-text#v1.10.0
   mcp: []
 scripts:
-  tests: "sh -c 'set -e; target=\"${APM_EVAL_PATH:-.apm/skills}\"; python3 tools/validate-trigger-evals.py \"$target\" --require-all; python3 tools/validate-skill-result-evals.py \"$target\"'"
+  tests: "sh -c 'set -e; target=\"${APM_EVAL_PATH:-.apm/skills}\"; python3 tools/validate-hidden-unicode.py; python3 tools/validate-skill-descriptions.py \"$target\"; python3 tools/validate-trigger-evals.py \"$target\" --require-all; python3 tools/run_skill_evals.py \"$target\" --checks compose --validate-only'"
   evals: "python3 tools/run_skill_evals.py \"${APM_EVAL_PATH:-.apm/skills}\""
+devDependencies:
+  apm:
+    - mekras/ai-dev-team#^0.18.0
