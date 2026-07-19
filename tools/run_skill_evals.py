@@ -182,6 +182,11 @@ def parse_args() -> argparse.Namespace:
         "--case-id",
         help="Запустить один сценарий по id. Если не задано, используется APM_EVAL_CASE_ID.",
     )
+    parser.add_argument(
+        "--validate-only",
+        action="store_true",
+        help="Проверить структуру compose-сценариев без вызова модели.",
+    )
     return parser.parse_args()
 
 
@@ -218,6 +223,8 @@ def validate_string_groups(value: object, *, label: str) -> list[list[str]]:
 
 def load_compose_cases(compose_dataset: Path) -> list[dict[str, object]]:
     cases: list[dict[str, object]] = []
+    seen_ids: set[str] = set()
+    seen_inputs: set[str] = set()
     decoder = json.JSONDecoder()
     content = compose_dataset.read_text(encoding="utf-8")
     position = 0
@@ -239,6 +246,18 @@ def load_compose_cases(compose_dataset: Path) -> list[dict[str, object]]:
                 errors.append(f"{field} должно быть непустой строкой")
         if errors:
             raise ValueError(f"{compose_dataset}:{line_number}: {', '.join(errors)}")
+        case_id = str(record["id"])
+        case_input = str(record["input"])
+        if case_id in seen_ids:
+            raise ValueError(
+                f"{compose_dataset}:{line_number}: повторяющийся id {case_id!r}",
+            )
+        if case_input in seen_inputs:
+            raise ValueError(
+                f"{compose_dataset}:{line_number}: повторяющийся input",
+            )
+        seen_ids.add(case_id)
+        seen_inputs.add(case_input)
         oracle = record.get("oracle")
         if not isinstance(oracle, dict):
             raise ValueError(f"{compose_dataset}:{line_number}: oracle должен быть объектом")
@@ -285,25 +304,11 @@ def safe_name(case_id: str) -> str:
 def load_ru_lang_materials(ru_lang_dir: Path) -> str:
     parts = [
         ("SKILL.md", (ru_lang_dir / "SKILL.md").read_text(encoding="utf-8")),
-        ("references/base-language.md", (ru_lang_dir / "references" / "base-language.md").read_text(encoding="utf-8")),
+        ("references/main-rules.md", (ru_lang_dir / "references" / "main-rules.md").read_text(encoding="utf-8")),
         ("references/technical-russian.md", (ru_lang_dir / "references" / "technical-russian.md").read_text(encoding="utf-8")),
-        ("assets/term-replacements.md", (ru_lang_dir / "assets" / "term-replacements.md").read_text(encoding="utf-8")),
-        ("assets/hybrid-examples.md", (ru_lang_dir / "assets" / "hybrid-examples.md").read_text(encoding="utf-8")),
-    ]
-    return "\n\n".join(f"# {title}\n\n{text}" for title, text in parts)
-
-
-def load_ru_dev_materials(ru_dev_dir: Path) -> str:
-    ru_lang_dir = ru_dev_dir.parent / "ru-lang"
-    if not (ru_lang_dir / "SKILL.md").is_file():
-        raise ValueError("для ru-dev не найден соседний навык ru-lang")
-    parts = [
-        ("ru-lang", load_ru_lang_materials(ru_lang_dir)),
-        ("ru-dev/SKILL.md", (ru_dev_dir / "SKILL.md").read_text(encoding="utf-8")),
-        (
-            "ru-dev/references/development-text.md",
-            (ru_dev_dir / "references" / "development-text.md").read_text(encoding="utf-8"),
-        ),
+        ("references/strict-rules.md", (ru_lang_dir / "references" / "strict-rules.md").read_text(encoding="utf-8")),
+        ("references/development-rules.md", (ru_lang_dir / "references" / "development-rules.md").read_text(encoding="utf-8")),
+        ("assets/strict-replacements.md", (ru_lang_dir / "assets" / "strict-replacements.md").read_text(encoding="utf-8")),
     ]
     return "\n\n".join(f"# {title}\n\n{text}" for title, text in parts)
 
@@ -314,8 +319,6 @@ def load_skill_materials(skill_dir: Path) -> tuple[str, str]:
         raise ValueError(f"{skill_dir / 'SKILL.md'}: не найдено имя навыка во frontmatter")
     if skill_name == "ru-lang":
         return skill_name, load_ru_lang_materials(skill_dir)
-    if skill_name == "ru-dev":
-        return skill_name, load_ru_dev_materials(skill_dir)
     raise ValueError(f"{skill_dir}: сценарии результата не поддержаны для навыка {skill_name!r}")
 
 
@@ -428,20 +431,6 @@ def run_compose_case(
             f"Примени навык {skill_name} к пользовательскому запросу.\n"
             "Ответь только содержательным результатом, без пояснений про проверку.\n\n"
         )
-        if skill_name == "ru-lang":
-            prompt += (
-                "Перед финальным ответом проверь, что обычные русские слова и "
-                "словосочетания не спрятаны в обратные кавычки, гибридные формы "
-                "перестроены, а формы с корнями `корректн` и `валидн` заменены. "
-                "Пиши `результат Claude`, а не `` `результат Claude` ``; "
-                "пиши `в ветке single-file`, а не `` `single-file` ветке ``.\n\n"
-            )
-        elif skill_name == "ru-dev":
-            prompt += (
-                "Если ответ содержит код с пользовательскими строками, сохраняй "
-                "идентификаторы и технические элементы, но по умолчанию делай "
-                "пользовательский вывод русскоязычным.\n\n"
-            )
         prompt += (
             f"Навык {skill_name}:\n{skill_text}\n\n"
             f"Запрос пользователя:\n{case['input']}"
@@ -501,6 +490,7 @@ def validate_compose_cases(
     skill_dir: Path,
     *,
     with_skill: bool,
+    compare_baseline: bool,
     case_id: str | None = None,
 ) -> bool | None:
     compose_dataset = skill_dir / "evals" / "compose.jsonl"
@@ -514,48 +504,83 @@ def validate_compose_cases(
         if not cases:
             return None
 
+    comparison = {
+        "baseline_passed": 0,
+        "skill_passed": 0,
+        "improved": 0,
+        "worsened": 0,
+        "unchanged": 0,
+    }
     for case in cases:
         oracle = case["oracle"]
-        last_details: list[str] = []
-        last_final_path = ""
-        last_model = PRIMARY_MODEL
-        for attempt in range(1, MAX_MODEL_ATTEMPTS + 1):
-            output, final_path, used_model = run_compose_case(
+        baseline_passed: bool | None = None
+        if compare_baseline:
+            baseline_output, baseline_path, baseline_model = run_compose_case(
                 case,
-                with_skill=with_skill,
+                with_skill=False,
                 skill_dir=skill_dir,
             )
-            last_final_path = final_path
-            last_model = used_model
-            last_details = collect_compose_failures(output, oracle)
-            if not last_details:
-                mode_label = "с навыком" if with_skill else "без навыка"
-                retry_detail = "" if attempt == 1 else f"; попытка={attempt}/{MAX_MODEL_ATTEMPTS}"
-                print_result(
-                    True,
-                    case["id"],
-                    f"{mode_label}; модель={used_model}; файл={final_path}{retry_detail}",
-                )
-                break
-            if attempt < MAX_MODEL_ATTEMPTS:
-                print_info(
-                    case["id"],
-                    f"повтор {attempt + 1}/{MAX_MODEL_ATTEMPTS} после проверки эталона",
-                )
+            baseline_details = collect_compose_failures(baseline_output, oracle)
+            baseline_passed = not baseline_details
+            if baseline_passed:
+                comparison["baseline_passed"] += 1
+            print_result(
+                baseline_passed,
+                f"{case['id']}: базовая линия",
+                (
+                    f"модель={baseline_model}; файл={baseline_path}"
+                    if baseline_passed
+                    else f"{'; '.join(baseline_details)}; модель={baseline_model}; файл={baseline_path}"
+                ),
+            )
 
-        if last_details:
+        output, final_path, used_model = run_compose_case(
+            case,
+            with_skill=with_skill,
+            skill_dir=skill_dir,
+        )
+        details = collect_compose_failures(output, oracle)
+        skill_passed = not details
+        if with_skill and skill_passed:
+            comparison["skill_passed"] += 1
+        if baseline_passed is not None:
+            if not baseline_passed and skill_passed:
+                comparison["improved"] += 1
+            elif baseline_passed and not skill_passed:
+                comparison["worsened"] += 1
+            else:
+                comparison["unchanged"] += 1
+        if details:
             ok = False
             print_result(
                 False,
                 case["id"],
-                f"{'; '.join(last_details)}; модель={last_model}; файл={last_final_path}",
+                f"{'; '.join(details)}; модель={used_model}; файл={final_path}",
             )
+            continue
+        mode_label = "с навыком" if with_skill else "без навыка"
+        print_result(
+            True,
+            case["id"],
+            f"{mode_label}; модель={used_model}; файл={final_path}",
+        )
     summary_label = (
         f"{skill_name}: проверка результата с навыком"
         if with_skill
         else f"{skill_name}: проверка результата без навыка"
     )
     print_result(ok, summary_label)
+    if compare_baseline:
+        print_info(
+            f"{skill_name}: сравнение с базовой линией",
+            (
+                f"без навыка={comparison['baseline_passed']}/{len(cases)}; "
+                f"с навыком={comparison['skill_passed']}/{len(cases)}; "
+                f"исправлено={comparison['improved']}; "
+                f"ухудшено={comparison['worsened']}; "
+                f"без изменения={comparison['unchanged']}"
+            ),
+        )
     return ok
 
 
@@ -564,6 +589,26 @@ def main() -> int:
     try:
         target = resolve_target(args.target)
         case_id = args.case_id or args.case or os.environ.get("APM_EVAL_CASE_ID")
+        if args.validate_only:
+            if args.checks != "compose":
+                raise ValueError("Режим --validate-only поддержан только вместе с --checks compose")
+            if args.without_skill:
+                raise ValueError("Режим --without-skill не применяется к проверке структуры")
+            checked = 0
+            for skill_dir in iter_skill_dirs(target):
+                compose_dataset = skill_dir / "evals" / "compose.jsonl"
+                if not compose_dataset.is_file():
+                    continue
+                cases = load_compose_cases(compose_dataset)
+                if case_id is not None:
+                    cases = [case for case in cases if case["id"] == case_id]
+                checked += len(cases)
+            if not checked:
+                if case_id is not None:
+                    raise ValueError(f"{target}: сценарий {case_id!r} не найден")
+                raise ValueError(f"{target}: compose-сценарии не найдены")
+            print_result(True, "структура compose-сценариев", f"сценариев={checked}")
+            return 0
         if args.without_skill and args.checks != "compose":
             raise ValueError("Режим --without-skill поддержан только вместе с --checks compose")
         if args.case and args.checks != "compose":
@@ -580,6 +625,7 @@ def main() -> int:
                 result = validate_compose_cases(
                     skill_dir,
                     with_skill=not args.without_skill,
+                    compare_baseline=not args.without_skill,
                     case_id=case_id,
                 )
                 if result is not None:
