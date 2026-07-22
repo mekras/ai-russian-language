@@ -12,6 +12,8 @@ setup:
   visibility: public
   git:
     enabled: true
+  commit_messages:
+    scheme: pro-git
   changelog:
     status: present
     path: CHANGELOG.md

@@ -9,13 +9,14 @@ import os
 import re
 import subprocess
 import sys
+import tomllib
 from pathlib import Path
 
 
-PRIMARY_MODEL = "gpt-5.3-codex-spark"
 ROOT = Path(__file__).resolve().parent.parent
 CODEX_SUBAGENT = ROOT / "tools" / "codex-model-subagent"
 DEFAULT_SKILLS_ROOT = ROOT / ".apm" / "skills"
+MODEL_CONFIG_PATH = ROOT / "evals.local.toml"
 TRIGGER_FIELDS = {
     "id": str,
     "prompt": str,
@@ -29,7 +30,11 @@ COMPOSE_ORACLE_FIELDS = (
     "required_any_substrings",
     "required_any_groups",
 )
-MAX_MODEL_ATTEMPTS = 3
+RU_LANG_OPTIONAL_SETS = {
+    "технический": "references/technical-russian.md",
+    "строгий": "references/strict-rules.md",
+    "разработка": "references/development-rules.md",
+}
 ANSI_RESET = "\033[0m"
 ANSI_GREEN = "\033[32m"
 ANSI_RED = "\033[31m"
@@ -48,6 +53,31 @@ def colorize(text: str, color: str) -> str:
 def print_info(label: str, detail: str = "") -> None:
     suffix = f": {detail}" if detail else ""
     print(f"Запуск - {label}{suffix}", flush=True)
+
+
+def load_model_config() -> tuple[str, int]:
+    """Return the selected Codex model and the bounded retry count."""
+    try:
+        with MODEL_CONFIG_PATH.open("rb") as stream:
+            config = tomllib.load(stream)
+    except FileNotFoundError as error:
+        raise ValueError(
+            f"Не найден локальный файл настройки модели: {MODEL_CONFIG_PATH}. "
+            "Создайте его с разделом [model]."
+        ) from error
+    except tomllib.TOMLDecodeError as error:
+        raise ValueError(f"{MODEL_CONFIG_PATH}: ошибка TOML: {error}") from error
+
+    model = config.get("model")
+    if not isinstance(model, dict):
+        raise ValueError(f"{MODEL_CONFIG_PATH}: не задан раздел [model]")
+    primary = model.get("primary")
+    max_attempts = model.get("max_attempts")
+    if not isinstance(primary, str) or not primary:
+        raise ValueError(f"{MODEL_CONFIG_PATH}: model.primary должен быть непустой строкой")
+    if not isinstance(max_attempts, int) or isinstance(max_attempts, bool) or not 1 <= max_attempts <= 2:
+        raise ValueError(f"{MODEL_CONFIG_PATH}: model.max_attempts должен быть целым числом от 1 до 2")
+    return primary, max_attempts
 
 
 def print_result(ok: bool, label: str, detail: str = "") -> None:
@@ -301,36 +331,57 @@ def safe_name(case_id: str) -> str:
     return re.sub(r"[^A-Za-z0-9._-]+", "_", case_id)
 
 
-def load_ru_lang_materials(ru_lang_dir: Path) -> str:
+def active_ru_lang_sets(case_input: str) -> set[str]:
+    """Return the rule sets selected by the marker in an evaluation input."""
+    marker = re.search(r"`?ru-lang\s*:\s*([^`\n.]+)`?", case_input, flags=re.IGNORECASE)
+    if marker is None:
+        return set(RU_LANG_OPTIONAL_SETS)
+
+    requested = {
+        item.strip().casefold()
+        for item in marker.group(1).split(",")
+        if item.strip()
+    }
+    if not requested <= {"основной", *RU_LANG_OPTIONAL_SETS}:
+        return set()
+    return requested & set(RU_LANG_OPTIONAL_SETS)
+
+
+def load_ru_lang_materials(ru_lang_dir: Path, case_input: str) -> str:
     parts = [
         ("SKILL.md", (ru_lang_dir / "SKILL.md").read_text(encoding="utf-8")),
         ("references/main-rules.md", (ru_lang_dir / "references" / "main-rules.md").read_text(encoding="utf-8")),
-        ("references/technical-russian.md", (ru_lang_dir / "references" / "technical-russian.md").read_text(encoding="utf-8")),
-        ("references/strict-rules.md", (ru_lang_dir / "references" / "strict-rules.md").read_text(encoding="utf-8")),
-        ("references/development-rules.md", (ru_lang_dir / "references" / "development-rules.md").read_text(encoding="utf-8")),
-        ("assets/strict-replacements.md", (ru_lang_dir / "assets" / "strict-replacements.md").read_text(encoding="utf-8")),
     ]
+    active_sets = active_ru_lang_sets(case_input)
+    for set_name, relative_path in RU_LANG_OPTIONAL_SETS.items():
+        if set_name not in active_sets:
+            continue
+        parts.append((relative_path, (ru_lang_dir / relative_path).read_text(encoding="utf-8")))
+        if set_name == "строгий":
+            relative_path = "assets/strict-replacements.md"
+            parts.append((relative_path, (ru_lang_dir / relative_path).read_text(encoding="utf-8")))
     return "\n\n".join(f"# {title}\n\n{text}" for title, text in parts)
 
 
-def load_skill_materials(skill_dir: Path) -> tuple[str, str]:
+def load_skill_materials(skill_dir: Path, case_input: str) -> tuple[str, str]:
     skill_name = read_skill_name(skill_dir / "SKILL.md")
     if not skill_name:
         raise ValueError(f"{skill_dir / 'SKILL.md'}: не найдено имя навыка во frontmatter")
     if skill_name == "ru-lang":
-        return skill_name, load_ru_lang_materials(skill_dir)
+        return skill_name, load_ru_lang_materials(skill_dir, case_input)
     raise ValueError(f"{skill_dir}: сценарии результата не поддержаны для навыка {skill_name!r}")
 
 
 def run_codex_prompt(name: str, prompt: str) -> tuple[str, str, str]:
+    primary_model, max_attempts = load_model_config()
     env = os.environ.copy()
     env["CODEX_SUBAGENT_USAGE_LINE"] = "0"
     last_error = ""
-    for attempt in range(1, MAX_MODEL_ATTEMPTS + 1):
-        label = name if attempt == 1 else f"{name} (повтор {attempt}/{MAX_MODEL_ATTEMPTS})"
-        print_info(label, f"модель={PRIMARY_MODEL}")
+    for attempt in range(1, max_attempts + 1):
+        label = name if attempt == 1 else f"{name} (повтор {attempt}/{max_attempts})"
+        print_info(label, f"модель={primary_model}")
         result = subprocess.run(
-            [str(CODEX_SUBAGENT), PRIMARY_MODEL, safe_name(name), prompt],
+            [str(CODEX_SUBAGENT), primary_model, safe_name(name), prompt],
             cwd=ROOT,
             env=env,
             text=True,
@@ -352,7 +403,7 @@ def run_codex_prompt(name: str, prompt: str) -> tuple[str, str, str]:
         if final_path is None:
             last_error = "процесс Codex не вернул путь к итоговому файлу"
             continue
-        return final_path.read_text(encoding="utf-8"), str(final_path), PRIMARY_MODEL
+        return final_path.read_text(encoding="utf-8"), str(final_path), primary_model
 
     raise RuntimeError(f"{name}: {last_error}")
 
@@ -426,7 +477,8 @@ def run_compose_case(
     skill_dir: Path,
 ) -> tuple[str, str, str]:
     if with_skill:
-        skill_name, skill_text = load_skill_materials(skill_dir)
+        case_input = str(case["input"])
+        skill_name, skill_text = load_skill_materials(skill_dir, case_input)
         prompt = (
             f"Примени навык {skill_name} к пользовательскому запросу.\n"
             "Ответь только содержательным результатом, без пояснений про проверку.\n\n"
