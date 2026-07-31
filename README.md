@@ -24,7 +24,7 @@
 Установить коллекцию:
 
 ```bash
-apm install mekras/ai-russian-language#^2.0.1
+apm install mekras/ai-russian-language#^2.1.0
 ```
 
 Обновить уже установленную коллекцию:
