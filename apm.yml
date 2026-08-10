@@ -5,12 +5,13 @@ author: "mekras"
 license: "MIT"
 type: "skill"
 target:
+  - agent-skills
   - claude
   - codex
 includes: auto
 dependencies:
   apm:
-    - talkstream/ru-text#v2.0.1
+    - talkstream/ru-text#v2.1.0
   mcp: []
 scripts:
   tests: "sh -c 'set -e; target=\"${APM_EVAL_PATH:-.apm/skills}\"; python3 tools/validate-hidden-unicode.py; python3 tools/validate-skill-descriptions.py \"$target\"; python3 tools/validate-trigger-evals.py \"$target\" --require-all; python3 tools/run_skill_evals.py \"$target\" --checks compose --validate-only'"
