@@ -1,0 +1,214 @@
+{
+  "schema_version": 2,
+  "graph": {
+    "name": "ai-russian-language",
+    "description": "Направления возможного влияния между смысловыми артефактами коллекции навыков.",
+    "default_facet": "semantic",
+    "unmapped_paths": "block",
+    "ignore": [
+      ".git/**",
+      ".agents/**",
+      ".claude/**",
+      "knowledge/**",
+      "apm_modules/**"
+    ]
+  },
+  "nodes": [
+    {
+      "id": "concept",
+      "title": "Концепция коллекции",
+      "kind": "concept",
+      "semantic_type": "концепция проекта",
+      "authority": "canonical",
+      "representations": [
+        { "path": "README.md", "role": "canonical" }
+      ],
+      "checks": ["ait-docs-concept"]
+    },
+    {
+      "id": "language-skills",
+      "title": "Правила русского языка",
+      "kind": "implementation",
+      "semantic_type": "переносимые навыки",
+      "authority": "canonical",
+      "representations": [
+        { "path": ".apm/skills/**", "role": "canonical" }
+      ],
+      "checks": ["ai-skill-development", "apm run tests"]
+    },
+    {
+      "id": "package-delivery",
+      "title": "Поставка коллекции",
+      "kind": "delivery",
+      "semantic_type": "APM-пакет",
+      "authority": "canonical",
+      "representations": [
+        { "path": "apm.yml", "role": "canonical" },
+        { "path": "apm.lock.yaml", "role": "supporting" }
+      ],
+      "checks": ["ai-setup-apm", "apm audit --ci"]
+    },
+    {
+      "id": "quality-tools",
+      "title": "Проверки коллекции",
+      "kind": "test",
+      "semantic_type": "детерминированные проверки",
+      "authority": "canonical",
+      "representations": [
+        { "path": "tools/**", "role": "canonical" }
+      ],
+      "checks": ["ait-code-testing", "apm run tests"]
+    },
+    {
+      "id": "agent-governance",
+      "title": "Правила работы агентов",
+      "kind": "process",
+      "semantic_type": "локальные инструкции и состояние настройки",
+      "authority": "canonical",
+      "representations": [
+        { "path": "AGENTS.md", "role": "canonical" },
+        { "path": "CLAUDE.md", "role": "supporting" },
+        { "path": ".ai-dev-team-state.yml", "role": "supporting" },
+        { "path": "project-impact.json", "role": "supporting" },
+        { "path": ".codex/**", "role": "supporting" }
+      ],
+      "checks": ["ai-audit-agents-md", "ait-setup"]
+    },
+    {
+      "id": "project-configuration",
+      "title": "Конфигурация разработки",
+      "kind": "configuration",
+      "semantic_type": "правила форматирования и локальных артефактов",
+      "authority": "canonical",
+      "representations": [
+        { "path": ".editorconfig", "role": "canonical" },
+        { "path": ".gitignore", "role": "canonical" }
+      ],
+      "checks": ["ait-code-construction"]
+    },
+    {
+      "id": "decision-records",
+      "title": "Журнал проектных решений",
+      "kind": "decision",
+      "semantic_type": "долгоживущие проектные решения",
+      "authority": "canonical",
+      "representations": [
+        { "path": "docs/DR/**", "role": "canonical" }
+      ],
+      "checks": ["ait-decisions"]
+    },
+    {
+      "id": "change-history",
+      "title": "Журнал изменений",
+      "kind": "documentation",
+      "semantic_type": "история заметных изменений",
+      "authority": "supporting",
+      "representations": [
+        { "path": "CHANGELOG.md", "role": "supporting" }
+      ],
+      "checks": ["ait-changelog"]
+    },
+    {
+      "id": "licensing",
+      "title": "Лицензирование",
+      "kind": "documentation",
+      "semantic_type": "лицензия и уведомления о сторонних компонентах",
+      "authority": "canonical",
+      "representations": [
+        { "path": "LICENSE", "role": "canonical" },
+        { "path": "THIRD_PARTY_NOTICES.md", "role": "supporting" }
+      ],
+      "checks": ["ait-licensing"]
+    },
+    {
+      "id": "backlog",
+      "title": "Журнал запросов",
+      "kind": "requirements",
+      "semantic_type": "кандидаты в изменения правил",
+      "authority": "supporting",
+      "representations": [
+        { "path": "BACKLOG.md", "role": "supporting" }
+      ],
+      "checks": ["ait-req-analysis"]
+    }
+  ],
+  "edges": [
+    {
+      "from": "concept",
+      "to": "language-skills",
+      "relation": "constrains",
+      "facets": ["semantic"],
+      "rationale": "Правила русского языка реализуют назначение коллекции, заданное концепцией."
+    },
+    {
+      "from": "concept",
+      "to": "agent-governance",
+      "relation": "constrains",
+      "facets": ["semantic"],
+      "rationale": "Локальные правила агентов должны соответствовать назначению проекта."
+    },
+    {
+      "from": "backlog",
+      "to": "language-skills",
+      "relation": "informs",
+      "facets": ["semantic"],
+      "rationale": "Запросы журнала определяют кандидаты в изменения правил после предметного анализа."
+    },
+    {
+      "from": "decision-records",
+      "to": "language-skills",
+      "relation": "governs",
+      "facets": ["semantic", "quality"],
+      "rationale": "Принятые решения устанавливают долгоживущие правила изменения навыков."
+    },
+    {
+      "from": "decision-records",
+      "to": "agent-governance",
+      "relation": "governs",
+      "facets": ["semantic", "operation"],
+      "rationale": "Принятые решения определяют порядок работы агентов с проектными изменениями."
+    },
+    {
+      "from": "language-skills",
+      "to": "quality-tools",
+      "relation": "verifies",
+      "facets": ["semantic", "quality", "structure"],
+      "rationale": "Изменения навыков требуют проверки сценариями и детерминированными валидаторами."
+    },
+    {
+      "from": "language-skills",
+      "to": "package-delivery",
+      "relation": "packages",
+      "facets": ["semantic", "structure"],
+      "rationale": "Поставка должна включать и корректно разворачивать исходники навыков."
+    },
+    {
+      "from": "language-skills",
+      "to": "change-history",
+      "relation": "documents",
+      "facets": ["semantic"],
+      "rationale": "Заметные изменения правил отражаются в журнале изменений коллекции."
+    },
+    {
+      "from": "package-delivery",
+      "to": "agent-governance",
+      "relation": "configures",
+      "facets": ["structure", "operation"],
+      "rationale": "Установка зависимостей определяет доступный локальный набор навыков и агентов."
+    },
+    {
+      "from": "project-configuration",
+      "to": "quality-tools",
+      "relation": "configures",
+      "facets": ["structure", "operation"],
+      "rationale": "Правила форматирования и игнорирования локальных файлов влияют на воспроизводимость проверок."
+    },
+    {
+      "from": "licensing",
+      "to": "package-delivery",
+      "relation": "constrains",
+      "facets": ["semantic", "operation"],
+      "rationale": "Лицензия и уведомления ограничивают условия поставки коллекции."
+    }
+  ]
+}

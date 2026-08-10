@@ -18,4 +18,4 @@ scripts:
   evals: "python3 tools/run_skill_evals.py \"${APM_EVAL_PATH:-.apm/skills}\""
 devDependencies:
   apm:
-    - mekras/ai-dev-team#^0.20.3
+    - mekras/ai-dev-team#0.25.0

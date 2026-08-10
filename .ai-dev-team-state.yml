@@ -1,6 +1,6 @@
 product: mekras/ai-dev-team
-applied_version: 0.18.0
-updated_at: 2026-07-19
+applied_version: 0.25.0
+updated_at: 2026-08-10
 
 project:
   apm:
@@ -9,6 +9,18 @@ project:
   license: MIT
 
 setup:
+  operating_context:
+    kind: noncommercial
+  project_profile:
+    forms:
+      - ai-skills
+    users:
+      - developers configuring AI agents
+      - AI agents applying Russian-language rules
+    interfaces:
+      - no user interface
+    delivery:
+      - published APM package
   visibility: public
   git:
     enabled: true
@@ -22,8 +34,7 @@ setup:
     files:
       - AGENTS.md
   knowledge:
-    status: present
-    path: knowledge/
+    status: declined
   decision_records:
     status: present
     journals:
@@ -35,3 +46,7 @@ setup:
     priority_factors:
       - reliability_of_rules
       - context_efficiency
+  impact_graph:
+    status: present
+    path: project-impact.json
+    schema_version: 2
