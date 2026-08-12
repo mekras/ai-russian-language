@@ -1,0 +1,54 @@
+id: MILCHIN-CHELTSOVA
+slug: milchin-cheltsova
+title: "Справочник издателя и автора"
+status: approved
+priority: high
+carrier_type: document
+source_kind: book
+long_source: true
+adapter: builtin.local-file
+storage_strategy: local_only
+processing_scope: metadata_only
+retrieval_mode: on_demand
+copy_policy: metadata_only
+allowed_use: "Точечная проверка правил издательского оформления по локальной копии. В Git допустимы метаданные, ссылка на источник и самостоятельные краткие выводы без воспроизведения охраняемого текста."
+requires_access_check: true
+
+locator: "local:milchin-cheltsova"
+public_reference: "https://store.artlebedev.ru/books/typography/spravochnik-izdatelya-i-avtora-e-book/"
+license_or_terms: "В EPUB указаны © А. Э. Мильчин и Л. К. Чельцова за текст, © Студия Артемия Лебедева за оформление. Открытая лицензия или разрешение на публикацию, массовое извлечение и создание производной текстовой базы не установлены."
+
+access:
+  default: "Локальная копия в source.local.epub, предоставленная владельцем проекта. Файл доступен только для точечной проверки в рабочей среде. Перед любым цитированием или переносом фрагмента проверять самостоятельное правовое основание."
+reliability: canonical
+stability: stable
+refresh_policy: manual
+retrieved_at: 2026-08-12
+last_checked_at: 2026-08-12
+checked_by: "Техническая проверка EPUB: ZIP-структура, OPF-метаданные и оглавление."
+content_hash: "4dbf13c0200f7396b6fb9f9bd62407e11460e5fbe4f2bd4aaac94359a188a1b8"
+content_hash_algorithm: sha256
+
+original_filename: "Milchin_A._Spravochnik_Izdatelya_I_A.epub"
+format: epub
+file_size_bytes: 8925597
+page_count:
+metadata_source: "OPF-метаданные и оглавление EPUB, проверены 2026-08-12."
+extraction_tool: "unzip"
+extraction_status: not_started
+publication_safety: "Полный EPUB, текстовая выгрузка, поисковый индекс и фрагменты книги не публикуются и не хранятся в Git."
+
+scope:
+  includes:
+    - "Редакционно-издательское оформление текста, включая таблицы и выводы."
+  excludes:
+    - "Полное воспроизведение книги в публичном корпусе."
+
+known_limitations:
+  - "Происхождение локального экземпляра известно только как предоставление владельцем проекта."
+  - "Номер печатной страницы нельзя надёжно получить из EPUB без отдельной сверки с изданием."
+processing_notes:
+  - "Локальная копия хранится только как knowledge/data/milchin-cheltsova/source.local.epub и исключается .gitignore."
+  - "Не передавать EPUB, текст книги, поисковый индекс или существенные фрагменты во внешние сервисы, результаты работы или Git."
+  - "Разрешены только точечное чтение, собственные краткие выводы и атрибуция источника без воспроизведения охраняемого текста."
+  - "Нормализация, цитирование и извлечение утверждений с выдержками требуют отдельной проверки законного основания и допустимого объёма."

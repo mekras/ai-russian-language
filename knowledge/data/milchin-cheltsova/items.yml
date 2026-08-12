@@ -1,0 +1,23 @@
+items:
+  - id: MILCHIN-CHELTSOVA-EDITION-5
+    source_id: MILCHIN-CHELTSOVA
+    title: "Пятое издание справочника"
+    path: documents/edition-5
+    access: "Локальная копия source.local.epub. Перед смысловой обработкой требуется проверка правового основания и допустимого объёма."
+    status: confirmed
+    workflow_stage: blocked
+    blocker_code: owner_decision_required
+    action_required: "Подтвердить правовое основание и допустимый объём точечного извлечения из локальной книги."
+    automatic_attempts:
+      - "Проверены метаданные EPUB, происхождение локального файла и отсутствие разрешающей открытой лицензии."
+      - "Выбран безопасный режим metadata_only без извлечения и публикации текста."
+    long_source: true
+    processing_scope: metadata_only
+    retrieval_mode: on_demand
+    copy_policy: metadata_only
+    allowed_use: "Точечная проверка правил издательского оформления после подтверждения правового основания."
+    requires_access_check: true
+    known_limitations:
+      - "Открытая лицензия или разрешение на создание производной текстовой базы не установлены."
+    processing_notes:
+      - "Полный EPUB остаётся в локальном неотслеживаемом слое."

@@ -1,0 +1,67 @@
+statements:
+- id: DR004-001
+  source_id: DR004
+  item_id: DR004-DOCUMENT
+  path: data/project-decision-dr-0004/documents/dr-0004/statements.yml
+  status: null
+  kind: fact
+  text: Корпус знаний проекта предназначен для учёта источников и утверждений, на
+    которые могут опираться изменения навыков и документации.
+  artifact: ../../../../../docs/DR/DR-0004.md
+  checked_at: 2026-08-12
+  processing_status:
+    extraction: complete
+    traceability: passed
+    semantic_review: passed
+    strong_review: not_required
+    corroboration_check: complete
+  source_role: primary
+  evidence_strength: strong
+  confidence: high
+  temporal_status: current
+  corroboration: not_applicable
+  limitations: []
+- id: DR004-002
+  source_id: DR004
+  item_id: DR004-DOCUMENT
+  path: data/project-decision-dr-0004/documents/dr-0004/statements.yml
+  status: null
+  kind: fact
+  text: Для корпуса знаний проекта принят каталог knowledge/ и переносимый стартовый
+    договор версии 2.
+  artifact: ../../../../../docs/DR/DR-0004.md
+  checked_at: 2026-08-12
+  processing_status:
+    extraction: complete
+    traceability: passed
+    semantic_review: passed
+    strong_review: not_required
+    corroboration_check: complete
+  source_role: primary
+  evidence_strength: strong
+  confidence: high
+  temporal_status: current
+  corroboration: not_applicable
+  limitations: []
+- id: DR004-003
+  source_id: DR004
+  item_id: DR004-DOCUMENT
+  path: data/project-decision-dr-0004/documents/dr-0004/statements.yml
+  status: null
+  kind: fact
+  text: В Git корпуса допускаются только безопасные для публикации материалы, а полные
+    и неразрешённые к публикации материалы хранятся в локальном слое.
+  artifact: ../../../../../docs/DR/DR-0004.md
+  checked_at: 2026-08-12
+  processing_status:
+    extraction: complete
+    traceability: passed
+    semantic_review: passed
+    strong_review: not_required
+    corroboration_check: complete
+  source_role: primary
+  evidence_strength: strong
+  confidence: high
+  temporal_status: current
+  corroboration: not_applicable
+  limitations: []

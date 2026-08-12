@@ -1,0 +1,19 @@
+id: DR004-DOCUMENT
+source_id: DR004
+title: "Запись решения DR-0004"
+date_published: 2026-08-12
+access: "Публичный отслеживаемый файл docs/DR/DR-0004.md."
+status: confirmed
+workflow_stage: source_checked
+long_source: false
+processing_scope: full
+retrieval_mode: synced
+copy_policy: full_copy_allowed
+allowed_use: "Проверка назначения, границ и структуры корпуса знаний проекта."
+requires_access_check: false
+files:
+  tracked:
+    - ../../../../../docs/DR/DR-0004.md
+  local: []
+known_limitations: []
+processing_notes: []

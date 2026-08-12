@@ -1,0 +1,90 @@
+statement_contract_version: 2
+source_id: DR004
+item_id: DR004-DOCUMENT
+statements:
+  - id: DR004-001
+    source_id: DR004
+    item_id: DR004-DOCUMENT
+    kind: fact
+    text: "Корпус знаний проекта предназначен для учёта источников и утверждений, на которые могут опираться изменения навыков и документации."
+    excerpt: "Проекту нужно проверяемое место для источников и утверждений, на которые могут опираться изменения навыков и документации."
+    artifact: ../../../../../docs/DR/DR-0004.md
+    checked_at: 2026-08-12
+    checked_by: "Сверка с разделом «Контекст» записи DR-0004."
+    scope:
+      section_title: "Контекст"
+      applies_to:
+        - "Корпус знаний проекта."
+      does_not_apply_to:
+        - "Внешние корпуса без отдельного подключения."
+    processing_status:
+      extraction: complete
+      traceability: passed
+      semantic_review: passed
+      strong_review: not_required
+      corroboration_check: complete
+    source_role: primary
+    evidence_strength: strong
+    confidence: high
+    temporal_status: current
+    corroboration: not_applicable
+    limitations: []
+    open_questions: []
+
+  - id: DR004-002
+    source_id: DR004
+    item_id: DR004-DOCUMENT
+    kind: fact
+    text: "Для корпуса знаний проекта принят каталог knowledge/ и переносимый стартовый договор версии 2."
+    excerpt: "Использовать `knowledge/` как корпус знаний проекта и применить переносимый стартовый договор версии 2."
+    artifact: ../../../../../docs/DR/DR-0004.md
+    checked_at: 2026-08-12
+    checked_by: "Сверка с разделом «Решение» записи DR-0004."
+    scope:
+      section_title: "Решение"
+      applies_to:
+        - "Структура локального корпуса этого проекта."
+      does_not_apply_to:
+        - "Структура других проектов."
+    processing_status:
+      extraction: complete
+      traceability: passed
+      semantic_review: passed
+      strong_review: not_required
+      corroboration_check: complete
+    source_role: primary
+    evidence_strength: strong
+    confidence: high
+    temporal_status: current
+    corroboration: not_applicable
+    limitations: []
+    open_questions: []
+
+  - id: DR004-003
+    source_id: DR004
+    item_id: DR004-DOCUMENT
+    kind: fact
+    text: "В Git корпуса допускаются только безопасные для публикации материалы, а полные и неразрешённые к публикации материалы хранятся в локальном слое."
+    excerpt: "В Git допускаются только безопасные для публикации материалы. Полные, тяжёлые, временные и неразрешённые к публикации материалы хранятся локально рядом со своим источником под специальным маркером имени."
+    artifact: ../../../../../docs/DR/DR-0004.md
+    checked_at: 2026-08-12
+    checked_by: "Сверка с разделом «Решение» записи DR-0004."
+    scope:
+      section_title: "Решение"
+      applies_to:
+        - "Хранение материалов корпуса."
+      does_not_apply_to:
+        - "Файлы проекта вне корпуса, для которых действуют собственные правила."
+    processing_status:
+      extraction: complete
+      traceability: passed
+      semantic_review: passed
+      strong_review: not_required
+      corroboration_check: complete
+    source_role: primary
+    evidence_strength: strong
+    confidence: high
+    temporal_status: current
+    corroboration: not_applicable
+    limitations: []
+    open_questions: []

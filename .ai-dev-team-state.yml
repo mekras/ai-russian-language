@@ -34,7 +34,8 @@ setup:
     files:
       - AGENTS.md
   knowledge:
-    status: declined
+    status: present
+    path: knowledge/
   decision_records:
     status: present
     journals:

@@ -1,0 +1,7 @@
+sources:
+  - id: DR004
+    title: "DR-0004: Корпус знаний проекта"
+    path: data/project-decision-dr-0004
+  - id: MILCHIN-CHELTSOVA
+    title: "Локальная EPUB-книга Аркадия Мильчина и Людмилы Чельцовой «Справочник издателя и автора», пятое издание."
+    path: data/milchin-cheltsova

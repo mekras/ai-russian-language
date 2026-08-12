@@ -1,0 +1,41 @@
+id: DR004
+slug: project-decision-dr-0004
+title: "DR-0004: Корпус знаний проекта"
+status: approved
+priority: high
+carrier_type: document
+source_kind: decision_record
+long_source: false
+adapter: builtin.local-file
+storage_strategy: full_copy
+processing_scope: full
+retrieval_mode: synced
+copy_policy: full_copy_allowed
+allowed_use: "Проверка назначения, границ и структуры корпуса знаний проекта."
+requires_access_check: false
+
+locator: "docs/DR/DR-0004.md"
+public_reference: "docs/DR/DR-0004.md"
+license_or_terms: "MIT, как часть публичного репозитория проекта."
+
+access:
+  default: "Публичный отслеживаемый файл проекта, доступный в рабочей области Git."
+reliability: canonical
+stability: stable
+refresh_policy: event-driven
+retrieved_at: 2026-08-12
+last_checked_at: 2026-08-12
+checked_by: "Сверка с принятой записью решения DR-0004."
+content_hash: "a756695fac578fc6a4b9adb8cb8bed31ecfaafe9d6d46e47f43d59b386e8a407"
+content_hash_algorithm: sha256
+
+scope:
+  includes:
+    - "Назначение корпуса знаний проекта."
+    - "Выбранный договор и границы хранения материалов."
+  excludes:
+    - "Обсуждавшиеся, но не выбранные варианты."
+
+known_limitations: []
+processing_notes:
+  - "Источник обновляется вместе с docs/DR/DR-0004.md."
