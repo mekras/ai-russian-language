@@ -2,7 +2,7 @@
 
 ## ru-text
 
-Источник: [talkstream/ru-text, версия 2.1.0](https://github.com/talkstream/ru-text/tree/v2.1.0)
+Источник: [talkstream/ru-text, версия 2.4.0](https://github.com/talkstream/ru-text/tree/v2.4.0)
 
 Копия лицензии, включаемая в пакет APM:
 [.apm/skills/ru-lang/assets/ru-text-LICENSE.txt](.apm/skills/ru-lang/assets/ru-text-LICENSE.txt).

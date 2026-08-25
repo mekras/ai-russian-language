@@ -1,5 +1,5 @@
 name: ai-russian-language
-version: 2.1.4
+version: 2.1.5
 description: "Коллекция переносимых навыков для русского языка в агентной разработке"
 author: "mekras"
 license: "MIT"
@@ -11,7 +11,7 @@ target:
 includes: auto
 dependencies:
   apm:
-    - talkstream/ru-text#v2.1.0
+    - talkstream/ru-text#v2.4.0
   mcp: []
 scripts:
   tests: "sh -c 'set -e; target=\"${APM_EVAL_PATH:-.apm/skills}\"; python3 tools/validate-hidden-unicode.py; python3 tools/validate-skill-descriptions.py \"$target\"; python3 tools/validate-trigger-evals.py \"$target\" --require-all; python3 tools/run_skill_evals.py \"$target\" --checks compose --validate-only'"
