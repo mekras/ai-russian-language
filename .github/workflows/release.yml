@@ -1,0 +1,141 @@
+name: Выпуск коллекции
+
+on:
+  push:
+    tags:
+      - '*'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Версия уже опубликованного тега исходной коллекции
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    name: Проверить и опубликовать
+    runs-on: ubuntu-latest
+    env:
+      RELEASE_VERSION: ${{ inputs.version || github.ref_name }}
+      MARKETPLACE_TOKEN: ${{ secrets.APM_MARKETPLACE_TOKEN }}
+      MARKETPLACE_REPOSITORY: mekras/apm-marketplace
+      PACKAGE_NAME: ai-russian-language
+    steps:
+      - name: Получить исходный тег
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.version || github.ref_name }}
+          fetch-depth: 0
+
+      - name: Установить APM
+        uses: microsoft/apm-action@v1
+        with:
+          setup-only: 'true'
+          apm-version: '0.29.0'
+
+      - name: Проверить готовность выпуска
+        shell: bash
+        run: |
+          set -euo pipefail
+          [[ "$RELEASE_VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+([-.][0-9A-Za-z.-]+)?$ ]]
+          manifest_version=$(awk '/^version:/ {print $2; exit}' apm.yml)
+          test "$manifest_version" = "$RELEASE_VERSION"
+          grep -Fq "## [$RELEASE_VERSION]" CHANGELOG.md
+          apm run tests
+
+      - name: Проверить доступ к реестру
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -n "$MARKETPLACE_TOKEN"
+
+      - name: Получить реестр
+        shell: bash
+        run: |
+          set -euo pipefail
+          git clone --branch master \
+            "https://x-access-token:${MARKETPLACE_TOKEN}@github.com/${MARKETPLACE_REPOSITORY}.git" \
+            marketplace
+
+      - name: Синхронизировать состав пакета
+        shell: bash
+        run: |
+          set -euo pipefail
+          package_dir="marketplace/packages/${PACKAGE_NAME}"
+          cp "$package_dir/apm.yml" "$RUNNER_TEMP/${PACKAGE_NAME}.apm.yml"
+          rm -rf "$package_dir"
+          mkdir -p "$package_dir"
+          cp -a .apm "$package_dir/.apm"
+          cp README.md CHANGELOG.md LICENSE THIRD_PARTY_NOTICES.md "$package_dir/"
+          cp "$RUNNER_TEMP/${PACKAGE_NAME}.apm.yml" "$package_dir/apm.yml"
+          RELEASE_VERSION="$RELEASE_VERSION" PACKAGE_DIR="$package_dir" python3 - <<'PY'
+          import os
+          import re
+          from pathlib import Path
+
+          version = os.environ["RELEASE_VERSION"]
+          package_manifest = Path(os.environ["PACKAGE_DIR"]) / "apm.yml"
+          text = package_manifest.read_text(encoding="utf-8")
+          text, count = re.subn(r"^version: .+$", f"version: {version}", text,
+                                count=1, flags=re.MULTILINE)
+          if count != 1:
+              raise SystemExit("Не найдена версия манифеста пакета")
+          package_manifest.write_text(text, encoding="utf-8")
+
+          marketplace_manifest = Path("marketplace/apm.yml")
+          text = marketplace_manifest.read_text(encoding="utf-8")
+          pattern = (r"(source: \./packages/ai-russian-language\n"
+                     r"\s+version: )\"[^\"]+\"")
+          text, count = re.subn(pattern, rf'\g<1>"{version}"', text, count=1)
+          if count != 1:
+              raise SystemExit("Не найдена версия пакета в реестре")
+          marketplace_manifest.write_text(text, encoding="utf-8")
+          PY
+          if find "$package_dir" \( -name AGENTS.md -o -name .editorconfig \) \
+            -print -quit | grep -q .; then
+            echo "В состав пакета попал служебный файл проекта-разработчика" >&2
+            exit 1
+          fi
+
+      - name: Собрать и проверить реестр
+        working-directory: marketplace
+        shell: bash
+        run: |
+          set -euo pipefail
+          apm marketplace check
+          apm pack --marketplace=claude,codex
+          apm pack --marketplace=claude,codex --check-clean --dry-run
+          git diff --check
+
+      - name: Опубликовать версию пакета
+        working-directory: marketplace
+        shell: bash
+        run: |
+          set -euo pipefail
+          package_tag="${PACKAGE_NAME}--v${RELEASE_VERSION}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if ! git diff --cached --quiet; then
+            git commit -m "Опубликована коллекция ${PACKAGE_NAME} ${RELEASE_VERSION}"
+            git push origin master
+          fi
+          if git ls-remote --exit-code --tags origin "refs/tags/${package_tag}"; then
+            test "$(git rev-parse "${package_tag}^{}")" = "$(git rev-parse HEAD)"
+          else
+            git tag -a "$package_tag" -m "Опубликована коллекция ${PACKAGE_NAME} ${RELEASE_VERSION}"
+            git push origin "$package_tag"
+          fi
+
+      - name: Создать GitHub Release исходной коллекции
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if ! gh release view "$RELEASE_VERSION" >/dev/null 2>&1; then
+            gh release create "$RELEASE_VERSION" --generate-notes
+          fi
