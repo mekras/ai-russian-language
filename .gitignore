@@ -1,8 +1,7 @@
 *.py[cod]
-/.agents/*
-!/.agents/plugins/
-!/.agents/plugins/marketplace.json
+/.agents
 /.claude
+/.claude-plugin
 /.idea
 /.inspect
 /__pycache__
@@ -11,5 +10,3 @@
 *.tmp.*
 apm_modules/
 build/
-/.claude-plugin/*
-!/.claude-plugin/marketplace.json

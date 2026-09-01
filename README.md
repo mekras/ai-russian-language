@@ -24,19 +24,19 @@
 Подключить реестр:
 
 ```bash
-apm marketplace add mekras/ai-russian-language --ref master
+apm marketplace add mekras/apm-marketplace --ref master
 ```
 
 Установить коллекцию из реестра для Codex:
 
 ```bash
-apm install ai-russian-language@ai-russian-language --target codex
+apm install ai-russian-language@mekras --target codex
 ```
 
 Установить коллекцию из реестра для Claude:
 
 ```bash
-apm install ai-russian-language@ai-russian-language --target claude
+apm install ai-russian-language@mekras --target claude
 ```
 
 Обновить уже установленную коллекцию:

@@ -8,9 +8,9 @@
 
 ### Изменено
 
-- Коллекция распространяется через собственный реестр
-  `ai-russian-language`. Перед установкой подключите реестр командой
-  `apm marketplace add mekras/ai-russian-language --ref master`.
+- Коллекция распространяется через реестр `mekras`. Перед установкой
+  подключите реестр командой
+  `apm marketplace add mekras/apm-marketplace --ref master`.
 
 ## [2.1.5] - 2026-08-25
 

@@ -19,20 +19,3 @@ scripts:
 devDependencies:
   apm:
     - mekras/ai-dev-team#0.25.0
-marketplace:
-  name: ai-russian-language
-  description: "Реестр переносимых навыков для агентов ИИ"
-  owner:
-    name: mekras
-    url: https://github.com/mekras
-  build:
-    tagPattern: "{version}"
-  outputs:
-    claude: {}
-    codex: {}
-  packages:
-    - name: ai-russian-language
-      description: "Переносимые навыки русского языка для агентов ИИ"
-      source: mekras/ai-russian-language
-      version: "^2.1.5"
-      category: Productivity
