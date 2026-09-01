@@ -24,7 +24,7 @@
 Подключить реестр:
 
 ```bash
-apm marketplace add mekras/ai-russian-language
+apm marketplace add mekras/ai-russian-language --ref master
 ```
 
 Установить коллекцию из реестра:

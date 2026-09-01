@@ -10,7 +10,7 @@
 
 - Коллекция распространяется через собственный реестр `mekras-ai`. Перед
   установкой подключите реестр командой
-  `apm marketplace add mekras/ai-russian-language`.
+  `apm marketplace add mekras/ai-russian-language --ref master`.
 
 ## [2.1.5] - 2026-08-25
 
