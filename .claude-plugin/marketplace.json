@@ -1,0 +1,23 @@
+{
+  "name": "mekras-ai",
+  "description": "Реестр переносимых навыков для агентов ИИ",
+  "owner": {
+    "name": "mekras",
+    "url": "https://github.com/mekras"
+  },
+  "plugins": [
+    {
+      "name": "ai-russian-language",
+      "description": "Переносимые навыки русского языка для агентов ИИ",
+      "version": "2.1.5",
+      "category": "Productivity",
+      "source": {
+        "source": "github",
+        "repo": "mekras/ai-russian-language",
+        "ref": "2.1.5",
+        "sha": "c6c4ec9f6605e5e463038008fc7ef4e9a573a48e",
+        "tag_pattern": "{version}"
+      }
+    }
+  ]
+}

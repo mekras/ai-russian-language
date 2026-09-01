@@ -1,5 +1,7 @@
 *.py[cod]
-/.agents
+/.agents/*
+!/.agents/plugins/
+!/.agents/plugins/marketplace.json
 /.claude
 /.idea
 /.inspect
@@ -8,3 +10,6 @@
 *.local
 *.tmp.*
 apm_modules/
+build/
+/.claude-plugin/*
+!/.claude-plugin/marketplace.json

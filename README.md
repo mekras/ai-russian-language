@@ -21,10 +21,16 @@
 Основной способ использования — установка коллекции через
 [Agent Package Manager](https://github.com/microsoft/apm).
 
-Установить коллекцию:
+Подключить реестр:
 
 ```bash
-apm install mekras/ai-russian-language#^2.1.1
+apm marketplace add mekras/ai-russian-language
+```
+
+Установить коллекцию из реестра:
+
+```bash
+apm install ai-russian-language@mekras-ai
 ```
 
 Обновить уже установленную коллекцию:
