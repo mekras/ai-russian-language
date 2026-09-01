@@ -1,7 +1,7 @@
 {
-  "name": "mekras-ai",
+  "name": "ai-russian-language",
   "interface": {
-    "displayName": "mekras-ai"
+    "displayName": "ai-russian-language"
   },
   "plugins": [
     {

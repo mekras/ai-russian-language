@@ -20,7 +20,7 @@ devDependencies:
   apm:
     - mekras/ai-dev-team#0.25.0
 marketplace:
-  name: mekras-ai
+  name: ai-russian-language
   description: "Реестр переносимых навыков для агентов ИИ"
   owner:
     name: mekras

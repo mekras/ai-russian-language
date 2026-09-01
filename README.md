@@ -30,7 +30,7 @@ apm marketplace add mekras/ai-russian-language --ref master
 Установить коллекцию из реестра:
 
 ```bash
-apm install ai-russian-language@mekras-ai
+apm install ai-russian-language@ai-russian-language
 ```
 
 Обновить уже установленную коллекцию:
