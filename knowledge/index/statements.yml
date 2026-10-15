@@ -2,7 +2,7 @@ statements:
 - id: DR004-001
   source_id: DR004
   item_id: DR004-DOCUMENT
-  path: data/project-decision-dr-0004/documents/dr-0004/statements.yml
+  path: knowledge/data/project-decision-dr-0004/documents/dr-0004/statements.yml
   status: null
   kind: fact
   text: Корпус знаний проекта предназначен для учёта источников и утверждений, на
@@ -24,7 +24,7 @@ statements:
 - id: DR004-002
   source_id: DR004
   item_id: DR004-DOCUMENT
-  path: data/project-decision-dr-0004/documents/dr-0004/statements.yml
+  path: knowledge/data/project-decision-dr-0004/documents/dr-0004/statements.yml
   status: null
   kind: fact
   text: Для корпуса знаний проекта принят каталог knowledge/ и переносимый стартовый
@@ -46,7 +46,7 @@ statements:
 - id: DR004-003
   source_id: DR004
   item_id: DR004-DOCUMENT
-  path: data/project-decision-dr-0004/documents/dr-0004/statements.yml
+  path: knowledge/data/project-decision-dr-0004/documents/dr-0004/statements.yml
   status: null
   kind: fact
   text: В Git корпуса допускаются только безопасные для публикации материалы, а полные

@@ -1,5 +1,6 @@
 [features]
-enable_fanout = true
+enable_fanout = false
+multi_agent = false
 
 [agents]
 max_threads = 2

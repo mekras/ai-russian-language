@@ -1,0 +1,28 @@
+verification_contract_version: 1
+artifact: snapshot.md
+hash:
+  algorithm: sha256
+  value: a756695fac578fc6a4b9adb8cb8bed31ecfaafe9d6d46e47f43d59b386e8a407
+acquisition:
+  method: local_file
+  recorded_at: '2026-10-13'
+verification:
+  method: direct_reopen
+  checked_at: '2026-10-13'
+  checked_by:
+    role: local-document-executor
+  scope:
+    content: full_text
+    metadata:
+    - locator
+  result:
+    overall: verified
+    content_match: verified
+    scope_completeness: complete
+    metadata:
+      author: unverified
+      locator: verified
+      publication_date: unverified
+  limitations:
+  - Проверен локальный канонический файл проекта. Актуальность удалённого репозитория
+    не проверялась.

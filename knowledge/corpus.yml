@@ -88,6 +88,7 @@ workflow_stages:
   - normalized
   - statements_extracted
   - source_checked
+  - verification_assessed
   - blocked
   - rejected
 

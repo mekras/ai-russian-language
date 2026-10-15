@@ -44,7 +44,8 @@
       "authority": "canonical",
       "representations": [
         { "path": "apm.yml", "role": "canonical" },
-        { "path": "apm.lock.yaml", "role": "supporting" }
+        { "path": "apm.lock.yaml", "role": "supporting" },
+        { "path": ".github/workflows/release.yml", "role": "implementation" }
       ],
       "checks": ["ai-setup-apm", "apm audit --ci"]
     },
@@ -68,21 +69,22 @@
       "representations": [
         { "path": "AGENTS.md", "role": "canonical" },
         { "path": "CLAUDE.md", "role": "supporting" },
-        { "path": ".ai-dev-team-state.yml", "role": "supporting" },
+        { "path": ".ai-dev-team/state.yml", "role": "supporting" },
         { "path": "project-impact.json", "role": "supporting" },
         { "path": ".codex/**", "role": "supporting" }
       ],
-      "checks": ["ai-audit-agents-md", "ait-setup"]
+      "checks": ["ai-audit-agent-rules", "ait-setup"]
     },
     {
       "id": "project-configuration",
       "title": "Конфигурация разработки",
       "kind": "configuration",
-      "semantic_type": "правила форматирования и локальных артефактов",
+      "semantic_type": "настройки разработки, прогонов качества и локальных артефактов",
       "authority": "canonical",
       "representations": [
         { "path": ".editorconfig", "role": "canonical" },
-        { "path": ".gitignore", "role": "canonical" }
+        { "path": ".gitignore", "role": "canonical" },
+        { "path": "evals.sample.yml", "role": "supporting" }
       ],
       "checks": ["ait-code-construction"]
     },

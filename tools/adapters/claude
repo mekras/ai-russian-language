@@ -1,0 +1,72 @@
+#!/usr/bin/env bash
+# Пример адаптера модели для run-skill-evals.py.
+#
+# Контракт адаптера (переносимый, не привязан к Claude):
+#   - вызов: <адаптер> <модель>;
+#   - промпт читается со стандартного ввода;
+#   - текст ответа модели пишется в стандартный вывод;
+#   - код выхода 0 — успех, любой другой — транспортная ошибка вызова модели.
+#
+# Средство запуска само вкладывает требование вернуть JSON в текст промпта и
+# разбирает JSON из ответа. Адаптеру достаточно вернуть текст модели как есть.
+#
+# Это пример для Claude Code CLI. Под другую модель напишите свой адаптер по
+# тому же контракту и укажите его в локальных настройках evals.
+#
+# Изоляция запуска. Claude автоматически подхватывает CLAUDE.md из текущего
+# каталога, поэтому адаптер запускает модель из пустого временного каталога,
+# чтобы правила целевого проекта не протекали в прогон навыка. Вход остаётся
+# через обычный доступ Claude Code, включая подписку OAuth; пользовательские
+# настройки, перехватчики и память уровня дома при этом сохраняются.
+set -euo pipefail
+
+if [[ $# -lt 1 || -z "${1:-}" ]]; then
+  echo "Использование: claude <модель>; промпт на stdin, ответ на stdout." >&2
+  exit 2
+fi
+
+model="$1"
+prompt="$(cat)"
+
+workdir="${APM_EVAL_WORKSPACE:-}"
+temporary_workdir=""
+if [[ -n "$workdir" ]]; then
+  if [[ ! -d "$workdir" ]]; then
+    echo "Рабочая папка model evals не найдена: $workdir" >&2
+    exit 2
+  fi
+else
+  workdir="$(mktemp -d)"
+  temporary_workdir="$workdir"
+fi
+trap 'if [[ -n "$temporary_workdir" ]]; then rm -rf "$temporary_workdir"; fi' EXIT
+
+# --strict-mcp-config
+# без --mcp-config отключает все серверы MCP, чтобы прогон не зависел от
+# окружения пользователя.
+if [[ -n "${APM_EVAL_TRACE:-}" ]]; then
+  printf '%s' "$prompt" | (
+    cd "$workdir" && claude \
+      --print \
+      --strict-mcp-config \
+      --no-session-persistence \
+      --verbose \
+      --output-format stream-json \
+      --model "$model"
+  ) >"$APM_EVAL_TRACE"
+  python3 - "$APM_EVAL_TRACE" <<'PY'
+import json
+import sys
+
+with open(sys.argv[1], encoding="utf-8") as stream:
+    results = [event for line in stream if line.strip()
+               if (event := json.loads(line)).get("type") == "result"]
+if not results or results[-1].get("is_error"):
+    raise SystemExit("Адаптер Claude не получил успешного итогового события.")
+print(results[-1].get("result", ""))
+PY
+else
+  printf '%s' "$prompt" | (
+    cd "$workdir" && claude --print --strict-mcp-config --output-format text --model "$model"
+  )
+fi
