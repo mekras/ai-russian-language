@@ -1,5 +1,5 @@
 product: mekras/ai-dev-team
-applied_version: 0.29.2
+applied_version: 0.29.3
 updated_at: 2026-10-15
 
 project:
@@ -36,6 +36,10 @@ setup:
   knowledge:
     status: present
     path: knowledge/
+    operations:
+      path: knowledge/operations.yml
+      semantic_executor: primary_agent
+      local_source_operations: probe_only
   decision_records:
     status: present
     journals:

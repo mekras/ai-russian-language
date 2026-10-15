@@ -190,7 +190,8 @@ def adapter(args: argparse.Namespace) -> dict:
 def stage(operation: str) -> None:
     if operation == "corpus_validation":
         command = [sys.executable, str(INVENTORY / "validate-corpus-layout.py"),
-                   str(CORPUS), "--operational", "--strict-statements",
+                   str(CORPUS), "--project-root", str(ROOT), "--strict-admission",
+                   "--operational", "--strict-statements",
                    "--strict-concepts", "--strict-verification"]
         subprocess.run(command, cwd=ROOT, check=True)
         return

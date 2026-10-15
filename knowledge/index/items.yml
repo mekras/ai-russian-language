@@ -7,10 +7,3 @@ items:
   workflow_stage: blocked
   access: Локальная копия source.local.epub. Перед смысловой обработкой требуется
     проверка правового основания и допустимого объёма.
-- id: DR004-DOCUMENT
-  source_id: DR004
-  path: data/project-decision-dr-0004/documents/dr-0004
-  title: Запись решения DR-0004
-  date_published: 2026-08-12
-  workflow_stage: source_checked
-  access: Публичный отслеживаемый файл docs/DR/DR-0004.md.

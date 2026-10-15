@@ -15,6 +15,13 @@ allowed_use: "Точечная проверка правил издательс�
 requires_access_check: true
 
 locator: "local:milchin-cheltsova"
+provenance:
+  origin: external_material
+  locator: "local:milchin-cheltsova"
+admission:
+  decision:
+    ref: .ai-dev-team/source-admissions/milchin-cheltsova.yml
+    sha256: "474105d1649f2200700ed1ffaa40190ac66de9a4b5e3641b8e66886e04494020"
 public_reference: "https://store.artlebedev.ru/books/typography/spravochnik-izdatelya-i-avtora-e-book/"
 license_or_terms: "В EPUB указаны © А. Э. Мильчин и Л. К. Чельцова за текст, © Студия Артемия Лебедева за оформление. Открытая лицензия или разрешение на публикацию, массовое извлечение и создание производной текстовой базы не установлены."
 

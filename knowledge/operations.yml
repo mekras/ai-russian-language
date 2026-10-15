@@ -1,0 +1,80 @@
+# План: python3 -B .agents/skills/kc-pipeline/scripts/run-corpus-operations.py knowledge --operations knowledge/operations.yml
+# Команды выполняются только с --run-commands --stage <стадия>.
+# Проверка допуска источников выполняется контроллером до исполнения.
+operations_version: 1
+
+# Изменения продукта сначала предлагаются владельцу по правилам проекта.
+transfer_policy:
+  mode: propose_only
+impact_report:
+  path: .local/reports/impact-findings.yml
+surface_paths:
+  language_skills:
+    - .apm/skills/ru-lang/**
+report:
+  path: .local/reports/corpus-operations.md
+run_state:
+  path: .local/state/corpus-pipeline.json
+
+# Содержательные очереди выполняет основной агент через профильные навыки:
+# content_selection, normalize, statements, coverage_gap, semantic_review,
+# strong_review, corroboration, concepts, impact_audit, apply_changes.
+# Подагенты не запускаются. Источник metadata_only не обрабатывается.
+# Проверку доступности локального материала выполняет адаптер ниже после
+# допуска. Для текущей книги probe возвращает terms-decision-required.
+# Аудио и видео нет, поэтому transcribe сейчас не требуется. Новый носитель
+# потребует настройки соответствующего исполнителя перед обработкой.
+# Индексы пересобирает сам контроллер с --rebuild-indexes.
+stages:
+  traceability:
+    commands:
+      - id: local-source-traceability
+        argv: [python3, -B, tools/corpus-local-document.py, traceability]
+        working_directory: .
+        write_paths: [knowledge/data]
+        required: true
+  source_check:
+    commands:
+      - id: local-source-check
+        argv: [python3, -B, tools/corpus-local-document.py, source_check]
+        working_directory: .
+        write_paths: [knowledge/data]
+        required: true
+  verification:
+    commands:
+      - id: local-snapshot-verification
+        argv: [python3, -B, tools/corpus-local-document.py, verification]
+        working_directory: .
+        write_paths: [knowledge/data]
+        required: true
+  corpus_validation:
+    commands:
+      - id: validate-project-corpus
+        argv: [python3, -B, tools/corpus-local-document.py, corpus_validation]
+        working_directory: .
+        # Контроллер требует непустую область. Сама проверка только читает.
+        write_paths: [knowledge]
+        required: true
+
+# Существующий адаптер умеет обрабатывать локальные записи решений.
+# Их включение запрещено политикой допуска этого проекта. Поэтому здесь
+# регистрируется только проверка доступности текущего локального источника.
+# Получение, индексирование и сверка содержимого книги не разрешаются.
+adapters:
+  builtin.local-file:
+    contract_version: 2
+    operations:
+      probe:
+        argv:
+          - python3
+          - -B
+          - tools/corpus-local-document.py
+          - probe
+          - --source-id
+          - "{source_id}"
+          - --source-dir
+          - "{source_dir}"
+          - --locator
+          - "{locator}"
+        working_directory: .
+        write_paths: []
