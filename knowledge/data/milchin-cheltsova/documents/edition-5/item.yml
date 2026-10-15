@@ -1,25 +1,89 @@
 id: MILCHIN-CHELTSOVA-EDITION-5
 source_id: MILCHIN-CHELTSOVA
-title: "Пятое издание справочника"
-access: "Локальная копия source.local.epub. Перед смысловой обработкой требуется проверка правового основания и допустимого объёма."
+title: Пятое издание справочника
+access: Локальная копия source.local.epub, предоставленная владельцем проекта. Обработка
+  разрешена в пределах allowed_use источника. Полный текст остаётся вне Git.
 status: confirmed
-workflow_stage: blocked
-blocker_code: owner_decision_required
-action_required: "Подтвердить правовое основание и допустимый объём точечного извлечения из локальной книги."
-automatic_attempts:
-  - "Проверены метаданные EPUB, происхождение локального файла и отсутствие разрешающей открытой лицензии."
-  - "Выбран безопасный режим metadata_only без извлечения и публикации текста."
+workflow_stage: verification_assessed
 long_source: true
-processing_scope: metadata_only
+processing_scope: selected_fragments
 retrieval_mode: on_demand
-copy_policy: metadata_only
-allowed_use: "Точечная проверка правил издательского оформления после подтверждения правового основания."
-requires_access_check: true
+copy_policy: fragments_only
+allowed_use: Извлечение и сохранение максимально полного набора применимых к проекту
+  правил, принципов, методов и фактов в самостоятельном изложении. Условия использования
+  и проверки установлены в source.yml, поле allowed_use.
+requires_access_check: false
 files:
-  tracked: []
+  tracked:
+  - statements.yml
+  - verification.yml
   local:
-    - ../../source.local.epub
+  - ../../source.local.epub
+  - ../../normalized.local/Title.local.md
+  - ../../normalized.local/Adnotation.local.md
+  - ../../normalized.local/Ogl-kratkoe.local.md
+  - ../../normalized.local/Milchin-v2-0a.local.md
+  - ../../normalized.local/Milchin-v2-0b.local.md
+  - ../../normalized.local/Milchin-v2-1.local.md
+  - ../../normalized.local/Milchin-v2-2.local.md
+  - ../../normalized.local/Milchin-v2-3.local.md
+  - ../../normalized.local/Milchin-v2-4.local.md
+  - ../../normalized.local/Milchin-v2-5.local.md
+  - ../../normalized.local/Milchin-v2-6.local.md
+  - ../../normalized.local/Milchin-v2-7.local.md
+  - ../../normalized.local/Milchin-v2-8.local.md
+  - ../../normalized.local/Milchin-v2-9.local.md
+  - ../../normalized.local/Milchin-v2-10.local.md
+  - ../../normalized.local/Milchin-v2-11.local.md
+  - ../../normalized.local/Milchin-v2-12.local.md
+  - ../../normalized.local/Milchin-v2-13_Tables.local.md
+  - ../../normalized.local/Milchin-v2-14.local.md
+  - ../../normalized.local/Milchin-v2-15.local.md
+  - ../../normalized.local/Milchin-v2-16.local.md
+  - ../../normalized.local/Milchin-v2-17.local.md
+  - ../../normalized.local/Milchin-v2-18.local.md
+  - ../../normalized.local/Milchin-v2-19.local.md
+  - ../../normalized.local/Milchin-v2-20.local.md
+  - ../../normalized.local/Milchin-v2-21.local.md
+  - ../../normalized.local/Milchin-v2-22.local.md
+  - ../../normalized.local/Milchin-v2-23.local.md
+  - ../../normalized.local/Milchin-v2-24.local.md
+  - ../../normalized.local/Milchin-v2-25.local.md
+  - ../../normalized.local/Milchin-v2-26.local.md
+  - ../../normalized.local/Milchin-v2-27.local.md
+  - ../../normalized.local/Milchin-v2-28.local.md
+  - ../../normalized.local/Milchin-v2-29.local.md
+  - ../../normalized.local/Milchin-v2-30.local.md
+  - ../../normalized.local/Milchin-v2-31.local.md
+  - ../../normalized.local/Milchin-v2-32.local.md
+  - ../../normalized.local/Milchin-v2-33.local.md
+  - ../../normalized.local/Milchin-v2-34.local.md
+  - ../../normalized.local/Milchin-v2-35.local.md
+  - ../../normalized.local/Milchin-v2-36.local.md
+  - ../../normalized.local/Section0001.local.md
+  - ../../normalized.local/Ogl-spiska.local.md
+  - ../../normalized.local/Section0003.local.md
+  - ../../normalized.local/Section0004.local.md
+  - ../../normalized.local/Section0005.local.md
+  - ../../normalized.local/Section0006.local.md
+  - ../../normalized.local/Section0007.local.md
+  - ../../normalized.local/Section0008.local.md
+  - ../../normalized.local/Section0009.local.md
+  - ../../normalized.local/Section0010.local.md
+  - ../../normalized.local/Section0011.local.md
+  - ../../normalized.local/Section0013.local.md
+  - ../../normalized.local/Section0014.local.md
+  - ../../normalized.local/Section0015.local.md
+  - ../../normalized.local/Section0016.local.md
+  - ../../normalized.local/Section0017.local.md
+  - ../../normalized.local/Section0018.local.md
+  - ../../normalized.local/Section0012.local.md
+  - ../../normalized.local/Notes.local.md
+  - ../../normalized.local/Colophon.local.md
+  - ../../normalized.local/manifest.local.yml
+  - snapshot.local.epub
 known_limitations:
-  - "Открытая лицензия или разрешение на создание производной текстовой базы не установлены."
+- Сверка текста с внешним оригиналом не выполнялась.
 processing_notes:
-  - "Полный EPUB остаётся в локальном неотслеживаемом слое."
+- Полный EPUB остаётся в локальном неотслеживаемом слое.
+item_contract_version: 2

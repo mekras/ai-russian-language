@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Maintain permitted local decision-record snapshots without model calls."""
+"""Проверка разрешённых локальных документов и материалов книги без вызовов модели."""
 
 from __future__ import annotations
 
@@ -7,6 +7,8 @@ import argparse
 import hashlib
 import json
 import os
+import re
+import zipfile
 from pathlib import Path
 import subprocess
 import sys
@@ -157,6 +159,135 @@ def verify(source: dict, document: Path, item_path: Path) -> Path:
     return item_path.parent / "verification.yml"
 
 
+def book_context(source_dir: Path, source_id: str | None = None,
+                 locator: str | None = None) -> tuple[dict, Path, Path, dict]:
+    """Чтение допущенной локальной книги по отдельному договору источника."""
+    source_dir = inside(source_dir, CORPUS / "data")
+    source = load(inside(source_dir / "source.yml", source_dir))
+    if ((source_id is not None and source.get("id") != source_id) or
+            (locator is not None and source.get("locator") != locator)):
+        raise MaintenanceError("Аргументы не совпадают с карточкой источника.")
+    if (source.get("status") != "approved" or source.get("source_kind") != "book" or
+            source.get("requires_access_check") or
+            source.get("storage_strategy") != "local_only" or
+            source.get("processing_scope") != "selected_fragments" or
+            source.get("copy_policy") != "fragments_only"):
+        raise MaintenanceError("Условия обработки локальной книги не соблюдены.")
+    items = sorted(source_dir.glob("documents/*/item.yml"))
+    if len(items) != 1:
+        raise MaintenanceError("Для локальной книги нужна ровно одна единица.")
+    item_path = inside(items[0], source_dir)
+    item = load(item_path)
+    if (item.get("source_id") != source.get("id") or
+            item.get("workflow_stage") == "blocked" or item.get("requires_access_check") or
+            item.get("processing_scope", source.get("processing_scope")) != "selected_fragments" or
+            item.get("copy_policy", source.get("copy_policy")) != "fragments_only"):
+        raise MaintenanceError("Ограничения единицы не разрешают обработку книги.")
+    document = inside(source_dir / "source.local.epub", source_dir)
+    declared = [inside(item_path.parent / value, source_dir)
+                for value in item.get("files", {}).get("local", [])]
+    if document not in declared or not document.is_file():
+        raise MaintenanceError("Локальный EPUB не объявлен или недоступен.")
+    content = pinned_content(source, document)
+    if len(content) != source.get("file_size_bytes"):
+        raise MaintenanceError("Размер локального файла не совпадает с карточкой.")
+    return source, document, item_path, item
+
+
+def check_book_excerpts(source: dict, document: Path, item_path: Path) -> dict | None:
+    """Проверка хэшей нормализации и буквальных фрагментов утверждений."""
+    source_dir = document.parent
+    manifest_path = inside(source_dir / "normalized.local/manifest.local.yml", source_dir)
+    manifest = load(manifest_path)
+    if manifest.get("source_hash") != source.get("content_hash"):
+        raise MaintenanceError("Нормализованный материал относится к другому EPUB.")
+    records = manifest.get("files")
+    if not isinstance(records, list) or not records:
+        raise MaintenanceError("Манифест нормализации пуст или повреждён.")
+    artifacts = {}
+    with zipfile.ZipFile(document) as archive:
+        for record in records:
+            path = inside(source_dir / record["path"], source_dir / "normalized.local")
+            content = path.read_bytes()
+            if (hashlib.sha256(content).hexdigest() != record.get("sha256") or
+                    hashlib.sha256(archive.read(record["epub_entry"])).hexdigest() !=
+                    record.get("entry_sha256")):
+                raise MaintenanceError("Артефакт нормализации или исходная часть EPUB изменены.")
+            artifacts[path] = " ".join(content.decode("utf-8").split()).casefold()
+    statements_path = inside(item_path.parent / "statements.yml", source_dir)
+    if not statements_path.exists():
+        return None
+    data = load(statements_path)
+    for statement in data.get("statements", []):
+        artifact = statement.get("artifact")
+        excerpt = statement.get("excerpt")
+        if not isinstance(artifact, str) or not isinstance(excerpt, str) or not excerpt.strip():
+            raise MaintenanceError("Утверждение не содержит проверяемого артефакта и выдержки.")
+        path = inside(item_path.parent / artifact, source_dir / "normalized.local")
+        if path not in artifacts:
+            raise MaintenanceError("Артефакт утверждения не включён в проверенный манифест.")
+        position = 0
+        fragments = [value for value in re.split(r"\s*(?:\.{3}|…)\s*", excerpt) if value.strip()]
+        if not fragments:
+            raise MaintenanceError("Выдержка не содержит текста.")
+        for fragment in fragments:
+            fragment = " ".join(fragment.split()).casefold()
+            position = artifacts[path].find(fragment, position)
+            if position < 0:
+                raise MaintenanceError("Выдержка отсутствует в нормализованном материале.")
+            position += len(fragment)
+    source_map_path = source_dir / "source-map.yml"
+    if source.get("long_source") and not source_map_path.is_file():
+        raise MaintenanceError("Для длинного источника отсутствует карта охвата.")
+    if source_map_path.is_file():
+        source_map = load(source_map_path)
+        structure_ids = {entry["id"] for entry in source_map.get("structure", {}).get("units", [])}
+        coverage = source_map.get("coverage", {}).get("units", [])
+        covered_ids = [entry["unit_id"] for entry in coverage]
+        if len(covered_ids) != len(set(covered_ids)) or set(covered_ids) != structure_ids:
+            raise MaintenanceError("Карта охвата не соответствует структуре источника.")
+        statements_by_id = {entry["id"]: entry for entry in data.get("statements", [])}
+        for entry in coverage:
+            if entry.get("status") != "extracted":
+                continue
+            ids = entry.get("statement_ids")
+            if not isinstance(ids, list) or not ids:
+                raise MaintenanceError("Извлечённая единица не связана с утверждениями.")
+            for statement_id in ids:
+                statement = statements_by_id.get(statement_id)
+                if statement is None or entry["unit_id"] not in statement.get("scope", {}).get("unit_ids", []):
+                    raise MaintenanceError("Ссылка карты охвата не совпадает с областью утверждения.")
+    return data
+
+
+def assess_book(source: dict, document: Path, item_path: Path, item: dict) -> None:
+    """Запись результата проверки локальной целостности с явной границей сверки."""
+    snapshot = item_path.parent / "snapshot.local.epub"
+    if snapshot.is_symlink():
+        raise MaintenanceError("Снимок не должен быть символической ссылкой.")
+    inside(snapshot, item_path.parent)
+    atomic_write(snapshot, pinned_content(source, document))
+    local = item.setdefault("files", {}).setdefault("local", [])
+    if "snapshot.local.epub" not in local:
+        local.append("snapshot.local.epub")
+    tracked = item["files"].setdefault("tracked", [])
+    if "verification.yml" not in tracked:
+        tracked.append("verification.yml")
+    save(item_path, item)
+    command = [sys.executable, str(INVENTORY / "record-snapshot-verification.py"),
+               str(item_path.parent), str(snapshot),
+               "--acquisition-method", "user_provided",
+               "--acquired-at", str(source["retrieved_at"]),
+               "--verification-method", "local_integrity_only",
+               "--content-scope", "none", "--content-match", "unverified",
+               "--scope-completeness", "not_assessed", "--overall-result", "unverified",
+               "--checked-by-role", "local-book-executor",
+               "--limitation", "Проверены хэш и размер предоставленного EPUB, хэши нормализованных файлов и их исходных частей. Сверка с издательским оригиналом не выполнялась."]
+    result = subprocess.run(command, cwd=ROOT, capture_output=True, text=True)
+    if result.returncode:
+        raise MaintenanceError("Не удалось записать локальную проверку книги: " + result.stderr.strip())
+
+
 def adapter(args: argparse.Namespace) -> dict:
     result = {"contract_version": 2, "operation": args.operation,
               "source_id": args.source_id, "adapter": "builtin.local-file",
@@ -168,6 +299,10 @@ def adapter(args: argparse.Namespace) -> dict:
     if source.get("requires_access_check") or source.get("processing_scope") == "metadata_only":
         result.update(status="terms-decision-required" if args.operation == "probe" else "access-limited",
                       message="Обработка ограничена до решения владельца.")
+        return result
+    if source.get("source_kind") == "book" and args.operation == "probe":
+        book_context(source_path, args.source_id, args.locator)
+        result.update(status="ready", message="Локальная книга доступна, размер и хэш совпадают с карточкой.")
         return result
     source, document, item_path, item = source_context(source_path, args.source_id, args.locator)
     content = pinned_content(source, document)
@@ -199,6 +334,17 @@ def stage(operation: str) -> None:
     for source_path in sorted((CORPUS / "data").glob("*/source.yml")):
         source = load(source_path)
         if source.get("requires_access_check") or source.get("processing_scope") == "metadata_only":
+            continue
+        if source.get("source_kind") == "book":
+            source, document, item_path, item = book_context(source_path.parent)
+            statements = check_book_excerpts(source, document, item_path)
+            if operation == "traceability" and statements:
+                for statement in statements.get("statements", []):
+                    statement.setdefault("processing_status", {})["traceability"] = "passed"
+                save(item_path.parent / "statements.yml", statements)
+            elif operation in {"source_check", "verification"}:
+                assess_book(source, document, item_path, item)
+            count += 1
             continue
         source, document, item_path, item = source_context(source_path.parent)
         content = pinned_content(source, document)
@@ -242,7 +388,7 @@ def main() -> int:
         else:
             stage(args.operation)
         return 0
-    except (MaintenanceError, OSError, KeyError, yaml.YAMLError, subprocess.CalledProcessError) as error:
+    except (MaintenanceError, OSError, KeyError, zipfile.BadZipFile, yaml.YAMLError, subprocess.CalledProcessError) as error:
         print(f"Ошибка механической обработки корпуса: {error}", file=sys.stderr)
         return 2
 

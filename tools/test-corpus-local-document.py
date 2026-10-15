@@ -124,6 +124,140 @@ class LocalDocumentTests(unittest.TestCase):
         self.assertEqual(result.returncode, 2)
         self.assertEqual(self.fingerprint(), before)
 
+    def test_book_probe_checks_local_snapshot_without_writes(self):
+        folder = self.root / SOURCE
+        card = folder / "source.yml"
+        source = yaml.safe_load(card.read_text())
+        source.update(source_kind="book", locator="local:test-book", storage_strategy="local_only",
+                      copy_policy="fragments_only", processing_scope="selected_fragments")
+        content = b"test local book snapshot"
+        snapshot = folder / "source.local.epub"
+        snapshot.write_bytes(content)
+        source.update(content_hash=hashlib.sha256(content).hexdigest(),
+                      file_size_bytes=len(content))
+        card.write_text(yaml.safe_dump(source))
+        item_path = folder / "documents/test-decision/item.yml"
+        item = yaml.safe_load(item_path.read_text())
+        item.update(workflow_stage="fetched", copy_policy="fragments_only",
+                    processing_scope="selected_fragments")
+        item["files"] = {"tracked": [], "local": ["../../source.local.epub"]}
+        item_path.write_text(yaml.safe_dump(item))
+        for case in ("ready", "changed", "outside", "blocked"):
+            with self.subTest(case=case):
+                snapshot.write_bytes(content if case != "changed" else b"changed")
+                item["workflow_stage"] = "blocked" if case == "blocked" else "fetched"
+                item["files"]["local"] = ["../../../../corpus.yml"] if case == "outside" else ["../../source.local.epub"]
+                item_path.write_text(yaml.safe_dump(item))
+                before = self.fingerprint()
+                result = self.run_worker("probe", "--source-id", "TEST",
+                                         "--source-dir", SOURCE, "--locator", "local:test-book")
+                self.assertEqual(result.returncode, 0 if case == "ready" else 2, result.stderr)
+                if case == "ready":
+                    self.assertEqual(json.loads(result.stdout)["status"], "ready")
+                self.assertEqual(self.fingerprint(), before)
+
+    def prepare_normalized_book(self):
+        import zipfile
+        folder = self.root / SOURCE
+        source_path = folder / "source.yml"
+        source = yaml.safe_load(source_path.read_text())
+        source.update(source_kind="book", locator="local:test-book",
+                      storage_strategy="local_only", retrieved_at="2026-08-12",
+                      copy_policy="fragments_only", processing_scope="selected_fragments")
+        original = b"<html><body>Test source fragment</body></html>"
+        document = folder / "source.local.epub"
+        with zipfile.ZipFile(document, "w") as archive:
+            archive.writestr("OEBPS/Text/test.xhtml", original)
+        source.update(content_hash=hashlib.sha256(document.read_bytes()).hexdigest(),
+                      file_size_bytes=document.stat().st_size)
+        source_path.write_text(yaml.safe_dump(source))
+        normalized = folder / "normalized.local/test.local.md"
+        normalized.parent.mkdir()
+        normalized.write_text("Test source fragment\n")
+        manifest = {"source_hash": source["content_hash"], "files": [{
+            "path": "normalized.local/test.local.md",
+            "sha256": hashlib.sha256(normalized.read_bytes()).hexdigest(),
+            "epub_entry": "OEBPS/Text/test.xhtml",
+            "entry_sha256": hashlib.sha256(original).hexdigest()}]}
+        (normalized.parent / "manifest.local.yml").write_text(yaml.safe_dump(manifest))
+        unit = folder / "documents/test-decision"
+        item_path = unit / "item.yml"
+        item = yaml.safe_load(item_path.read_text())
+        item.update(workflow_stage="statements_extracted", copy_policy="fragments_only",
+                    processing_scope="selected_fragments")
+        item["files"] = {"tracked": ["statements.yml"], "local": [
+            "../../source.local.epub", "../../normalized.local/test.local.md",
+            "../../normalized.local/manifest.local.yml"]}
+        item_path.write_text(yaml.safe_dump(item))
+        (unit / "statements.yml").write_text(yaml.safe_dump({"statements": [{
+            "id": "TEST-001", "excerpt": "Test source fragment",
+            "artifact": "../../normalized.local/test.local.md",
+            "processing_status": {"traceability": "pending"}}]}))
+        return folder, unit, normalized
+
+    def test_book_verification_records_local_integrity_without_claiming_source_match(self):
+        folder, unit, normalized = self.prepare_normalized_book()
+        original = (folder / "source.local.epub").read_bytes()
+        probe = self.run_worker("probe", "--source-id", "TEST", "--source-dir", SOURCE,
+                                "--locator", "local:test-book")
+        self.assertEqual(probe.returncode, 0, probe.stderr)
+        trace = self.run_worker("traceability")
+        self.assertEqual(trace.returncode, 0, trace.stderr)
+        statement = yaml.safe_load((unit / "statements.yml").read_text())["statements"][0]
+        self.assertEqual(statement["processing_status"]["traceability"], "passed")
+        result = self.run_worker("verification")
+        self.assertEqual(result.returncode, 0, result.stderr)
+        certificate = yaml.safe_load((unit / "verification.yml").read_text())
+        self.assertEqual(certificate["verification"]["method"], "local_integrity_only")
+        self.assertEqual(certificate["verification"]["result"]["content_match"], "unverified")
+        self.assertEqual(certificate["acquisition"]["method"], "user_provided")
+        self.assertEqual(certificate["acquisition"]["recorded_at"], "2026-08-12")
+        self.assertEqual((unit / "snapshot.local.epub").read_bytes(), original)
+        before = self.fingerprint()
+        repeat = self.run_worker("verification")
+        self.assertEqual(repeat.returncode, 0, repeat.stderr)
+        self.assertEqual(self.fingerprint(), before)
+        self.assertEqual((folder / "source.local.epub").read_bytes(), original)
+
+    def test_book_coverage_link_must_resolve_to_statement_scope(self):
+        folder, unit, normalized = self.prepare_normalized_book()
+        source_map = {"structure": {"units": [{"id": "unit-1"}]},
+                      "coverage": {"units": [{"unit_id": "unit-1", "status": "extracted",
+                                               "statement_ids": ["TEST-001"]}]}}
+        (folder / "source-map.yml").write_text(yaml.safe_dump(source_map))
+        before = self.fingerprint()
+        result = self.run_worker("verification")
+        self.assertEqual(result.returncode, 2, result.stderr)
+        self.assertEqual(self.fingerprint(), before)
+        path = unit / "statements.yml"
+        data = yaml.safe_load(path.read_text())
+        data["statements"][0]["scope"] = {"unit_ids": ["unit-1"]}
+        path.write_text(yaml.safe_dump(data))
+        result = self.run_worker("traceability")
+        self.assertEqual(result.returncode, 0, result.stderr)
+
+    def test_book_changed_normalization_or_excerpt_refuses_without_writes(self):
+        folder, unit, normalized = self.prepare_normalized_book()
+        original = normalized.read_bytes()
+        statement_path = unit / "statements.yml"
+        for case in ("normalization", "excerpt", "manifest-escape", "entry-hash"):
+            with self.subTest(case=case):
+                normalized.write_bytes(original)
+                data = yaml.safe_load(statement_path.read_text())
+                data["statements"][0]["excerpt"] = "missing" if case == "excerpt" else "Test source fragment"
+                statement_path.write_text(yaml.safe_dump(data))
+                manifest_path = normalized.parent / "manifest.local.yml"
+                manifest = yaml.safe_load(manifest_path.read_text())
+                manifest["files"][0]["path"] = "../../../../" + DOCUMENT if case == "manifest-escape" else "normalized.local/test.local.md"
+                manifest["files"][0]["entry_sha256"] = "0" * 64 if case == "entry-hash" else hashlib.sha256(b"<html><body>Test source fragment</body></html>").hexdigest()
+                manifest_path.write_text(yaml.safe_dump(manifest))
+                if case == "normalization":
+                    normalized.write_text("changed")
+                before = self.fingerprint()
+                result = self.run_worker("verification")
+                self.assertEqual(result.returncode, 2, result.stderr)
+                self.assertEqual(self.fingerprint(), before)
+
 
 if __name__ == "__main__":
     unittest.main()

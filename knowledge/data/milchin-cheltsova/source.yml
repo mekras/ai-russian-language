@@ -1,6 +1,6 @@
 id: MILCHIN-CHELTSOVA
 slug: milchin-cheltsova
-title: "Справочник издателя и автора"
+title: Справочник издателя и автора
 status: approved
 priority: high
 carrier_type: document
@@ -8,54 +8,63 @@ source_kind: book
 long_source: true
 adapter: builtin.local-file
 storage_strategy: local_only
-processing_scope: metadata_only
+processing_scope: selected_fragments
 retrieval_mode: on_demand
-copy_policy: metadata_only
-allowed_use: "Точечная проверка правил издательского оформления по локальной копии. В Git допустимы метаданные, ссылка на источник и самостоятельные краткие выводы без воспроизведения охраняемого текста."
-requires_access_check: true
-
-locator: "local:milchin-cheltsova"
+copy_policy: fragments_only
+allowed_use: Допустить извлечение и сохранение максимально полного набора применимых к проекту правил, принципов, методов
+  и фактов в самостоятельном изложении с указанием источника и места в нём. Полноту не ограничивать заранее заданным
+  количеством утверждений. Не воспроизводить без правового основания охраняемые формулировки, объяснения, примеры и творческий
+  подбор или расположение материалов. Цитирование оценивать по условиям статьи 1274 ГК РФ. Проверять отдельные утверждения
+  и совокупный результат.
+requires_access_check: false
+locator: local:milchin-cheltsova
 provenance:
   origin: external_material
-  locator: "local:milchin-cheltsova"
+  locator: local:milchin-cheltsova
 admission:
   decision:
     ref: .ai-dev-team/source-admissions/milchin-cheltsova.yml
-    sha256: "474105d1649f2200700ed1ffaa40190ac66de9a4b5e3641b8e66886e04494020"
-public_reference: "https://store.artlebedev.ru/books/typography/spravochnik-izdatelya-i-avtora-e-book/"
-license_or_terms: "В EPUB указаны © А. Э. Мильчин и Л. К. Чельцова за текст, © Студия Артемия Лебедева за оформление. Открытая лицензия или разрешение на публикацию, массовое извлечение и создание производной текстовой базы не установлены."
-
+    sha256: e9c82cc080a25c5c0b8ea32f1a27ea070a9191ac6d58e885898b035696b76557
+public_reference: https://store.artlebedev.ru/books/typography/spravochnik-izdatelya-i-avtora-e-book/
+license_or_terms: В EPUB указаны © А. Э. Мильчин и Л. К. Чельцова за текст, © Студия Артемия Лебедева за оформление.
+  Открытая лицензия или разрешение на публикацию, массовое извлечение и создание производной текстовой базы не установлены.
 access:
-  default: "Локальная копия в source.local.epub, предоставленная владельцем проекта. Файл доступен только для точечной проверки в рабочей среде. Перед любым цитированием или переносом фрагмента проверять самостоятельное правовое основание."
+  default: Локальная копия source.local.epub, предоставленная владельцем проекта. Обработка разрешена в пределах allowed_use
+    источника. Полный текст остаётся вне Git.
 reliability: canonical
 stability: stable
 refresh_policy: manual
 retrieved_at: 2026-08-12
-last_checked_at: 2026-08-12
-checked_by: "Техническая проверка EPUB: ZIP-структура, OPF-метаданные и оглавление."
-content_hash: "4dbf13c0200f7396b6fb9f9bd62407e11460e5fbe4f2bd4aaac94359a188a1b8"
+last_checked_at: '2026-10-15'
+checked_by: 'Основной агент: проверка локального EPUB, нормализованного слоя и самостоятельных утверждений. Независимая
+  сверка оригинала не выполнялась.'
+content_hash: 4dbf13c0200f7396b6fb9f9bd62407e11460e5fbe4f2bd4aaac94359a188a1b8
 content_hash_algorithm: sha256
-
-original_filename: "Milchin_A._Spravochnik_Izdatelya_I_A.epub"
+original_filename: Milchin_A._Spravochnik_Izdatelya_I_A.epub
 format: epub
 file_size_bytes: 8925597
-page_count:
-metadata_source: "OPF-метаданные и оглавление EPUB, проверены 2026-08-12."
-extraction_tool: "unzip"
-extraction_status: not_started
-publication_safety: "Полный EPUB, текстовая выгрузка, поисковый индекс и фрагменты книги не публикуются и не хранятся в Git."
-
+page_count: null
+metadata_source: OPF-метаданные и оглавление EPUB, проверены 2026-08-12.
+extraction_tool: Python zipfile + BeautifulSoup html.parser, .local/work/normalize-book.py
+extraction_status: normalized_fragments_ready
+publication_safety: Полный EPUB, полная текстовая выгрузка и полнотекстовый поисковый индекс не публикуются и не хранятся
+  в Git. Производные утверждения и допустимые цитаты проверяются по allowed_use перед сохранением в Git.
 scope:
   includes:
-    - "Редакционно-издательское оформление текста, включая таблицы и выводы."
+  - Редакционно-издательское оформление текста, включая таблицы и выводы.
   excludes:
-    - "Полное воспроизведение книги в публичном корпусе."
-
+  - Полное воспроизведение книги в публичном корпусе.
 known_limitations:
-  - "Происхождение локального экземпляра известно только как предоставление владельцем проекта."
-  - "Номер печатной страницы нельзя надёжно получить из EPUB без отдельной сверки с изданием."
+- Происхождение локального экземпляра известно только как предоставление владельцем проекта.
+- Номер печатной страницы нельзя надёжно получить из EPUB без отдельной сверки с изданием.
+- Расхождения числовых примеров, кодировки и таблиц перечислены в source-map.yml, quality_observations. Они не исправлялись
+  в первичном тексте и не принимаются как действующие нормы.
 processing_notes:
-  - "Локальная копия хранится только как knowledge/data/milchin-cheltsova/source.local.epub и исключается .gitignore."
-  - "Не передавать EPUB, текст книги, поисковый индекс или существенные фрагменты во внешние сервисы, результаты работы или Git."
-  - "Разрешены только точечное чтение, собственные краткие выводы и атрибуция источника без воспроизведения охраняемого текста."
-  - "Нормализация, цитирование и извлечение утверждений с выдержками требуют отдельной проверки законного основания и допустимого объёма."
+- Локальная копия хранится только как knowledge/data/milchin-cheltsova/source.local.epub и исключается .gitignore.
+- Отбор сведений для самостоятельного изложения не ограничен заранее заданным количеством утверждений. Проверяются отдельные
+  утверждения и совокупный результат.
+- Извлечение утверждений допускается по allowed_use. Для цитирования проверяются условия статьи 1274 ГК РФ, включая цель,
+  объём, указание автора и источника.
+- MILCH — короткий префикс утверждений этого источника. Существующий идентификатор MILCHIN-CHELTSOVA сохраняется в карточках
+  и решении о допуске.
+short_id: MILCH

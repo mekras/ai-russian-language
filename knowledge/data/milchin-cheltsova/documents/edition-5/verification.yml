@@ -1,0 +1,27 @@
+verification_contract_version: 1
+artifact: snapshot.local.epub
+hash:
+  algorithm: sha256
+  value: 4dbf13c0200f7396b6fb9f9bd62407e11460e5fbe4f2bd4aaac94359a188a1b8
+acquisition:
+  method: user_provided
+  recorded_at: '2026-08-12'
+verification:
+  method: local_integrity_only
+  checked_at: '2026-10-15'
+  checked_by:
+    role: local-book-executor
+  scope:
+    content: none
+    metadata: []
+  result:
+    overall: unverified
+    content_match: unverified
+    scope_completeness: not_assessed
+    metadata:
+      author: unverified
+      locator: unverified
+      publication_date: unverified
+  limitations:
+  - Проверены хэш и размер предоставленного EPUB, хэши нормализованных файлов и их
+    исходных частей. Сверка с издательским оригиналом не выполнялась.

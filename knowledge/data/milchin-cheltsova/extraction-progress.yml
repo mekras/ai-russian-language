@@ -1,0 +1,5713 @@
+source_id: MILCHIN-CHELTSOVA
+source_hash: 4dbf13c0200f7396b6fb9f9bd62407e11460e5fbe4f2bd4aaac94359a188a1b8
+stage: statements_in_progress
+complete: false
+canonical_structure: source-map.yml#structure.units
+candidate_artifacts:
+- path: .local/work/frontmatter-candidates.local.yml
+  sha256: e59af12a15328f4465bc955ca67db269edd7d3d67e92a005773308ccb90ae108
+  unit_ids:
+  - unit-0001
+  - unit-0002
+  - unit-0003
+  - unit-0004
+  - unit-0005
+  - unit-0006
+  - unit-0007
+  - unit-0008
+  - unit-0009
+  candidate_count: 7
+  review: Материал использован при подготовке конечных утверждений. Самопроверка основного агента, затем механическая
+    проверка происхождения.
+- path: .local/work/heading-candidates.local.yml
+  sha256: 14b2bc887e9cc1c55ed9befedb4438e4dbd295bd27c691b06f1cae8212a2c364
+  unit_ids:
+  - unit-0010
+  - unit-0011
+  - unit-0012
+  - unit-0013
+  - unit-0014
+  - unit-0015
+  - unit-0016
+  - unit-0017
+  - unit-0018
+  - unit-0019
+  - unit-0020
+  - unit-0021
+  - unit-0022
+  - unit-0023
+  - unit-0024
+  - unit-0025
+  - unit-0026
+  - unit-0027
+  - unit-0028
+  - unit-0029
+  - unit-0030
+  - unit-0031
+  - unit-0032
+  - unit-0033
+  - unit-0034
+  - unit-0035
+  - unit-0036
+  - unit-0037
+  - unit-0038
+  - unit-0039
+  - unit-0040
+  - unit-0041
+  - unit-0042
+  - unit-0043
+  - unit-0044
+  - unit-0045
+  - unit-0046
+  - unit-0047
+  - unit-0048
+  - unit-0049
+  - unit-0050
+  - unit-0051
+  - unit-0052
+  - unit-0053
+  - unit-0054
+  - unit-0055
+  - unit-0056
+  - unit-0057
+  - unit-0058
+  - unit-0059
+  - unit-0060
+  - unit-0061
+  - unit-0062
+  - unit-0063
+  - unit-0064
+  - unit-0065
+  - unit-0066
+  - unit-0067
+  - unit-0068
+  - unit-0069
+  - unit-0070
+  - unit-0071
+  - unit-0072
+  - unit-0073
+  - unit-0074
+  - unit-0075
+  - unit-0076
+  - unit-0077
+  - unit-0078
+  - unit-0079
+  - unit-0080
+  - unit-0081
+  - unit-0082
+  - unit-0083
+  - unit-0084
+  - unit-0085
+  - unit-0086
+  - unit-0087
+  - unit-0088
+  - unit-0089
+  - unit-0090
+  - unit-0091
+  candidate_count: 127
+  review: Материал использован при подготовке конечных утверждений. Самопроверка основного агента, затем механическая
+    проверка происхождения.
+  chapter: 1
+- path: .local/work/list-candidates.local.yml
+  sha256: 5110310d246b87a66b3dcc3dbdf14e0738b0f598e0f0424bf9ba95df0107bfe5
+  unit_ids:
+  - unit-0092
+  - unit-0093
+  - unit-0094
+  - unit-0095
+  - unit-0096
+  - unit-0097
+  - unit-0098
+  - unit-0099
+  - unit-0100
+  - unit-0101
+  - unit-0102
+  - unit-0103
+  - unit-0104
+  - unit-0105
+  - unit-0106
+  - unit-0107
+  - unit-0108
+  - unit-0109
+  candidate_count: 40
+  review: Материал использован при подготовке конечных утверждений. Самопроверка основного агента, затем механическая
+    проверка происхождения.
+  chapter: 2
+- path: .local/work/name-candidates.local.yml
+  sha256: 18245f434774c5e0162c4d697e6fa7cfbdfc2b056b4ec3e62665f49e2ec164ee
+  candidate_count: 284
+  partial_sections:
+  - '3.1'
+  - '3.2'
+  - '3.3'
+  - '3.4'
+  - '3.5'
+  - '3.6'
+  - '3.7'
+  - '3.8'
+  - '3.9'
+  - '3.10'
+  - '3.11'
+  - '3.12'
+  - '3.13'
+  - '3.14'
+  - '3.15'
+  - '3.16'
+  - '3.17'
+  - '3.18'
+  - '3.19'
+  - '3.20'
+  - '3.21'
+  - '3.22'
+  - '3.23'
+  - '3.24'
+  - '3.25'
+  - '3.26'
+  - '3.27'
+  - '3.28'
+  - '3.29'
+  - '3.30'
+  - '3.31'
+  review: Материал использован при подготовке конечных утверждений. Самопроверка основного агента, затем механическая
+    проверка происхождения.
+  chapter: 3
+  unit_ids:
+  - unit-0110
+  - unit-0111
+  - unit-0112
+  - unit-0113
+  - unit-0114
+  - unit-0115
+  - unit-0116
+  - unit-0117
+  - unit-0118
+  - unit-0119
+  - unit-0120
+  - unit-0121
+  - unit-0122
+  - unit-0123
+  - unit-0124
+  - unit-0125
+  - unit-0126
+  - unit-0127
+  - unit-0128
+  - unit-0129
+  - unit-0130
+  - unit-0131
+  - unit-0132
+  - unit-0133
+  - unit-0134
+  - unit-0135
+  - unit-0136
+  - unit-0137
+  - unit-0138
+  - unit-0139
+  - unit-0140
+  - unit-0141
+  - unit-0142
+  - unit-0143
+  - unit-0144
+  - unit-0145
+  - unit-0146
+  - unit-0147
+  - unit-0148
+  - unit-0149
+  - unit-0150
+  - unit-0151
+  - unit-0152
+  - unit-0153
+  - unit-0154
+  - unit-0155
+  - unit-0156
+  - unit-0157
+  - unit-0158
+  - unit-0159
+  - unit-0160
+  - unit-0161
+  - unit-0162
+  - unit-0163
+  - unit-0164
+  - unit-0165
+  - unit-0166
+  - unit-0167
+  - unit-0168
+  - unit-0169
+  - unit-0170
+  - unit-0171
+  - unit-0172
+  - unit-0173
+  - unit-0174
+  - unit-0175
+  - unit-0176
+  - unit-0177
+  - unit-0178
+  - unit-0179
+  - unit-0180
+  - unit-0181
+  - unit-0182
+  - unit-0183
+  - unit-0184
+  - unit-0185
+  - unit-0186
+  - unit-0187
+  - unit-0188
+  - unit-0189
+  - unit-0190
+  - unit-0191
+  - unit-0192
+  - unit-0193
+  - unit-0194
+  - unit-0195
+  - unit-0196
+  - unit-0197
+  - unit-0198
+  - unit-0199
+  - unit-0200
+  - unit-0201
+  - unit-0202
+  - unit-0203
+  - unit-0204
+  - unit-0205
+  - unit-0206
+  - unit-0207
+  - unit-0208
+  - unit-0209
+  - unit-0210
+  - unit-0211
+  - unit-0212
+  - unit-0213
+  - unit-0214
+  - unit-0215
+  - unit-0216
+  - unit-0217
+  - unit-0218
+  - unit-0219
+  - unit-0220
+  - unit-0221
+  - unit-0222
+  - unit-0223
+  - unit-0224
+  - unit-0225
+  - unit-0226
+  - unit-0227
+  - unit-0228
+  - unit-0229
+  - unit-0230
+  - unit-0231
+  - unit-0232
+  - unit-0233
+  - unit-0234
+  - unit-0235
+  - unit-0236
+  - unit-0237
+  - unit-0238
+  - unit-0239
+  - unit-0240
+  - unit-0241
+  - unit-0242
+  - unit-0243
+  - unit-0244
+  - unit-0245
+  - unit-0246
+  - unit-0247
+  - unit-0248
+  - unit-0249
+  - unit-0250
+  - unit-0251
+  - unit-0252
+  - unit-0253
+  - unit-0254
+  - unit-0255
+  - unit-0256
+  - unit-0257
+  - unit-0258
+  - unit-0259
+  - unit-0260
+  - unit-0261
+  - unit-0262
+  - unit-0263
+  - unit-0264
+  - unit-0265
+  - unit-0266
+  - unit-0267
+  - unit-0268
+  - unit-0269
+  - unit-0270
+  - unit-0271
+  - unit-0272
+  - unit-0273
+  - unit-0274
+  - unit-0275
+  - unit-0276
+  - unit-0277
+  - unit-0278
+  - unit-0279
+  - unit-0280
+  - unit-0281
+  - unit-0282
+  - unit-0283
+  - unit-0284
+  - unit-0285
+  - unit-0286
+  - unit-0287
+  - unit-0288
+  - unit-0289
+  - unit-0290
+  - unit-0291
+  - unit-0292
+  - unit-0293
+  - unit-0294
+  - unit-0295
+  - unit-0296
+  - unit-0297
+  - unit-0298
+  - unit-0299
+  - unit-0300
+  - unit-0301
+  - unit-0302
+  - unit-0303
+  - unit-0304
+  - unit-0305
+  - unit-0306
+  - unit-0307
+  - unit-0308
+  - unit-0309
+  - unit-0310
+- path: .local/work/abbreviation-candidates.local.yml
+  sha256: 439122e768c189c99786dad9ba19905939df382fe11d67930f9388bb9be63aed
+  candidate_count: 96
+  review: Материал использован при подготовке конечных утверждений. Самопроверка основного агента, затем механическая
+    проверка происхождения.
+  chapter: 4
+  unit_ids:
+  - unit-0311
+  - unit-0312
+  - unit-0313
+  - unit-0314
+  - unit-0315
+  - unit-0316
+  - unit-0317
+  - unit-0318
+  - unit-0319
+  - unit-0320
+  - unit-0321
+  - unit-0322
+  - unit-0323
+  - unit-0324
+  - unit-0325
+  - unit-0326
+  - unit-0327
+  - unit-0328
+  - unit-0329
+  - unit-0330
+  - unit-0331
+  - unit-0332
+  - unit-0333
+  - unit-0334
+  - unit-0335
+  - unit-0336
+  - unit-0337
+  - unit-0338
+  - unit-0339
+  - unit-0340
+  - unit-0341
+  - unit-0342
+  - unit-0343
+  - unit-0344
+  - unit-0345
+  - unit-0346
+  - unit-0347
+  - unit-0348
+  - unit-0349
+  - unit-0350
+  - unit-0351
+  - unit-0352
+  - unit-0353
+  - unit-0354
+  - unit-0355
+  - unit-0356
+  - unit-0357
+  - unit-0358
+  - unit-0359
+  - unit-0360
+  - unit-0361
+  - unit-0362
+  - unit-0363
+  - unit-0364
+  - unit-0365
+- path: .local/work/emphasis-candidates.local.yml
+  sha256: 13f472baf448a848dbae0a515cfe43896af9848b8701e7b72916f9bc39586756
+  candidate_count: 48
+  review: Материал использован при подготовке конечных утверждений. Самопроверка основного агента, затем механическая
+    проверка происхождения.
+  chapter: 5
+  unit_ids:
+  - unit-0366
+  - unit-0367
+  - unit-0368
+  - unit-0369
+  - unit-0370
+  - unit-0371
+  - unit-0372
+  - unit-0373
+  - unit-0374
+  - unit-0375
+  - unit-0376
+  - unit-0377
+  - unit-0378
+  - unit-0379
+  - unit-0380
+  - unit-0381
+  - unit-0382
+  - unit-0383
+  - unit-0384
+  - unit-0385
+- path: .local/work/numbers-candidates.local.yml
+  sha256: 174e8fd5a9f6cc6ab4ad06100c2e16122a79e083ddfc476c4b309ccf0f35b662
+  candidate_count: 88
+  review: Материал использован при подготовке конечных утверждений. Самопроверка основного агента, затем механическая
+    проверка происхождения.
+  chapter: 6
+  unit_ids:
+  - unit-0386
+  - unit-0387
+  - unit-0388
+  - unit-0389
+  - unit-0390
+  - unit-0391
+  - unit-0392
+  - unit-0393
+  - unit-0394
+  - unit-0395
+  - unit-0396
+  - unit-0397
+  - unit-0398
+  - unit-0399
+  - unit-0400
+  - unit-0401
+  - unit-0402
+  - unit-0403
+  - unit-0404
+  - unit-0405
+  - unit-0406
+  - unit-0407
+  - unit-0408
+  - unit-0409
+  - unit-0410
+  - unit-0411
+  - unit-0412
+  - unit-0413
+  - unit-0414
+  - unit-0415
+  - unit-0416
+  - unit-0417
+  - unit-0418
+  - unit-0419
+  - unit-0420
+  - unit-0421
+  - unit-0422
+  - unit-0423
+  - unit-0424
+  - unit-0425
+- path: .local/work/dates-candidates.local.yml
+  sha256: 268d11a3de8a8b223f1f9fadad621c4d09554ffc3db3f35ff446ece465d324d0
+  candidate_count: 35
+  review: Материал использован при подготовке конечных утверждений. Самопроверка основного агента, затем механическая
+    проверка происхождения.
+  chapter: 7
+  unit_ids:
+  - unit-0426
+  - unit-0427
+  - unit-0428
+  - unit-0429
+  - unit-0430
+  - unit-0431
+  - unit-0432
+  - unit-0433
+  - unit-0434
+  - unit-0435
+  - unit-0436
+  - unit-0437
+  - unit-0438
+  - unit-0439
+  - unit-0440
+  - unit-0441
+  - unit-0442
+  - unit-0443
+  - unit-0444
+  - unit-0445
+- path: .local/work/quotes-candidates.local.yml
+  sha256: c16087b0c566dda5ccb36dadf57532c1c767de2bf31d6d8119ff0fb033e54de2
+  candidate_count: 73
+  review: Материал использован при подготовке конечных утверждений. Самопроверка основного агента, затем механическая
+    проверка происхождения.
+  chapter: 8
+  unit_ids:
+  - unit-0446
+  - unit-0447
+  - unit-0448
+  - unit-0449
+  - unit-0450
+  - unit-0451
+  - unit-0452
+  - unit-0453
+  - unit-0454
+  - unit-0455
+  - unit-0456
+  - unit-0457
+  - unit-0458
+  - unit-0459
+  - unit-0460
+  - unit-0461
+  - unit-0462
+  - unit-0463
+  - unit-0464
+  - unit-0465
+  - unit-0466
+  - unit-0467
+  - unit-0468
+  - unit-0469
+  - unit-0470
+  - unit-0471
+  - unit-0472
+  - unit-0473
+  - unit-0474
+  - unit-0475
+  - unit-0476
+  - unit-0477
+  - unit-0478
+  - unit-0479
+  - unit-0480
+  - unit-0481
+  - unit-0482
+  - unit-0483
+  - unit-0484
+  - unit-0485
+  - unit-0486
+  - unit-0487
+  - unit-0488
+  - unit-0489
+  - unit-0490
+  - unit-0491
+  - unit-0492
+  - unit-0493
+  - unit-0494
+  - unit-0495
+  - unit-0496
+  - unit-0497
+  - unit-0498
+  - unit-0499
+  - unit-0500
+  - unit-0501
+- path: .local/work/references-candidates.local.yml
+  sha256: 1a5299b324bcc3e96dfac32ce58586edf6c37ed8d4bb82e00d7fe16ce85d97eb
+  candidate_count: 44
+  review: Материал использован при подготовке конечных утверждений. Самопроверка основного агента, затем механическая
+    проверка происхождения.
+  chapter: 9
+  unit_ids:
+  - unit-0502
+  - unit-0503
+  - unit-0504
+  - unit-0505
+  - unit-0506
+  - unit-0507
+  - unit-0508
+  - unit-0509
+  - unit-0510
+  - unit-0511
+  - unit-0512
+  - unit-0513
+  - unit-0514
+  - unit-0515
+  - unit-0516
+  - unit-0517
+  - unit-0518
+- path: .local/work/drama-candidates.local.yml
+  sha256: 8d6e5ead1a657e40561f5650a795be20b4796183fe3e317bdef356f1a93acf1d
+  candidate_count: 35
+  review: Материал использован при подготовке конечных утверждений. Самопроверка основного агента, затем механическая
+    проверка происхождения.
+  chapter: 11
+  unit_ids:
+  - unit-0535
+  - unit-0536
+  - unit-0537
+  - unit-0538
+  - unit-0539
+  - unit-0540
+  - unit-0541
+  - unit-0542
+  - unit-0543
+  - unit-0544
+  - unit-0545
+  - unit-0546
+  - unit-0547
+  - unit-0548
+  - unit-0549
+  - unit-0550
+  - unit-0551
+  - unit-0552
+  - unit-0553
+  - unit-0554
+  - unit-0555
+  - unit-0556
+  - unit-0557
+  - unit-0558
+  - unit-0559
+  - unit-0560
+  - unit-0561
+  - unit-0562
+  - unit-0563
+  - unit-0564
+  - unit-0565
+  - unit-0566
+  - unit-0567
+- path: .local/work/verse-candidates.local.yml
+  sha256: 9407a2b267845ff4d0db4f05083d5a80e572c8686b2d6c8ab035048ca2cd3b4c
+  candidate_count: 12
+  review: Материал использован при подготовке конечных утверждений. Самопроверка основного агента, затем механическая
+    проверка происхождения.
+  chapter: 10
+  unit_ids:
+  - unit-0519
+  - unit-0520
+  - unit-0521
+  - unit-0522
+  - unit-0523
+  - unit-0524
+  - unit-0525
+  - unit-0526
+  - unit-0527
+  - unit-0528
+  - unit-0529
+  - unit-0530
+  - unit-0531
+  - unit-0532
+  - unit-0533
+  - unit-0534
+- path: .local/work/archive-candidates.local.yml
+  sha256: 73d53b0d2e137ad4fbbbeea314b6999afb6b75b4c53372fd04b4abb7f1fb1d0f
+  candidate_count: 86
+  review: Материал использован при подготовке конечных утверждений. Самопроверка основного агента, затем механическая
+    проверка происхождения.
+  chapter: 12
+  unit_ids:
+  - unit-0568
+  - unit-0569
+  - unit-0570
+  - unit-0571
+  - unit-0572
+  - unit-0573
+  - unit-0574
+  - unit-0575
+  - unit-0576
+  - unit-0577
+  - unit-0578
+  - unit-0579
+  - unit-0580
+  - unit-0581
+  - unit-0582
+  - unit-0583
+  - unit-0584
+  - unit-0585
+  - unit-0586
+  - unit-0587
+  - unit-0588
+  - unit-0589
+  - unit-0590
+  - unit-0591
+  - unit-0592
+  - unit-0593
+  - unit-0594
+  - unit-0595
+  - unit-0596
+  - unit-0597
+  - unit-0598
+  - unit-0599
+  - unit-0600
+  - unit-0601
+  - unit-0602
+  - unit-0603
+  - unit-0604
+  - unit-0605
+  - unit-0606
+  - unit-0607
+  - unit-0608
+  - unit-0609
+  - unit-0610
+  - unit-0611
+  - unit-0612
+  - unit-0613
+  - unit-0614
+  - unit-0615
+  - unit-0616
+  - unit-0617
+  - unit-0618
+  - unit-0619
+  - unit-0620
+  - unit-0621
+  - unit-0622
+  - unit-0623
+  - unit-0624
+  - unit-0625
+  - unit-0626
+  - unit-0627
+- path: .local/work/tables-candidates.local.yml
+  sha256: 9b6db738acf0a19d941b7bbe5c39ca59d2a453250fae3a3b36f5dc257d0b0546
+  candidate_count: 149
+  review: Материал использован при подготовке конечных утверждений. Самопроверка основного агента, затем механическая
+    проверка происхождения.
+  chapter: 13
+  unit_ids:
+  - unit-0628
+  - unit-0629
+  - unit-0630
+  - unit-0631
+  - unit-0632
+  - unit-0633
+  - unit-0634
+  - unit-0635
+  - unit-0636
+  - unit-0637
+  - unit-0638
+  - unit-0639
+  - unit-0640
+  - unit-0641
+  - unit-0642
+  - unit-0643
+  - unit-0644
+  - unit-0645
+  - unit-0646
+  - unit-0647
+  - unit-0648
+  - unit-0649
+  - unit-0650
+  - unit-0651
+  - unit-0652
+  - unit-0653
+  - unit-0654
+  - unit-0655
+  - unit-0656
+  - unit-0657
+  - unit-0658
+  - unit-0659
+  - unit-0660
+  - unit-0661
+  - unit-0662
+  - unit-0663
+  - unit-0664
+  - unit-0665
+  - unit-0666
+  - unit-0667
+  - unit-0668
+  - unit-0669
+  - unit-0670
+  - unit-0671
+  - unit-0672
+  - unit-0673
+  - unit-0674
+  - unit-0675
+  - unit-0676
+  - unit-0677
+  - unit-0678
+  - unit-0679
+  - unit-0680
+  - unit-0681
+  - unit-0682
+  - unit-0683
+  - unit-0684
+  - unit-0685
+  - unit-0686
+  - unit-0687
+  - unit-0688
+  - unit-0689
+  - unit-0690
+  - unit-0691
+  - unit-0692
+  - unit-0693
+  - unit-0694
+  - unit-0695
+  - unit-0696
+  - unit-0697
+  - unit-0698
+  - unit-0699
+  - unit-0700
+  - unit-0701
+  - unit-0702
+  - unit-0703
+  - unit-0704
+  - unit-0705
+  - unit-0706
+  - unit-0707
+  - unit-0708
+  - unit-0709
+  - unit-0710
+  - unit-0711
+  - unit-0712
+  - unit-0713
+  - unit-0714
+  - unit-0715
+  - unit-0716
+  - unit-0717
+  - unit-0718
+  - unit-0719
+  - unit-0720
+  - unit-0721
+  - unit-0722
+  - unit-0723
+  - unit-0724
+  - unit-0725
+  - unit-0726
+  - unit-0727
+  - unit-0728
+  - unit-0729
+  - unit-0730
+  - unit-0731
+  - unit-0732
+  - unit-0733
+  - unit-0734
+  - unit-0735
+  - unit-0736
+  - unit-0737
+  - unit-0738
+  - unit-0739
+  - unit-0740
+  - unit-0741
+  - unit-0742
+  - unit-0743
+  - unit-0744
+  - unit-0745
+  - unit-0746
+  - unit-0747
+  - unit-0748
+- path: .local/work/supplement-candidates.local.yml
+  sha256: 60989a9d6b716b1821b0182fd01fca699c76df8ca86f97e496e27427ab3e737c
+  candidate_count: 46
+  review: Материал использован при подготовке конечных утверждений. Самопроверка основного агента, затем механическая
+    проверка происхождения.
+  chapter: 14
+  unit_ids:
+  - unit-0749
+  - unit-0750
+  - unit-0751
+  - unit-0752
+  - unit-0753
+  - unit-0754
+  - unit-0755
+  - unit-0756
+  - unit-0757
+  - unit-0758
+  - unit-0759
+  - unit-0760
+  - unit-0761
+  - unit-0762
+  - unit-0763
+  - unit-0764
+  - unit-0765
+  - unit-0766
+  - unit-0767
+  - unit-0768
+  - unit-0769
+  - unit-0770
+  - unit-0771
+  - unit-0772
+  - unit-0773
+  - unit-0774
+  - unit-0775
+  - unit-0776
+  - unit-0777
+  - unit-0778
+  - unit-0779
+  - unit-0780
+  - unit-0781
+  - unit-0782
+- path: .local/work/illustration-label-candidates.local.yml
+  sha256: 4228234496b3fcfc9b8cc4b67e58740449cd265306935a2d576430d50097260d
+  candidate_count: 13
+  review: Материал использован при подготовке конечных утверждений. Самопроверка основного агента, затем механическая
+    проверка происхождения.
+  chapter: 15
+  unit_ids:
+  - unit-0783
+  - unit-0784
+  - unit-0785
+  - unit-0786
+  - unit-0787
+  - unit-0788
+  - unit-0789
+  - unit-0790
+  - unit-0791
+- path: .local/work/illustration-number-candidates.local.yml
+  sha256: dfdf13d18456d564a97effa6ad2f60545982c75a2ff7ff7f2e836f91cf04e101
+  candidate_count: 26
+  review: Материал использован при подготовке конечных утверждений. Самопроверка основного агента, затем механическая
+    проверка происхождения.
+  chapter: 16
+  unit_ids:
+  - unit-0792
+  - unit-0793
+  - unit-0794
+  - unit-0795
+  - unit-0796
+  - unit-0797
+  - unit-0798
+  - unit-0799
+  - unit-0800
+  - unit-0801
+  - unit-0802
+  - unit-0803
+  - unit-0804
+  - unit-0805
+  - unit-0806
+  - unit-0807
+  - unit-0808
+  - unit-0809
+- path: .local/work/caption-candidates.local.yml
+  sha256: a3ab15dc4361e8e5b45d24647aa865ff3988f53d99cad5a11cdea8cbbdb30427
+  candidate_count: 49
+  review: Материал использован при подготовке конечных утверждений. Самопроверка основного агента, затем механическая
+    проверка происхождения.
+  chapter: 17
+  unit_ids:
+  - unit-0810
+  - unit-0811
+  - unit-0812
+  - unit-0813
+  - unit-0814
+  - unit-0815
+  - unit-0816
+  - unit-0817
+  - unit-0818
+  - unit-0819
+  - unit-0820
+  - unit-0821
+  - unit-0822
+  - unit-0823
+  - unit-0824
+  - unit-0825
+  - unit-0826
+  - unit-0827
+  - unit-0828
+  - unit-0829
+  - unit-0830
+  - unit-0831
+  - unit-0832
+  - unit-0833
+  - unit-0834
+  - unit-0835
+  - unit-0836
+  - unit-0837
+  - unit-0838
+  - unit-0839
+  - unit-0840
+- path: .local/work/publication-metadata-candidates.local.yml
+  sha256: 97a9e31351c751f17f4bffecbbb1eab302cca1d5ea682a830731b82796a868ac
+  candidate_count: 19
+  review: Материал использован при подготовке конечных утверждений. Самопроверка основного агента, затем механическая
+    проверка происхождения.
+  chapter: 18
+  unit_ids:
+  - unit-0841
+  - unit-0842
+  - unit-0843
+  - unit-0844
+  - unit-0845
+  - unit-0846
+  - unit-0847
+  - unit-0848
+  - unit-0849
+  - unit-0850
+  - unit-0851
+  - unit-0852
+- path: .local/work/titlepage-candidates.local.yml
+  sha256: b1449f1d3382f465f302a6f6b34bd7c4e139665d36d454d3b700e5df0d63bc03
+  candidate_count: 84
+  review: Материал использован при подготовке конечных утверждений. Самопроверка основного агента, затем механическая
+    проверка происхождения.
+  chapter: 19
+  unit_ids:
+  - unit-0853
+  - unit-0854
+  - unit-0855
+  - unit-0856
+  - unit-0857
+  - unit-0858
+  - unit-0859
+  - unit-0860
+  - unit-0861
+  - unit-0862
+  - unit-0863
+  - unit-0864
+  - unit-0865
+  - unit-0866
+  - unit-0867
+  - unit-0868
+  - unit-0869
+  - unit-0870
+  - unit-0871
+  - unit-0872
+  - unit-0873
+  - unit-0874
+  - unit-0875
+  - unit-0876
+  - unit-0877
+  - unit-0878
+  - unit-0879
+  - unit-0880
+  - unit-0881
+  - unit-0882
+  - unit-0883
+  - unit-0884
+  - unit-0885
+  - unit-0886
+  - unit-0887
+  - unit-0888
+  - unit-0889
+  - unit-0890
+  - unit-0891
+  - unit-0892
+  - unit-0893
+  - unit-0894
+  - unit-0895
+  - unit-0896
+  - unit-0897
+  - unit-0898
+  - unit-0899
+  - unit-0900
+  - unit-0901
+  - unit-0902
+  - unit-0903
+  - unit-0904
+  - unit-0905
+  - unit-0906
+  - unit-0907
+  - unit-0908
+  - unit-0909
+  - unit-0910
+  - unit-0911
+  - unit-0912
+  - unit-0913
+  - unit-0914
+  - unit-0915
+  - unit-0916
+  - unit-0917
+  - unit-0918
+  - unit-0919
+- path: .local/work/titleverso-candidates.local.yml
+  sha256: 5cc4511f89a1dd438301a5d23abf86a44049a34cff1ca06ff2a1212e7253a328
+  candidate_count: 54
+  review: Материал использован при подготовке конечных утверждений. Самопроверка основного агента, затем механическая
+    проверка происхождения.
+  chapter: 20
+  unit_ids:
+  - unit-0920
+  - unit-0921
+  - unit-0922
+  - unit-0923
+  - unit-0924
+  - unit-0925
+  - unit-0926
+  - unit-0927
+  - unit-0928
+  - unit-0929
+  - unit-0930
+  - unit-0931
+  - unit-0932
+  - unit-0933
+  - unit-0934
+  - unit-0935
+  - unit-0936
+  - unit-0937
+  - unit-0938
+  - unit-0939
+  - unit-0940
+  - unit-0941
+  - unit-0942
+  - unit-0943
+  - unit-0944
+  - unit-0945
+  - unit-0946
+  - unit-0947
+  - unit-0948
+  - unit-0949
+  - unit-0950
+- path: .local/work/colophon-candidates.local.yml
+  sha256: ee7a395b6974269e7d8d6890286aed5f7f9fb0bc327377df78dc62dae02c7c6e
+  candidate_count: 24
+  review: Материал использован при подготовке конечных утверждений. Самопроверка основного агента, затем механическая
+    проверка происхождения.
+  chapter: 21
+  unit_ids:
+  - unit-0951
+  - unit-0952
+  - unit-0953
+  - unit-0954
+  - unit-0955
+  - unit-0956
+  - unit-0957
+  - unit-0958
+  - unit-0959
+  - unit-0960
+  - unit-0961
+  - unit-0962
+  - unit-0963
+  - unit-0964
+  - unit-0965
+  - unit-0966
+  - unit-0967
+  - unit-0968
+  - unit-0969
+  - unit-0970
+  - unit-0971
+  - unit-0972
+  - unit-0973
+- path: .local/work/cover-candidates.local.yml
+  sha256: c8feb1c1f06cb535ee84b035213abb8077cced10204bc4c6b62978a6a95bfd1a
+  candidate_count: 18
+  review: Материал использован при подготовке конечных утверждений. Самопроверка основного агента, затем механическая
+    проверка происхождения.
+  chapter: 22
+  unit_ids:
+  - unit-0974
+  - unit-0975
+  - unit-0976
+  - unit-0977
+  - unit-0978
+  - unit-0979
+  - unit-0980
+  - unit-0981
+  - unit-0982
+  - unit-0983
+  - unit-0984
+  - unit-0985
+  - unit-0986
+  - unit-0987
+- path: .local/work/nonbook-candidates.local.yml
+  sha256: 96082fe849aa8b8aa535c19cc0e08d77fa583a6e4db71067f9147d2d33e7e5e9
+  candidate_count: 27
+  review: Материал использован при подготовке конечных утверждений. Самопроверка основного агента, затем механическая
+    проверка происхождения.
+  chapter: 23
+  unit_ids:
+  - unit-0988
+  - unit-0989
+  - unit-0990
+  - unit-0991
+  - unit-0992
+  - unit-0993
+  - unit-0994
+  - unit-0995
+  - unit-0996
+  - unit-0997
+  - unit-0998
+  - unit-0999
+  - unit-1000
+  - unit-1001
+  - unit-1002
+  - unit-1003
+  - unit-1004
+  - unit-1005
+  - unit-1006
+  - unit-1007
+  - unit-1008
+  - unit-1009
+  - unit-1010
+- path: .local/work/contents-candidates.local.yml
+  sha256: 5ff9b4cd8954d651c5d6cd16c7c9fb7dc892e4b578ca6b4aacc5f3d208214be2
+  candidate_count: 84
+  review: Материал использован при подготовке конечных утверждений. Самопроверка основного агента, затем механическая
+    проверка происхождения.
+  chapter: 24
+  unit_ids:
+  - unit-1011
+  - unit-1012
+  - unit-1013
+  - unit-1014
+  - unit-1015
+  - unit-1016
+  - unit-1017
+  - unit-1018
+  - unit-1019
+  - unit-1020
+  - unit-1021
+  - unit-1022
+  - unit-1023
+  - unit-1024
+  - unit-1025
+  - unit-1026
+  - unit-1027
+  - unit-1028
+  - unit-1029
+  - unit-1030
+  - unit-1031
+  - unit-1032
+  - unit-1033
+  - unit-1034
+  - unit-1035
+  - unit-1036
+  - unit-1037
+  - unit-1038
+  - unit-1039
+  - unit-1040
+  - unit-1041
+  - unit-1042
+  - unit-1043
+  - unit-1044
+  - unit-1045
+  - unit-1046
+  - unit-1047
+  - unit-1048
+  - unit-1049
+  - unit-1050
+  - unit-1051
+  - unit-1052
+  - unit-1053
+  - unit-1054
+  - unit-1055
+  - unit-1056
+  - unit-1057
+  - unit-1058
+  - unit-1059
+  - unit-1060
+- path: .local/work/index-candidates.local.yml
+  sha256: a74b7d271d2f8df79ec4ec5af69ce45d57f7fe6f6372f2f9711b7bdfd1d4a037
+  candidate_count: 193
+  review: Материал использован при подготовке конечных утверждений. Самопроверка основного агента, затем механическая
+    проверка происхождения.
+  chapter: 25
+  unit_ids:
+  - unit-1061
+  - unit-1062
+  - unit-1063
+  - unit-1064
+  - unit-1065
+  - unit-1066
+  - unit-1067
+  - unit-1068
+  - unit-1069
+  - unit-1070
+  - unit-1071
+  - unit-1072
+  - unit-1073
+  - unit-1074
+  - unit-1075
+  - unit-1076
+  - unit-1077
+  - unit-1078
+  - unit-1079
+  - unit-1080
+  - unit-1081
+  - unit-1082
+  - unit-1083
+  - unit-1084
+  - unit-1085
+  - unit-1086
+  - unit-1087
+  - unit-1088
+  - unit-1089
+  - unit-1090
+  - unit-1091
+  - unit-1092
+  - unit-1093
+  - unit-1094
+  - unit-1095
+  - unit-1096
+  - unit-1097
+  - unit-1098
+  - unit-1099
+  - unit-1100
+  - unit-1101
+  - unit-1102
+  - unit-1103
+  - unit-1104
+  - unit-1105
+  - unit-1106
+  - unit-1107
+  - unit-1108
+  - unit-1109
+  - unit-1110
+  - unit-1111
+  - unit-1112
+  - unit-1113
+  - unit-1114
+  - unit-1115
+  - unit-1116
+  - unit-1117
+  - unit-1118
+  - unit-1119
+  - unit-1120
+  - unit-1121
+  - unit-1122
+  - unit-1123
+  - unit-1124
+  - unit-1125
+  - unit-1126
+  - unit-1127
+  - unit-1128
+  - unit-1129
+  - unit-1130
+  - unit-1131
+  - unit-1132
+  - unit-1133
+  - unit-1134
+  - unit-1135
+  - unit-1136
+  - unit-1137
+  - unit-1138
+  - unit-1139
+  - unit-1140
+  - unit-1141
+  - unit-1142
+  - unit-1143
+  - unit-1144
+  - unit-1145
+  - unit-1146
+  - unit-1147
+  - unit-1148
+  - unit-1149
+  - unit-1150
+  - unit-1151
+  - unit-1152
+  - unit-1153
+  - unit-1154
+  - unit-1155
+  - unit-1156
+  - unit-1157
+  - unit-1158
+  - unit-1159
+  - unit-1160
+  - unit-1161
+  - unit-1162
+  - unit-1163
+  - unit-1164
+  - unit-1165
+  - unit-1166
+  - unit-1167
+  - unit-1168
+  - unit-1169
+  - unit-1170
+  - unit-1171
+  - unit-1172
+  - unit-1173
+  - unit-1174
+  - unit-1175
+  - unit-1176
+  - unit-1177
+  - unit-1178
+  - unit-1179
+  - unit-1180
+- path: .local/work/runninghead-candidates.local.yml
+  sha256: e0d0e46ed2b7b597db794368175feda091b8f2232e65cc5da62a0c17e6b8e140
+  candidate_count: 28
+  review: Материал использован при подготовке конечных утверждений. Самопроверка основного агента, затем механическая
+    проверка происхождения.
+  chapter: 26
+  unit_ids:
+  - unit-1181
+  - unit-1182
+  - unit-1183
+  - unit-1184
+  - unit-1185
+  - unit-1186
+  - unit-1187
+  - unit-1188
+  - unit-1189
+  - unit-1190
+  - unit-1191
+  - unit-1192
+  - unit-1193
+  - unit-1194
+  - unit-1195
+- path: .local/work/commentary-candidates.local.yml
+  sha256: 22abe3bef993243570d16abd5d418473afa8300015521624749ac44cd78b638b
+  candidate_count: 13
+  review: Материал использован при подготовке конечных утверждений. Самопроверка основного агента, затем механическая
+    проверка происхождения.
+  chapter: 28
+  unit_ids:
+  - unit-1217
+  - unit-1218
+  - unit-1219
+  - unit-1220
+  - unit-1221
+  - unit-1222
+  - unit-1223
+  - unit-1224
+  - unit-1225
+  - unit-1226
+  - unit-1227
+- path: .local/work/preface-candidates.local.yml
+  sha256: 01d7792afb1509f533e09635f277ef502ed5ea0e3e0410a5884ef06bca06ed11
+  candidate_count: 24
+  review: Материал использован при подготовке конечных утверждений. Самопроверка основного агента, затем механическая
+    проверка происхождения.
+  chapter: 27
+  unit_ids:
+  - unit-1196
+  - unit-1197
+  - unit-1198
+  - unit-1199
+  - unit-1200
+  - unit-1201
+  - unit-1202
+  - unit-1203
+  - unit-1204
+  - unit-1205
+  - unit-1206
+  - unit-1207
+  - unit-1208
+  - unit-1209
+  - unit-1210
+  - unit-1211
+  - unit-1212
+  - unit-1213
+  - unit-1214
+  - unit-1215
+  - unit-1216
+- path: .local/work/note-candidates.local.yml
+  sha256: e228a11bf3c809ced88971128ba85762a27c3b05b40c26d507bb77b35e4c6d55
+  candidate_count: 160
+  review: Материал использован при подготовке конечных утверждений. Самопроверка основного агента, затем механическая
+    проверка происхождения.
+  chapter: 29
+  unit_ids:
+  - unit-1228
+  - unit-1229
+  - unit-1230
+  - unit-1231
+  - unit-1232
+  - unit-1233
+  - unit-1234
+  - unit-1235
+  - unit-1236
+  - unit-1237
+  - unit-1238
+  - unit-1239
+  - unit-1240
+  - unit-1241
+  - unit-1242
+  - unit-1243
+  - unit-1244
+  - unit-1245
+  - unit-1246
+  - unit-1247
+  - unit-1248
+  - unit-1249
+  - unit-1250
+  - unit-1251
+  - unit-1252
+  - unit-1253
+  - unit-1254
+  - unit-1255
+  - unit-1256
+  - unit-1257
+  - unit-1258
+  - unit-1259
+  - unit-1260
+  - unit-1261
+  - unit-1262
+  - unit-1263
+  - unit-1264
+  - unit-1265
+  - unit-1266
+  - unit-1267
+  - unit-1268
+  - unit-1269
+  - unit-1270
+  - unit-1271
+  - unit-1272
+  - unit-1273
+  - unit-1274
+  - unit-1275
+  - unit-1276
+  - unit-1277
+  - unit-1278
+  - unit-1279
+  - unit-1280
+  - unit-1281
+  - unit-1282
+  - unit-1283
+  - unit-1284
+  - unit-1285
+  - unit-1286
+  - unit-1287
+  - unit-1288
+  - unit-1289
+  - unit-1290
+  - unit-1291
+  - unit-1292
+  - unit-1293
+  - unit-1294
+  - unit-1295
+  - unit-1296
+  - unit-1297
+  - unit-1298
+  - unit-1299
+  - unit-1300
+  - unit-1301
+  - unit-1302
+  - unit-1303
+  - unit-1304
+  - unit-1305
+  - unit-1306
+  - unit-1307
+  - unit-1308
+  - unit-1309
+  - unit-1310
+  - unit-1311
+  - unit-1312
+  - unit-1313
+  - unit-1314
+  - unit-1315
+  - unit-1316
+  - unit-1317
+  - unit-1318
+  - unit-1319
+  - unit-1320
+  - unit-1321
+  - unit-1322
+  - unit-1323
+  - unit-1324
+  - unit-1325
+  - unit-1326
+  - unit-1327
+  - unit-1328
+  - unit-1329
+  - unit-1330
+  - unit-1331
+  - unit-1332
+  - unit-1333
+  - unit-1334
+  - unit-1335
+  - unit-1336
+  - unit-1337
+  - unit-1338
+  - unit-1339
+  - unit-1340
+  - unit-1341
+  - unit-1342
+  - unit-1343
+  - unit-1344
+  - unit-1345
+  - unit-1346
+  - unit-1347
+  - unit-1348
+  - unit-1349
+  - unit-1350
+  - unit-1351
+  - unit-1352
+  - unit-1353
+  - unit-1354
+  - unit-1355
+  - unit-1356
+  - unit-1357
+  - unit-1358
+  - unit-1359
+  - unit-1360
+  - unit-1361
+  - unit-1362
+  - unit-1363
+  - unit-1364
+  - unit-1365
+  - unit-1366
+  - unit-1367
+  - unit-1368
+  - unit-1369
+  - unit-1370
+  - unit-1371
+  - unit-1372
+  - unit-1373
+  - unit-1374
+  - unit-1375
+  - unit-1376
+  - unit-1377
+  - unit-1378
+- path: .local/work/bibliography-candidates.local.yml
+  sha256: 455996684a960319e929befbe36df65534aed9e7ae77438b7cc4792df126730d
+  candidate_count: 24
+  review: Материал использован при подготовке конечных утверждений. Самопроверка основного агента, затем механическая
+    проверка происхождения.
+  chapter: 30
+  unit_ids:
+  - unit-1379
+  - unit-1380
+  - unit-1381
+  - unit-1382
+  - unit-1383
+  - unit-1384
+  - unit-1385
+  - unit-1386
+  - unit-1387
+  - unit-1388
+  - unit-1389
+  - unit-1390
+  - unit-1391
+  - unit-1392
+  - unit-1393
+  - unit-1394
+- path: .local/work/description-candidates.local.yml
+  sha256: 4d6fa04543a1b94abc86fb1be645e1107c421b7aa4c9d6e40fcee9361fd7696d
+  candidate_count: 190
+  review: Материал использован при подготовке конечных утверждений. Самопроверка основного агента, затем механическая
+    проверка происхождения.
+  chapter: 31
+  unit_ids:
+  - unit-1395
+  - unit-1396
+  - unit-1397
+  - unit-1398
+  - unit-1399
+  - unit-1400
+  - unit-1401
+  - unit-1402
+  - unit-1403
+  - unit-1404
+  - unit-1405
+  - unit-1406
+  - unit-1407
+  - unit-1408
+  - unit-1409
+  - unit-1410
+  - unit-1411
+  - unit-1412
+  - unit-1413
+  - unit-1414
+  - unit-1415
+  - unit-1416
+  - unit-1417
+  - unit-1418
+  - unit-1419
+  - unit-1420
+  - unit-1421
+  - unit-1422
+  - unit-1423
+  - unit-1424
+  - unit-1425
+  - unit-1426
+  - unit-1427
+  - unit-1428
+  - unit-1429
+  - unit-1430
+  - unit-1431
+  - unit-1432
+  - unit-1433
+  - unit-1434
+  - unit-1435
+  - unit-1436
+  - unit-1437
+  - unit-1438
+  - unit-1439
+  - unit-1440
+  - unit-1441
+  - unit-1442
+  - unit-1443
+  - unit-1444
+  - unit-1445
+  - unit-1446
+  - unit-1447
+  - unit-1448
+  - unit-1449
+  - unit-1450
+  - unit-1451
+  - unit-1452
+  - unit-1453
+  - unit-1454
+  - unit-1455
+  - unit-1456
+  - unit-1457
+  - unit-1458
+  - unit-1459
+  - unit-1460
+  - unit-1461
+  - unit-1462
+  - unit-1463
+  - unit-1464
+  - unit-1465
+  - unit-1466
+  - unit-1467
+  - unit-1468
+  - unit-1469
+  - unit-1470
+  - unit-1471
+  - unit-1472
+  - unit-1473
+  - unit-1474
+  - unit-1475
+  - unit-1476
+  - unit-1477
+  - unit-1478
+  - unit-1479
+  - unit-1480
+  - unit-1481
+  - unit-1482
+  - unit-1483
+  - unit-1484
+  - unit-1485
+  - unit-1486
+  - unit-1487
+  - unit-1488
+  - unit-1489
+  - unit-1490
+  - unit-1491
+  - unit-1492
+  - unit-1493
+  - unit-1494
+  - unit-1495
+  - unit-1496
+  - unit-1497
+  - unit-1498
+  - unit-1499
+  - unit-1500
+  - unit-1501
+  - unit-1502
+  - unit-1503
+  - unit-1504
+  - unit-1505
+  - unit-1506
+  - unit-1507
+  - unit-1508
+  - unit-1509
+  - unit-1510
+  - unit-1511
+  - unit-1512
+  - unit-1513
+  - unit-1514
+  - unit-1515
+  - unit-1516
+  - unit-1517
+  - unit-1518
+  - unit-1519
+  - unit-1520
+  - unit-1521
+  - unit-1522
+  - unit-1523
+  - unit-1524
+  - unit-1525
+  - unit-1526
+  - unit-1527
+  - unit-1528
+  - unit-1529
+  - unit-1530
+  - unit-1531
+  - unit-1532
+  - unit-1533
+  - unit-1534
+  - unit-1535
+  - unit-1536
+  - unit-1537
+  - unit-1538
+  - unit-1539
+  - unit-1540
+  - unit-1541
+  - unit-1542
+  - unit-1543
+  - unit-1544
+  - unit-1545
+  - unit-1546
+  - unit-1547
+  - unit-1548
+  - unit-1549
+  - unit-1550
+  - unit-1551
+  - unit-1552
+  - unit-1553
+  - unit-1554
+  - unit-1555
+  - unit-1556
+  - unit-1557
+  - unit-1558
+  - unit-1559
+  - unit-1560
+  - unit-1561
+  - unit-1562
+- path: .local/work/citation-candidates.local.yml
+  sha256: 1161b73531233f7870dea53c4c875c278ae4c17cd321fafeeea34212e0b096a3
+  candidate_count: 77
+  review: Материал использован при подготовке конечных утверждений. Самопроверка основного агента, затем механическая
+    проверка происхождения.
+  chapter: 32
+  unit_ids:
+  - unit-1563
+  - unit-1564
+  - unit-1565
+  - unit-1566
+  - unit-1567
+  - unit-1568
+  - unit-1569
+  - unit-1570
+  - unit-1571
+  - unit-1572
+  - unit-1573
+  - unit-1574
+  - unit-1575
+  - unit-1576
+  - unit-1577
+  - unit-1578
+  - unit-1579
+  - unit-1580
+  - unit-1581
+  - unit-1582
+  - unit-1583
+  - unit-1584
+  - unit-1585
+  - unit-1586
+  - unit-1587
+  - unit-1588
+  - unit-1589
+  - unit-1590
+  - unit-1591
+  - unit-1592
+  - unit-1593
+  - unit-1594
+  - unit-1595
+  - unit-1596
+  - unit-1597
+  - unit-1598
+  - unit-1599
+  - unit-1600
+  - unit-1601
+  - unit-1602
+  - unit-1603
+  - unit-1604
+  - unit-1605
+  - unit-1606
+  - unit-1607
+  - unit-1608
+  - unit-1609
+  - unit-1610
+  - unit-1611
+  - unit-1612
+  - unit-1613
+  - unit-1614
+  - unit-1615
+  - unit-1616
+  - unit-1617
+  - unit-1618
+  - unit-1619
+  - unit-1620
+  - unit-1621
+  - unit-1622
+- path: .local/work/back-composition-candidates.local.yml
+  sha256: 2e5d0f649eb2c7008b0d09cc29d8631d981625ed1f9eac57ae49d49756d88d07
+  candidate_count: 10
+  review: Материал использован при подготовке конечных утверждений. Самопроверка основного агента, затем механическая
+    проверка происхождения.
+  chapter: 34
+  unit_ids:
+  - unit-1630
+  - unit-1631
+  - unit-1632
+  - unit-1633
+  - unit-1634
+- path: .local/work/front-composition-candidates.local.yml
+  sha256: bd0d1f299e3ff55803d4f9d0011a5ede4efb1f08bf7d2c107d57e06dc31266e6
+  candidate_count: 9
+  review: Материал использован при подготовке конечных утверждений. Самопроверка основного агента, затем механическая
+    проверка происхождения.
+  chapter: 33
+  unit_ids:
+  - unit-1623
+  - unit-1624
+  - unit-1625
+  - unit-1626
+  - unit-1627
+  - unit-1628
+  - unit-1629
+- path: .local/work/editorial-control-candidates.local.yml
+  sha256: 2a551a784a93a298774fb5890e9e8c64c8d5c28841f4d10b98c67da02aa4ef97
+  candidate_count: 8
+  review: Материал использован при подготовке конечных утверждений. Самопроверка основного агента, затем механическая
+    проверка происхождения.
+  chapter: 36
+  unit_ids:
+  - unit-1637
+  - unit-1638
+  - unit-1639
+- path: .local/work/style-passport-candidates.local.yml
+  sha256: 772429e66cd98e95e19504035796dfdf5e7f4822112fc4d99f39ff0a1137fb23
+  candidate_count: 3
+  review: Материал использован при подготовке конечных утверждений. Самопроверка основного агента, затем механическая
+    проверка происхождения.
+  chapter: 35
+  unit_ids:
+  - unit-1635
+  - unit-1636
+- path: .local/work/Notes-candidates.local.yml
+  sha256: 92a83c444e58e4be3bf28ab8bb0fe72afed4d3a5c89d3b22a13803a5b574addc
+  candidate_count: 4
+  review: Материал использован при подготовке конечных утверждений. Самопроверка основного агента, затем механическая
+    проверка происхождения.
+- path: .local/work/Section0001-candidates.local.yml
+  sha256: 6249af334f3daad3777fd8e5db024abc267e3d9b3ce9b1051f30d4c796af11cc
+  candidate_count: 2
+  review: Материал использован при подготовке конечных утверждений. Самопроверка основного агента, затем механическая
+    проверка происхождения.
+- path: .local/work/Section0004-candidates.local.yml
+  sha256: e4ab3e0674adbcf1166844a7c4d357d6596b6cb480ce44ecce0a14f1f0817b60
+  candidate_count: 2
+  review: Материал использован при подготовке конечных утверждений. Самопроверка основного агента, затем механическая
+    проверка происхождения.
+- path: .local/work/Section0005-candidates.local.yml
+  sha256: 108b50def458e52385a764d1eed609c7b4a28bc64ad589c5c9ff5b9d9255c957
+  candidate_count: 1
+  review: Материал использован при подготовке конечных утверждений. Самопроверка основного агента, затем механическая
+    проверка происхождения.
+- path: .local/work/Section0006-candidates.local.yml
+  sha256: ec581ad98751be9f84c755493b876523ad5095f7cce6f67af3f99f93b198702c
+  candidate_count: 13
+  review: Материал использован при подготовке конечных утверждений. Самопроверка основного агента, затем механическая
+    проверка происхождения.
+- path: .local/work/Section0007-candidates.local.yml
+  sha256: 710d300ea35a59462981d67e8f65c2ed0f1987dd5f70d3a5d54ca48fcc6ef33b
+  candidate_count: 1
+  review: Материал использован при подготовке конечных утверждений. Самопроверка основного агента, затем механическая
+    проверка происхождения.
+- path: .local/work/Section0008-candidates.local.yml
+  sha256: 621e01f341404965d07a0068d3ef2ebff64e70d8c08791ef1afd7c8f416fdc57
+  candidate_count: 15
+  review: Материал использован при подготовке конечных утверждений. Самопроверка основного агента, затем механическая
+    проверка происхождения.
+- path: .local/work/Section0009-candidates.local.yml
+  sha256: a6c36b0515ed3f66f7c2349f53e4d6be8d5a1e5b223300d96a34b149c86c6b32
+  candidate_count: 4
+  review: Материал использован при подготовке конечных утверждений. Самопроверка основного агента, затем механическая
+    проверка происхождения.
+- path: .local/work/Section0010-candidates.local.yml
+  sha256: a29d3c0a95508f1b6e673eaddf3881500802c24898b5f64d089d899855fa7005
+  candidate_count: 5
+  review: Материал использован при подготовке конечных утверждений. Самопроверка основного агента, затем механическая
+    проверка происхождения.
+- path: .local/work/Section0011-candidates.local.yml
+  sha256: 4506ac7820f9cd31a1a1bff91acff5d0d57823bd4bf8190580150805b4ed9e9f
+  candidate_count: 14
+  review: Материал использован при подготовке конечных утверждений. Самопроверка основного агента, затем механическая
+    проверка происхождения.
+- path: .local/work/Section0013-candidates.local.yml
+  sha256: b21076c54219c9028b3d1f6f9a6cd6e8d110c1d5d78069936925b8e2b5b46814
+  candidate_count: 1
+  review: Материал использован при подготовке конечных утверждений. Самопроверка основного агента, затем механическая
+    проверка происхождения.
+- path: .local/work/Section0014-candidates.local.yml
+  sha256: 87fd7dd009876c01d1721be5416f14a628a389067a2e03aebc5145b10be57639
+  candidate_count: 3
+  review: Материал использован при подготовке конечных утверждений. Самопроверка основного агента, затем механическая
+    проверка происхождения.
+- path: .local/work/Section0015-candidates.local.yml
+  sha256: 5dcb500cbfd033fba8d5e0c16383493652407f3c6b22ac058d89a1b3e677f1fc
+  candidate_count: 3
+  review: Материал использован при подготовке конечных утверждений. Самопроверка основного агента, затем механическая
+    проверка происхождения.
+- path: .local/work/Section0016-candidates.local.yml
+  sha256: 46c238debbea82ffefb99072315ae9128e48a488e29cbf6ea8e88f8929f0f229
+  candidate_count: 25
+  review: Материал использован при подготовке конечных утверждений. Самопроверка основного агента, затем механическая
+    проверка происхождения.
+- path: .local/work/Section0017-candidates.local.yml
+  sha256: dd86d7e1d7061bc52d2d4de453d91bb22969d835dfdfb13c4a01d4743b3b2b5c
+  candidate_count: 4
+  review: Материал использован при подготовке конечных утверждений. Самопроверка основного агента, затем механическая
+    проверка происхождения.
+- path: .local/work/Section0018-candidates.local.yml
+  sha256: ac131ac0f84860aafc378145a05c1d0d44a8b5314f09265f1acaafabbc8454de
+  candidate_count: 28
+  review: Материал использован при подготовке конечных утверждений. Самопроверка основного агента, затем механическая
+    проверка происхождения.
+reviewed_units:
+- unit-0001
+- unit-0002
+- unit-0003
+- unit-0004
+- unit-0005
+- unit-0006
+- unit-0007
+- unit-0008
+- unit-0009
+- unit-0010
+- unit-0011
+- unit-0012
+- unit-0013
+- unit-0014
+- unit-0015
+- unit-0016
+- unit-0017
+- unit-0018
+- unit-0019
+- unit-0020
+- unit-0021
+- unit-0022
+- unit-0023
+- unit-0024
+- unit-0025
+- unit-0026
+- unit-0027
+- unit-0028
+- unit-0029
+- unit-0030
+- unit-0031
+- unit-0032
+- unit-0033
+- unit-0034
+- unit-0035
+- unit-0036
+- unit-0037
+- unit-0038
+- unit-0039
+- unit-0040
+- unit-0041
+- unit-0042
+- unit-0043
+- unit-0044
+- unit-0045
+- unit-0046
+- unit-0047
+- unit-0048
+- unit-0049
+- unit-0050
+- unit-0051
+- unit-0052
+- unit-0053
+- unit-0054
+- unit-0055
+- unit-0056
+- unit-0057
+- unit-0058
+- unit-0059
+- unit-0060
+- unit-0061
+- unit-0062
+- unit-0063
+- unit-0064
+- unit-0065
+- unit-0066
+- unit-0067
+- unit-0068
+- unit-0069
+- unit-0070
+- unit-0071
+- unit-0072
+- unit-0073
+- unit-0074
+- unit-0075
+- unit-0076
+- unit-0077
+- unit-0078
+- unit-0079
+- unit-0080
+- unit-0081
+- unit-0082
+- unit-0083
+- unit-0084
+- unit-0085
+- unit-0086
+- unit-0087
+- unit-0088
+- unit-0089
+- unit-0090
+- unit-0091
+- unit-0092
+- unit-0093
+- unit-0094
+- unit-0095
+- unit-0096
+- unit-0097
+- unit-0098
+- unit-0099
+- unit-0100
+- unit-0101
+- unit-0102
+- unit-0103
+- unit-0104
+- unit-0105
+- unit-0106
+- unit-0107
+- unit-0108
+- unit-0109
+- unit-0110
+- unit-0111
+- unit-0112
+- unit-0113
+- unit-0114
+- unit-0115
+- unit-0116
+- unit-0117
+- unit-0118
+- unit-0119
+- unit-0120
+- unit-0121
+- unit-0122
+- unit-0123
+- unit-0124
+- unit-0125
+- unit-0126
+- unit-0127
+- unit-0128
+- unit-0129
+- unit-0130
+- unit-0131
+- unit-0132
+- unit-0133
+- unit-0134
+- unit-0135
+- unit-0136
+- unit-0137
+- unit-0138
+- unit-0139
+- unit-0140
+- unit-0141
+- unit-0142
+- unit-0143
+- unit-0144
+- unit-0145
+- unit-0146
+- unit-0147
+- unit-0148
+- unit-0149
+- unit-0150
+- unit-0151
+- unit-0152
+- unit-0153
+- unit-0154
+- unit-0155
+- unit-0156
+- unit-0157
+- unit-0158
+- unit-0159
+- unit-0160
+- unit-0161
+- unit-0162
+- unit-0163
+- unit-0164
+- unit-0165
+- unit-0166
+- unit-0167
+- unit-0168
+- unit-0169
+- unit-0170
+- unit-0171
+- unit-0172
+- unit-0173
+- unit-0174
+- unit-0175
+- unit-0176
+- unit-0177
+- unit-0178
+- unit-0179
+- unit-0180
+- unit-0181
+- unit-0182
+- unit-0183
+- unit-0184
+- unit-0185
+- unit-0186
+- unit-0187
+- unit-0188
+- unit-0189
+- unit-0190
+- unit-0191
+- unit-0192
+- unit-0193
+- unit-0194
+- unit-0195
+- unit-0196
+- unit-0197
+- unit-0198
+- unit-0199
+- unit-0200
+- unit-0201
+- unit-0202
+- unit-0203
+- unit-0204
+- unit-0205
+- unit-0206
+- unit-0207
+- unit-0208
+- unit-0209
+- unit-0210
+- unit-0211
+- unit-0212
+- unit-0213
+- unit-0214
+- unit-0215
+- unit-0216
+- unit-0217
+- unit-0218
+- unit-0219
+- unit-0220
+- unit-0221
+- unit-0222
+- unit-0223
+- unit-0224
+- unit-0225
+- unit-0226
+- unit-0227
+- unit-0228
+- unit-0229
+- unit-0230
+- unit-0231
+- unit-0232
+- unit-0233
+- unit-0234
+- unit-0235
+- unit-0236
+- unit-0237
+- unit-0238
+- unit-0239
+- unit-0240
+- unit-0241
+- unit-0242
+- unit-0243
+- unit-0244
+- unit-0245
+- unit-0246
+- unit-0247
+- unit-0248
+- unit-0249
+- unit-0250
+- unit-0251
+- unit-0252
+- unit-0253
+- unit-0254
+- unit-0255
+- unit-0256
+- unit-0257
+- unit-0258
+- unit-0259
+- unit-0260
+- unit-0261
+- unit-0262
+- unit-0263
+- unit-0264
+- unit-0265
+- unit-0266
+- unit-0267
+- unit-0268
+- unit-0269
+- unit-0270
+- unit-0271
+- unit-0272
+- unit-0273
+- unit-0274
+- unit-0275
+- unit-0276
+- unit-0277
+- unit-0278
+- unit-0279
+- unit-0280
+- unit-0281
+- unit-0282
+- unit-0283
+- unit-0284
+- unit-0285
+- unit-0286
+- unit-0287
+- unit-0288
+- unit-0289
+- unit-0290
+- unit-0291
+- unit-0292
+- unit-0293
+- unit-0294
+- unit-0295
+- unit-0296
+- unit-0297
+- unit-0298
+- unit-0299
+- unit-0300
+- unit-0301
+- unit-0302
+- unit-0303
+- unit-0304
+- unit-0305
+- unit-0306
+- unit-0307
+- unit-0308
+- unit-0309
+- unit-0310
+- unit-0311
+- unit-0312
+- unit-0313
+- unit-0314
+- unit-0315
+- unit-0316
+- unit-0317
+- unit-0318
+- unit-0319
+- unit-0320
+- unit-0321
+- unit-0322
+- unit-0323
+- unit-0324
+- unit-0325
+- unit-0326
+- unit-0327
+- unit-0328
+- unit-0329
+- unit-0330
+- unit-0331
+- unit-0332
+- unit-0333
+- unit-0334
+- unit-0335
+- unit-0336
+- unit-0337
+- unit-0338
+- unit-0339
+- unit-0340
+- unit-0341
+- unit-0342
+- unit-0343
+- unit-0344
+- unit-0345
+- unit-0346
+- unit-0347
+- unit-0348
+- unit-0349
+- unit-0350
+- unit-0351
+- unit-0352
+- unit-0353
+- unit-0354
+- unit-0355
+- unit-0356
+- unit-0357
+- unit-0358
+- unit-0359
+- unit-0360
+- unit-0361
+- unit-0362
+- unit-0363
+- unit-0364
+- unit-0365
+- unit-0366
+- unit-0367
+- unit-0368
+- unit-0369
+- unit-0370
+- unit-0371
+- unit-0372
+- unit-0373
+- unit-0374
+- unit-0375
+- unit-0376
+- unit-0377
+- unit-0378
+- unit-0379
+- unit-0380
+- unit-0381
+- unit-0382
+- unit-0383
+- unit-0384
+- unit-0385
+- unit-0386
+- unit-0387
+- unit-0388
+- unit-0389
+- unit-0390
+- unit-0391
+- unit-0392
+- unit-0393
+- unit-0394
+- unit-0395
+- unit-0396
+- unit-0397
+- unit-0398
+- unit-0399
+- unit-0400
+- unit-0401
+- unit-0402
+- unit-0403
+- unit-0404
+- unit-0405
+- unit-0406
+- unit-0407
+- unit-0408
+- unit-0409
+- unit-0410
+- unit-0411
+- unit-0412
+- unit-0413
+- unit-0414
+- unit-0415
+- unit-0416
+- unit-0417
+- unit-0418
+- unit-0419
+- unit-0420
+- unit-0421
+- unit-0422
+- unit-0423
+- unit-0424
+- unit-0425
+- unit-0426
+- unit-0427
+- unit-0428
+- unit-0429
+- unit-0430
+- unit-0431
+- unit-0432
+- unit-0433
+- unit-0434
+- unit-0435
+- unit-0436
+- unit-0437
+- unit-0438
+- unit-0439
+- unit-0440
+- unit-0441
+- unit-0442
+- unit-0443
+- unit-0444
+- unit-0445
+- unit-0446
+- unit-0447
+- unit-0448
+- unit-0449
+- unit-0450
+- unit-0451
+- unit-0452
+- unit-0453
+- unit-0454
+- unit-0455
+- unit-0456
+- unit-0457
+- unit-0458
+- unit-0459
+- unit-0460
+- unit-0461
+- unit-0462
+- unit-0463
+- unit-0464
+- unit-0465
+- unit-0466
+- unit-0467
+- unit-0468
+- unit-0469
+- unit-0470
+- unit-0471
+- unit-0472
+- unit-0473
+- unit-0474
+- unit-0475
+- unit-0476
+- unit-0477
+- unit-0478
+- unit-0479
+- unit-0480
+- unit-0481
+- unit-0482
+- unit-0483
+- unit-0484
+- unit-0485
+- unit-0486
+- unit-0487
+- unit-0488
+- unit-0489
+- unit-0490
+- unit-0491
+- unit-0492
+- unit-0493
+- unit-0494
+- unit-0495
+- unit-0496
+- unit-0497
+- unit-0498
+- unit-0499
+- unit-0500
+- unit-0501
+- unit-0502
+- unit-0503
+- unit-0504
+- unit-0505
+- unit-0506
+- unit-0507
+- unit-0508
+- unit-0509
+- unit-0510
+- unit-0511
+- unit-0512
+- unit-0513
+- unit-0514
+- unit-0515
+- unit-0516
+- unit-0517
+- unit-0518
+- unit-0519
+- unit-0520
+- unit-0521
+- unit-0522
+- unit-0523
+- unit-0524
+- unit-0525
+- unit-0526
+- unit-0527
+- unit-0528
+- unit-0529
+- unit-0530
+- unit-0531
+- unit-0532
+- unit-0533
+- unit-0534
+- unit-0535
+- unit-0536
+- unit-0537
+- unit-0538
+- unit-0539
+- unit-0540
+- unit-0541
+- unit-0542
+- unit-0543
+- unit-0544
+- unit-0545
+- unit-0546
+- unit-0547
+- unit-0548
+- unit-0549
+- unit-0550
+- unit-0551
+- unit-0552
+- unit-0553
+- unit-0554
+- unit-0555
+- unit-0556
+- unit-0557
+- unit-0558
+- unit-0559
+- unit-0560
+- unit-0561
+- unit-0562
+- unit-0563
+- unit-0564
+- unit-0565
+- unit-0566
+- unit-0567
+- unit-0568
+- unit-0569
+- unit-0570
+- unit-0571
+- unit-0572
+- unit-0573
+- unit-0574
+- unit-0575
+- unit-0576
+- unit-0577
+- unit-0578
+- unit-0579
+- unit-0580
+- unit-0581
+- unit-0582
+- unit-0583
+- unit-0584
+- unit-0585
+- unit-0586
+- unit-0587
+- unit-0588
+- unit-0589
+- unit-0590
+- unit-0591
+- unit-0592
+- unit-0593
+- unit-0594
+- unit-0595
+- unit-0596
+- unit-0597
+- unit-0598
+- unit-0599
+- unit-0600
+- unit-0601
+- unit-0602
+- unit-0603
+- unit-0604
+- unit-0605
+- unit-0606
+- unit-0607
+- unit-0608
+- unit-0609
+- unit-0610
+- unit-0611
+- unit-0612
+- unit-0613
+- unit-0614
+- unit-0615
+- unit-0616
+- unit-0617
+- unit-0618
+- unit-0619
+- unit-0620
+- unit-0621
+- unit-0622
+- unit-0623
+- unit-0624
+- unit-0625
+- unit-0626
+- unit-0627
+- unit-0628
+- unit-0629
+- unit-0630
+- unit-0631
+- unit-0632
+- unit-0633
+- unit-0634
+- unit-0635
+- unit-0636
+- unit-0637
+- unit-0638
+- unit-0639
+- unit-0640
+- unit-0641
+- unit-0642
+- unit-0643
+- unit-0644
+- unit-0645
+- unit-0646
+- unit-0647
+- unit-0648
+- unit-0649
+- unit-0650
+- unit-0651
+- unit-0652
+- unit-0653
+- unit-0654
+- unit-0655
+- unit-0656
+- unit-0657
+- unit-0658
+- unit-0659
+- unit-0660
+- unit-0661
+- unit-0662
+- unit-0663
+- unit-0664
+- unit-0665
+- unit-0666
+- unit-0667
+- unit-0668
+- unit-0669
+- unit-0670
+- unit-0671
+- unit-0672
+- unit-0673
+- unit-0674
+- unit-0675
+- unit-0676
+- unit-0677
+- unit-0678
+- unit-0679
+- unit-0680
+- unit-0681
+- unit-0682
+- unit-0683
+- unit-0684
+- unit-0685
+- unit-0686
+- unit-0687
+- unit-0688
+- unit-0689
+- unit-0690
+- unit-0691
+- unit-0692
+- unit-0693
+- unit-0694
+- unit-0695
+- unit-0696
+- unit-0697
+- unit-0698
+- unit-0699
+- unit-0700
+- unit-0701
+- unit-0702
+- unit-0703
+- unit-0704
+- unit-0705
+- unit-0706
+- unit-0707
+- unit-0708
+- unit-0709
+- unit-0710
+- unit-0711
+- unit-0712
+- unit-0713
+- unit-0714
+- unit-0715
+- unit-0716
+- unit-0717
+- unit-0718
+- unit-0719
+- unit-0720
+- unit-0721
+- unit-0722
+- unit-0723
+- unit-0724
+- unit-0725
+- unit-0726
+- unit-0727
+- unit-0728
+- unit-0729
+- unit-0730
+- unit-0731
+- unit-0732
+- unit-0733
+- unit-0734
+- unit-0735
+- unit-0736
+- unit-0737
+- unit-0738
+- unit-0739
+- unit-0740
+- unit-0741
+- unit-0742
+- unit-0743
+- unit-0744
+- unit-0745
+- unit-0746
+- unit-0747
+- unit-0748
+- unit-0749
+- unit-0750
+- unit-0751
+- unit-0752
+- unit-0753
+- unit-0754
+- unit-0755
+- unit-0756
+- unit-0757
+- unit-0758
+- unit-0759
+- unit-0760
+- unit-0761
+- unit-0762
+- unit-0763
+- unit-0764
+- unit-0765
+- unit-0766
+- unit-0767
+- unit-0768
+- unit-0769
+- unit-0770
+- unit-0771
+- unit-0772
+- unit-0773
+- unit-0774
+- unit-0775
+- unit-0776
+- unit-0777
+- unit-0778
+- unit-0779
+- unit-0780
+- unit-0781
+- unit-0782
+- unit-0783
+- unit-0784
+- unit-0785
+- unit-0786
+- unit-0787
+- unit-0788
+- unit-0789
+- unit-0790
+- unit-0791
+- unit-0792
+- unit-0793
+- unit-0794
+- unit-0795
+- unit-0796
+- unit-0797
+- unit-0798
+- unit-0799
+- unit-0800
+- unit-0801
+- unit-0802
+- unit-0803
+- unit-0804
+- unit-0805
+- unit-0806
+- unit-0807
+- unit-0808
+- unit-0809
+- unit-0810
+- unit-0811
+- unit-0812
+- unit-0813
+- unit-0814
+- unit-0815
+- unit-0816
+- unit-0817
+- unit-0818
+- unit-0819
+- unit-0820
+- unit-0821
+- unit-0822
+- unit-0823
+- unit-0824
+- unit-0825
+- unit-0826
+- unit-0827
+- unit-0828
+- unit-0829
+- unit-0830
+- unit-0831
+- unit-0832
+- unit-0833
+- unit-0834
+- unit-0835
+- unit-0836
+- unit-0837
+- unit-0838
+- unit-0839
+- unit-0840
+- unit-0841
+- unit-0842
+- unit-0843
+- unit-0844
+- unit-0845
+- unit-0846
+- unit-0847
+- unit-0848
+- unit-0849
+- unit-0850
+- unit-0851
+- unit-0852
+- unit-0853
+- unit-0854
+- unit-0855
+- unit-0856
+- unit-0857
+- unit-0858
+- unit-0859
+- unit-0860
+- unit-0861
+- unit-0862
+- unit-0863
+- unit-0864
+- unit-0865
+- unit-0866
+- unit-0867
+- unit-0868
+- unit-0869
+- unit-0870
+- unit-0871
+- unit-0872
+- unit-0873
+- unit-0874
+- unit-0875
+- unit-0876
+- unit-0877
+- unit-0878
+- unit-0879
+- unit-0880
+- unit-0881
+- unit-0882
+- unit-0883
+- unit-0884
+- unit-0885
+- unit-0886
+- unit-0887
+- unit-0888
+- unit-0889
+- unit-0890
+- unit-0891
+- unit-0892
+- unit-0893
+- unit-0894
+- unit-0895
+- unit-0896
+- unit-0897
+- unit-0898
+- unit-0899
+- unit-0900
+- unit-0901
+- unit-0902
+- unit-0903
+- unit-0904
+- unit-0905
+- unit-0906
+- unit-0907
+- unit-0908
+- unit-0909
+- unit-0910
+- unit-0911
+- unit-0912
+- unit-0913
+- unit-0914
+- unit-0915
+- unit-0916
+- unit-0917
+- unit-0918
+- unit-0919
+- unit-0920
+- unit-0921
+- unit-0922
+- unit-0923
+- unit-0924
+- unit-0925
+- unit-0926
+- unit-0927
+- unit-0928
+- unit-0929
+- unit-0930
+- unit-0931
+- unit-0932
+- unit-0933
+- unit-0934
+- unit-0935
+- unit-0936
+- unit-0937
+- unit-0938
+- unit-0939
+- unit-0940
+- unit-0941
+- unit-0942
+- unit-0943
+- unit-0944
+- unit-0945
+- unit-0946
+- unit-0947
+- unit-0948
+- unit-0949
+- unit-0950
+- unit-0951
+- unit-0952
+- unit-0953
+- unit-0954
+- unit-0955
+- unit-0956
+- unit-0957
+- unit-0958
+- unit-0959
+- unit-0960
+- unit-0961
+- unit-0962
+- unit-0963
+- unit-0964
+- unit-0965
+- unit-0966
+- unit-0967
+- unit-0968
+- unit-0969
+- unit-0970
+- unit-0971
+- unit-0972
+- unit-0973
+- unit-0974
+- unit-0975
+- unit-0976
+- unit-0977
+- unit-0978
+- unit-0979
+- unit-0980
+- unit-0981
+- unit-0982
+- unit-0983
+- unit-0984
+- unit-0985
+- unit-0986
+- unit-0987
+- unit-0988
+- unit-0989
+- unit-0990
+- unit-0991
+- unit-0992
+- unit-0993
+- unit-0994
+- unit-0995
+- unit-0996
+- unit-0997
+- unit-0998
+- unit-0999
+- unit-1000
+- unit-1001
+- unit-1002
+- unit-1003
+- unit-1004
+- unit-1005
+- unit-1006
+- unit-1007
+- unit-1008
+- unit-1009
+- unit-1010
+- unit-1011
+- unit-1012
+- unit-1013
+- unit-1014
+- unit-1015
+- unit-1016
+- unit-1017
+- unit-1018
+- unit-1019
+- unit-1020
+- unit-1021
+- unit-1022
+- unit-1023
+- unit-1024
+- unit-1025
+- unit-1026
+- unit-1027
+- unit-1028
+- unit-1029
+- unit-1030
+- unit-1031
+- unit-1032
+- unit-1033
+- unit-1034
+- unit-1035
+- unit-1036
+- unit-1037
+- unit-1038
+- unit-1039
+- unit-1040
+- unit-1041
+- unit-1042
+- unit-1043
+- unit-1044
+- unit-1045
+- unit-1046
+- unit-1047
+- unit-1048
+- unit-1049
+- unit-1050
+- unit-1051
+- unit-1052
+- unit-1053
+- unit-1054
+- unit-1055
+- unit-1056
+- unit-1057
+- unit-1058
+- unit-1059
+- unit-1060
+- unit-1061
+- unit-1062
+- unit-1063
+- unit-1064
+- unit-1065
+- unit-1066
+- unit-1067
+- unit-1068
+- unit-1069
+- unit-1070
+- unit-1071
+- unit-1072
+- unit-1073
+- unit-1074
+- unit-1075
+- unit-1076
+- unit-1077
+- unit-1078
+- unit-1079
+- unit-1080
+- unit-1081
+- unit-1082
+- unit-1083
+- unit-1084
+- unit-1085
+- unit-1086
+- unit-1087
+- unit-1088
+- unit-1089
+- unit-1090
+- unit-1091
+- unit-1092
+- unit-1093
+- unit-1094
+- unit-1095
+- unit-1096
+- unit-1097
+- unit-1098
+- unit-1099
+- unit-1100
+- unit-1101
+- unit-1102
+- unit-1103
+- unit-1104
+- unit-1105
+- unit-1106
+- unit-1107
+- unit-1108
+- unit-1109
+- unit-1110
+- unit-1111
+- unit-1112
+- unit-1113
+- unit-1114
+- unit-1115
+- unit-1116
+- unit-1117
+- unit-1118
+- unit-1119
+- unit-1120
+- unit-1121
+- unit-1122
+- unit-1123
+- unit-1124
+- unit-1125
+- unit-1126
+- unit-1127
+- unit-1128
+- unit-1129
+- unit-1130
+- unit-1131
+- unit-1132
+- unit-1133
+- unit-1134
+- unit-1135
+- unit-1136
+- unit-1137
+- unit-1138
+- unit-1139
+- unit-1140
+- unit-1141
+- unit-1142
+- unit-1143
+- unit-1144
+- unit-1145
+- unit-1146
+- unit-1147
+- unit-1148
+- unit-1149
+- unit-1150
+- unit-1151
+- unit-1152
+- unit-1153
+- unit-1154
+- unit-1155
+- unit-1156
+- unit-1157
+- unit-1158
+- unit-1159
+- unit-1160
+- unit-1161
+- unit-1162
+- unit-1163
+- unit-1164
+- unit-1165
+- unit-1166
+- unit-1167
+- unit-1168
+- unit-1169
+- unit-1170
+- unit-1171
+- unit-1172
+- unit-1173
+- unit-1174
+- unit-1175
+- unit-1176
+- unit-1177
+- unit-1178
+- unit-1179
+- unit-1180
+- unit-1181
+- unit-1182
+- unit-1183
+- unit-1184
+- unit-1185
+- unit-1186
+- unit-1187
+- unit-1188
+- unit-1189
+- unit-1190
+- unit-1191
+- unit-1192
+- unit-1193
+- unit-1194
+- unit-1195
+- unit-1196
+- unit-1197
+- unit-1198
+- unit-1199
+- unit-1200
+- unit-1201
+- unit-1202
+- unit-1203
+- unit-1204
+- unit-1205
+- unit-1206
+- unit-1207
+- unit-1208
+- unit-1209
+- unit-1210
+- unit-1211
+- unit-1212
+- unit-1213
+- unit-1214
+- unit-1215
+- unit-1216
+- unit-1217
+- unit-1218
+- unit-1219
+- unit-1220
+- unit-1221
+- unit-1222
+- unit-1223
+- unit-1224
+- unit-1225
+- unit-1226
+- unit-1227
+- unit-1228
+- unit-1229
+- unit-1230
+- unit-1231
+- unit-1232
+- unit-1233
+- unit-1234
+- unit-1235
+- unit-1236
+- unit-1237
+- unit-1238
+- unit-1239
+- unit-1240
+- unit-1241
+- unit-1242
+- unit-1243
+- unit-1244
+- unit-1245
+- unit-1246
+- unit-1247
+- unit-1248
+- unit-1249
+- unit-1250
+- unit-1251
+- unit-1252
+- unit-1253
+- unit-1254
+- unit-1255
+- unit-1256
+- unit-1257
+- unit-1258
+- unit-1259
+- unit-1260
+- unit-1261
+- unit-1262
+- unit-1263
+- unit-1264
+- unit-1265
+- unit-1266
+- unit-1267
+- unit-1268
+- unit-1269
+- unit-1270
+- unit-1271
+- unit-1272
+- unit-1273
+- unit-1274
+- unit-1275
+- unit-1276
+- unit-1277
+- unit-1278
+- unit-1279
+- unit-1280
+- unit-1281
+- unit-1282
+- unit-1283
+- unit-1284
+- unit-1285
+- unit-1286
+- unit-1287
+- unit-1288
+- unit-1289
+- unit-1290
+- unit-1291
+- unit-1292
+- unit-1293
+- unit-1294
+- unit-1295
+- unit-1296
+- unit-1297
+- unit-1298
+- unit-1299
+- unit-1300
+- unit-1301
+- unit-1302
+- unit-1303
+- unit-1304
+- unit-1305
+- unit-1306
+- unit-1307
+- unit-1308
+- unit-1309
+- unit-1310
+- unit-1311
+- unit-1312
+- unit-1313
+- unit-1314
+- unit-1315
+- unit-1316
+- unit-1317
+- unit-1318
+- unit-1319
+- unit-1320
+- unit-1321
+- unit-1322
+- unit-1323
+- unit-1324
+- unit-1325
+- unit-1326
+- unit-1327
+- unit-1328
+- unit-1329
+- unit-1330
+- unit-1331
+- unit-1332
+- unit-1333
+- unit-1334
+- unit-1335
+- unit-1336
+- unit-1337
+- unit-1338
+- unit-1339
+- unit-1340
+- unit-1341
+- unit-1342
+- unit-1343
+- unit-1344
+- unit-1345
+- unit-1346
+- unit-1347
+- unit-1348
+- unit-1349
+- unit-1350
+- unit-1351
+- unit-1352
+- unit-1353
+- unit-1354
+- unit-1355
+- unit-1356
+- unit-1357
+- unit-1358
+- unit-1359
+- unit-1360
+- unit-1361
+- unit-1362
+- unit-1363
+- unit-1364
+- unit-1365
+- unit-1366
+- unit-1367
+- unit-1368
+- unit-1369
+- unit-1370
+- unit-1371
+- unit-1372
+- unit-1373
+- unit-1374
+- unit-1375
+- unit-1376
+- unit-1377
+- unit-1378
+- unit-1379
+- unit-1380
+- unit-1381
+- unit-1382
+- unit-1383
+- unit-1384
+- unit-1385
+- unit-1386
+- unit-1387
+- unit-1388
+- unit-1389
+- unit-1390
+- unit-1391
+- unit-1392
+- unit-1393
+- unit-1394
+- unit-1395
+- unit-1396
+- unit-1397
+- unit-1398
+- unit-1399
+- unit-1400
+- unit-1401
+- unit-1402
+- unit-1403
+- unit-1404
+- unit-1405
+- unit-1406
+- unit-1407
+- unit-1408
+- unit-1409
+- unit-1410
+- unit-1411
+- unit-1412
+- unit-1413
+- unit-1414
+- unit-1415
+- unit-1416
+- unit-1417
+- unit-1418
+- unit-1419
+- unit-1420
+- unit-1421
+- unit-1422
+- unit-1423
+- unit-1424
+- unit-1425
+- unit-1426
+- unit-1427
+- unit-1428
+- unit-1429
+- unit-1430
+- unit-1431
+- unit-1432
+- unit-1433
+- unit-1434
+- unit-1435
+- unit-1436
+- unit-1437
+- unit-1438
+- unit-1439
+- unit-1440
+- unit-1441
+- unit-1442
+- unit-1443
+- unit-1444
+- unit-1445
+- unit-1446
+- unit-1447
+- unit-1448
+- unit-1449
+- unit-1450
+- unit-1451
+- unit-1452
+- unit-1453
+- unit-1454
+- unit-1455
+- unit-1456
+- unit-1457
+- unit-1458
+- unit-1459
+- unit-1460
+- unit-1461
+- unit-1462
+- unit-1463
+- unit-1464
+- unit-1465
+- unit-1466
+- unit-1467
+- unit-1468
+- unit-1469
+- unit-1470
+- unit-1471
+- unit-1472
+- unit-1473
+- unit-1474
+- unit-1475
+- unit-1476
+- unit-1477
+- unit-1478
+- unit-1479
+- unit-1480
+- unit-1481
+- unit-1482
+- unit-1483
+- unit-1484
+- unit-1485
+- unit-1486
+- unit-1487
+- unit-1488
+- unit-1489
+- unit-1490
+- unit-1491
+- unit-1492
+- unit-1493
+- unit-1494
+- unit-1495
+- unit-1496
+- unit-1497
+- unit-1498
+- unit-1499
+- unit-1500
+- unit-1501
+- unit-1502
+- unit-1503
+- unit-1504
+- unit-1505
+- unit-1506
+- unit-1507
+- unit-1508
+- unit-1509
+- unit-1510
+- unit-1511
+- unit-1512
+- unit-1513
+- unit-1514
+- unit-1515
+- unit-1516
+- unit-1517
+- unit-1518
+- unit-1519
+- unit-1520
+- unit-1521
+- unit-1522
+- unit-1523
+- unit-1524
+- unit-1525
+- unit-1526
+- unit-1527
+- unit-1528
+- unit-1529
+- unit-1530
+- unit-1531
+- unit-1532
+- unit-1533
+- unit-1534
+- unit-1535
+- unit-1536
+- unit-1537
+- unit-1538
+- unit-1539
+- unit-1540
+- unit-1541
+- unit-1542
+- unit-1543
+- unit-1544
+- unit-1545
+- unit-1546
+- unit-1547
+- unit-1548
+- unit-1549
+- unit-1550
+- unit-1551
+- unit-1552
+- unit-1553
+- unit-1554
+- unit-1555
+- unit-1556
+- unit-1557
+- unit-1558
+- unit-1559
+- unit-1560
+- unit-1561
+- unit-1562
+- unit-1563
+- unit-1564
+- unit-1565
+- unit-1566
+- unit-1567
+- unit-1568
+- unit-1569
+- unit-1570
+- unit-1571
+- unit-1572
+- unit-1573
+- unit-1574
+- unit-1575
+- unit-1576
+- unit-1577
+- unit-1578
+- unit-1579
+- unit-1580
+- unit-1581
+- unit-1582
+- unit-1583
+- unit-1584
+- unit-1585
+- unit-1586
+- unit-1587
+- unit-1588
+- unit-1589
+- unit-1590
+- unit-1591
+- unit-1592
+- unit-1593
+- unit-1594
+- unit-1595
+- unit-1596
+- unit-1597
+- unit-1598
+- unit-1599
+- unit-1600
+- unit-1601
+- unit-1602
+- unit-1603
+- unit-1604
+- unit-1605
+- unit-1606
+- unit-1607
+- unit-1608
+- unit-1609
+- unit-1610
+- unit-1611
+- unit-1612
+- unit-1613
+- unit-1614
+- unit-1615
+- unit-1616
+- unit-1617
+- unit-1618
+- unit-1619
+- unit-1620
+- unit-1621
+- unit-1622
+- unit-1623
+- unit-1624
+- unit-1625
+- unit-1626
+- unit-1627
+- unit-1628
+- unit-1629
+- unit-1630
+- unit-1631
+- unit-1632
+- unit-1633
+- unit-1634
+- unit-1635
+- unit-1636
+- unit-1637
+- unit-1638
+- unit-1639
+- unit-1640
+- unit-1641
+- unit-1642
+- unit-1643
+- unit-1644
+- unit-1645
+- unit-1646
+- unit-1647
+- unit-1648
+- unit-1649
+- unit-1650
+- unit-1651
+- unit-1652
+- unit-1653
+- unit-1654
+- unit-1655
+- unit-1656
+- unit-1657
+- unit-1658
+- unit-1659
+- unit-1660
+- unit-1661
+- unit-1662
+- unit-1663
+- unit-1664
+- unit-1665
+- unit-1666
+- unit-1667
+- unit-1668
+- unit-1669
+- unit-1670
+- unit-1671
+- unit-1672
+- unit-1673
+- unit-1674
+- unit-1675
+- unit-1676
+- unit-1677
+- unit-1678
+- unit-1679
+- unit-1680
+- unit-1681
+- unit-1682
+- unit-1683
+- unit-1684
+- unit-1685
+- unit-1686
+- unit-1687
+- unit-1688
+- unit-1689
+- unit-1690
+- unit-1691
+- unit-1692
+- unit-1693
+- unit-1694
+- unit-1695
+- unit-1696
+- unit-1697
+- unit-1698
+- unit-1699
+- unit-1700
+- unit-1701
+- unit-1702
+- unit-1703
+- unit-1704
+- unit-1705
+- unit-1706
+- unit-1707
+- unit-1708
+- unit-1709
+- unit-1710
+- unit-1711
+- unit-1712
+- unit-1713
+- unit-1714
+- unit-1715
+- unit-1716
+- unit-1717
+- unit-1718
+- unit-1719
+- unit-1720
+- unit-1721
+- unit-1722
+- unit-1723
+- unit-1724
+- unit-1725
+- unit-1726
+- unit-1727
+- unit-1728
+- unit-1729
+- unit-1730
+- unit-1731
+- unit-1732
+- unit-1733
+- unit-1734
+- unit-1735
+- unit-1736
+- unit-1737
+- unit-1738
+- unit-1739
+- unit-1740
+- unit-1741
+- unit-1742
+- unit-1743
+- unit-1744
+- unit-1745
+- unit-1746
+- unit-1747
+- unit-1748
+- unit-1749
+- unit-1750
+- unit-1751
+- unit-1752
+- unit-1753
+- unit-1754
+- unit-1755
+- unit-1756
+- unit-1757
+- unit-1758
+- unit-1759
+- unit-1760
+- unit-1761
+- unit-1762
+- unit-1763
+- unit-1764
+- unit-1765
+- unit-1766
+- unit-1767
+- unit-1768
+- unit-1769
+- unit-1770
+- unit-1771
+- unit-1772
+- unit-1773
+- unit-1774
+- unit-1775
+- unit-1776
+- unit-1777
+- unit-1778
+- unit-1779
+- unit-1780
+- unit-1781
+- unit-1782
+- unit-1783
+- unit-1784
+- unit-1785
+- unit-1786
+- unit-1787
+- unit-1788
+- unit-1789
+- unit-1790
+- unit-1791
+- unit-1792
+- unit-1793
+remaining_unit_count: 0
+publication_status: Кандидаты ещё не приняты как конечные утверждения и не включены в индекс утверждений.
+next_reading_section: Извлечение завершено. Итоговые очереди и состояние полного прохода ведёт контроллер.
+text_reviewed_units:
+- unit-0001
+- unit-0002
+- unit-0003
+- unit-0004
+- unit-0005
+- unit-0006
+- unit-0007
+- unit-0008
+- unit-0009
+- unit-0010
+- unit-0011
+- unit-0012
+- unit-0013
+- unit-0014
+- unit-0015
+- unit-0016
+- unit-0017
+- unit-0018
+- unit-0019
+- unit-0020
+- unit-0021
+- unit-0022
+- unit-0023
+- unit-0024
+- unit-0025
+- unit-0026
+- unit-0027
+- unit-0028
+- unit-0029
+- unit-0030
+- unit-0031
+- unit-0032
+- unit-0033
+- unit-0034
+- unit-0035
+- unit-0036
+- unit-0037
+- unit-0038
+- unit-0039
+- unit-0040
+- unit-0041
+- unit-0042
+- unit-0043
+- unit-0044
+- unit-0045
+- unit-0046
+- unit-0047
+- unit-0048
+- unit-0049
+- unit-0050
+- unit-0051
+- unit-0052
+- unit-0053
+- unit-0054
+- unit-0055
+- unit-0056
+- unit-0057
+- unit-0058
+- unit-0059
+- unit-0060
+- unit-0061
+- unit-0062
+- unit-0063
+- unit-0064
+- unit-0065
+- unit-0066
+- unit-0067
+- unit-0068
+- unit-0069
+- unit-0070
+- unit-0071
+- unit-0072
+- unit-0073
+- unit-0074
+- unit-0075
+- unit-0076
+- unit-0077
+- unit-0078
+- unit-0079
+- unit-0080
+- unit-0081
+- unit-0082
+- unit-0083
+- unit-0084
+- unit-0085
+- unit-0086
+- unit-0087
+- unit-0088
+- unit-0089
+- unit-0090
+- unit-0091
+- unit-0092
+- unit-0093
+- unit-0094
+- unit-0095
+- unit-0096
+- unit-0097
+- unit-0098
+- unit-0099
+- unit-0100
+- unit-0101
+- unit-0102
+- unit-0103
+- unit-0104
+- unit-0105
+- unit-0106
+- unit-0107
+- unit-0108
+- unit-0109
+- unit-1640
+- unit-1641
+- unit-1642
+- unit-1724
+- unit-1725
+- unit-1726
+- unit-1727
+- unit-1728
+- unit-1729
+- unit-1730
+- unit-1731
+- unit-1732
+- unit-1733
+- unit-1734
+- unit-1735
+- unit-1736
+- unit-1737
+- unit-1738
+- unit-1739
+- unit-1740
+- unit-1741
+- unit-1742
+- unit-1743
+- unit-1744
+- unit-1745
+- unit-1746
+- unit-1747
+- unit-1748
+- unit-1749
+- unit-1750
+- unit-1751
+- unit-1752
+- unit-1753
+- unit-1754
+- unit-1755
+- unit-1756
+- unit-1757
+- unit-1758
+- unit-1759
+- unit-1760
+- unit-1761
+- unit-1762
+- unit-1763
+- unit-1764
+- unit-1765
+- unit-1766
+- unit-1767
+- unit-1768
+- unit-1769
+- unit-1770
+- unit-1771
+- unit-1772
+- unit-1773
+- unit-1774
+- unit-1775
+- unit-1776
+- unit-1777
+- unit-1778
+- unit-1779
+- unit-1780
+- unit-1781
+- unit-1782
+- unit-1783
+- unit-1784
+- unit-1785
+- unit-1786
+- unit-1787
+- unit-1789
+- unit-0110
+- unit-0111
+- unit-0112
+- unit-0113
+- unit-0114
+- unit-0115
+- unit-0116
+- unit-0117
+- unit-0118
+- unit-0119
+- unit-0120
+- unit-0121
+- unit-0122
+- unit-0123
+- unit-0124
+- unit-0125
+- unit-0126
+- unit-0127
+- unit-0128
+- unit-0129
+- unit-0130
+- unit-0131
+- unit-0132
+- unit-0133
+- unit-0134
+- unit-0135
+- unit-0136
+- unit-0137
+- unit-0138
+- unit-0139
+- unit-0140
+- unit-0141
+- unit-0142
+- unit-0143
+- unit-0144
+- unit-0145
+- unit-0146
+- unit-0147
+- unit-0148
+- unit-0149
+- unit-0150
+- unit-0151
+- unit-0152
+- unit-0153
+- unit-0154
+- unit-0155
+- unit-0156
+- unit-0157
+- unit-0158
+- unit-0159
+- unit-0160
+- unit-0161
+- unit-0162
+- unit-0163
+- unit-0164
+- unit-0165
+- unit-0166
+- unit-0167
+- unit-0168
+- unit-0169
+- unit-0170
+- unit-0171
+- unit-0172
+- unit-0173
+- unit-0174
+- unit-0175
+- unit-0176
+- unit-0177
+- unit-0178
+- unit-0179
+- unit-0180
+- unit-0181
+- unit-0182
+- unit-0183
+- unit-0184
+- unit-0185
+- unit-0186
+- unit-0187
+- unit-0188
+- unit-0189
+- unit-0190
+- unit-0191
+- unit-0192
+- unit-0193
+- unit-0194
+- unit-0195
+- unit-0196
+- unit-0197
+- unit-0198
+- unit-0199
+- unit-0200
+- unit-0201
+- unit-0202
+- unit-0203
+- unit-0204
+- unit-0205
+- unit-0206
+- unit-0207
+- unit-0208
+- unit-0209
+- unit-0210
+- unit-0211
+- unit-0212
+- unit-0213
+- unit-0214
+- unit-0215
+- unit-0216
+- unit-0217
+- unit-0218
+- unit-0219
+- unit-0220
+- unit-0221
+- unit-0222
+- unit-0223
+- unit-0224
+- unit-0225
+- unit-0226
+- unit-0227
+- unit-0228
+- unit-0229
+- unit-0230
+- unit-0231
+- unit-0232
+- unit-0233
+- unit-0234
+- unit-0235
+- unit-0236
+- unit-0237
+- unit-0238
+- unit-0239
+- unit-0240
+- unit-0241
+- unit-0242
+- unit-0243
+- unit-0244
+- unit-0245
+- unit-0246
+- unit-0247
+- unit-0248
+- unit-0249
+- unit-0250
+- unit-0251
+- unit-0252
+- unit-0253
+- unit-0254
+- unit-0255
+- unit-0256
+- unit-0257
+- unit-0258
+- unit-0259
+- unit-0260
+- unit-0261
+- unit-0262
+- unit-0263
+- unit-0264
+- unit-0265
+- unit-0266
+- unit-0267
+- unit-0268
+- unit-0269
+- unit-0270
+- unit-0271
+- unit-0272
+- unit-0273
+- unit-0274
+- unit-0275
+- unit-0276
+- unit-0277
+- unit-0278
+- unit-0279
+- unit-0280
+- unit-0281
+- unit-0282
+- unit-0283
+- unit-0284
+- unit-0285
+- unit-0286
+- unit-0287
+- unit-0288
+- unit-0289
+- unit-0290
+- unit-0291
+- unit-0292
+- unit-0293
+- unit-0294
+- unit-0295
+- unit-0296
+- unit-0297
+- unit-0298
+- unit-0299
+- unit-0300
+- unit-0301
+- unit-0302
+- unit-0303
+- unit-0304
+- unit-0305
+- unit-0306
+- unit-0307
+- unit-0308
+- unit-0309
+- unit-0310
+- unit-0311
+- unit-0312
+- unit-0313
+- unit-0314
+- unit-0315
+- unit-0316
+- unit-0317
+- unit-0318
+- unit-0319
+- unit-0320
+- unit-0321
+- unit-0322
+- unit-0323
+- unit-0324
+- unit-0325
+- unit-0326
+- unit-0327
+- unit-0328
+- unit-0329
+- unit-0330
+- unit-0331
+- unit-0332
+- unit-0333
+- unit-0334
+- unit-0335
+- unit-0336
+- unit-0337
+- unit-0338
+- unit-0339
+- unit-0340
+- unit-0341
+- unit-0342
+- unit-0343
+- unit-0344
+- unit-0345
+- unit-0346
+- unit-0347
+- unit-0348
+- unit-0349
+- unit-0350
+- unit-0351
+- unit-0352
+- unit-0353
+- unit-0354
+- unit-0355
+- unit-0356
+- unit-0357
+- unit-0358
+- unit-0359
+- unit-0360
+- unit-0361
+- unit-0362
+- unit-0363
+- unit-0364
+- unit-0365
+- unit-0366
+- unit-0367
+- unit-0368
+- unit-0369
+- unit-0370
+- unit-0371
+- unit-0372
+- unit-0373
+- unit-0374
+- unit-0375
+- unit-0376
+- unit-0377
+- unit-0378
+- unit-0379
+- unit-0380
+- unit-0381
+- unit-0382
+- unit-0383
+- unit-0384
+- unit-0385
+- unit-0386
+- unit-0387
+- unit-0388
+- unit-0389
+- unit-0390
+- unit-0391
+- unit-0392
+- unit-0393
+- unit-0394
+- unit-0395
+- unit-0396
+- unit-0397
+- unit-0398
+- unit-0399
+- unit-0400
+- unit-0401
+- unit-0402
+- unit-0403
+- unit-0404
+- unit-0405
+- unit-0406
+- unit-0407
+- unit-0408
+- unit-0409
+- unit-0410
+- unit-0411
+- unit-0412
+- unit-0413
+- unit-0414
+- unit-0415
+- unit-0416
+- unit-0417
+- unit-0418
+- unit-0419
+- unit-0420
+- unit-0421
+- unit-0422
+- unit-0423
+- unit-0424
+- unit-0425
+- unit-0426
+- unit-0427
+- unit-0428
+- unit-0429
+- unit-0430
+- unit-0431
+- unit-0432
+- unit-0433
+- unit-0434
+- unit-0435
+- unit-0436
+- unit-0437
+- unit-0438
+- unit-0439
+- unit-0440
+- unit-0441
+- unit-0442
+- unit-0443
+- unit-0444
+- unit-0445
+- unit-0446
+- unit-0447
+- unit-0448
+- unit-0449
+- unit-0450
+- unit-0451
+- unit-0452
+- unit-0453
+- unit-0454
+- unit-0455
+- unit-0456
+- unit-0457
+- unit-0458
+- unit-0459
+- unit-0460
+- unit-0461
+- unit-0462
+- unit-0463
+- unit-0464
+- unit-0465
+- unit-0466
+- unit-0467
+- unit-0468
+- unit-0469
+- unit-0470
+- unit-0471
+- unit-0472
+- unit-0473
+- unit-0474
+- unit-0475
+- unit-0476
+- unit-0477
+- unit-0478
+- unit-0479
+- unit-0480
+- unit-0481
+- unit-0482
+- unit-0483
+- unit-0484
+- unit-0485
+- unit-0486
+- unit-0487
+- unit-0488
+- unit-0489
+- unit-0490
+- unit-0491
+- unit-0492
+- unit-0493
+- unit-0494
+- unit-0495
+- unit-0496
+- unit-0497
+- unit-0498
+- unit-0499
+- unit-0500
+- unit-0501
+- unit-0502
+- unit-0503
+- unit-0504
+- unit-0505
+- unit-0506
+- unit-0507
+- unit-0508
+- unit-0509
+- unit-0510
+- unit-0511
+- unit-0512
+- unit-0513
+- unit-0514
+- unit-0515
+- unit-0516
+- unit-0517
+- unit-0518
+- unit-0519
+- unit-0520
+- unit-0521
+- unit-0522
+- unit-0523
+- unit-0524
+- unit-0525
+- unit-0526
+- unit-0527
+- unit-0528
+- unit-0529
+- unit-0530
+- unit-0531
+- unit-0532
+- unit-0533
+- unit-0534
+- unit-0535
+- unit-0536
+- unit-0537
+- unit-0538
+- unit-0539
+- unit-0540
+- unit-0541
+- unit-0542
+- unit-0543
+- unit-0544
+- unit-0545
+- unit-0546
+- unit-0547
+- unit-0548
+- unit-0549
+- unit-0550
+- unit-0551
+- unit-0552
+- unit-0553
+- unit-0554
+- unit-0555
+- unit-0556
+- unit-0557
+- unit-0558
+- unit-0559
+- unit-0560
+- unit-0561
+- unit-0562
+- unit-0563
+- unit-0564
+- unit-0565
+- unit-0566
+- unit-0567
+- unit-0568
+- unit-0569
+- unit-0570
+- unit-0571
+- unit-0572
+- unit-0573
+- unit-0574
+- unit-0575
+- unit-0576
+- unit-0577
+- unit-0578
+- unit-0579
+- unit-0580
+- unit-0581
+- unit-0582
+- unit-0583
+- unit-0584
+- unit-0585
+- unit-0586
+- unit-0587
+- unit-0588
+- unit-0589
+- unit-0590
+- unit-0591
+- unit-0592
+- unit-0593
+- unit-0594
+- unit-0595
+- unit-0596
+- unit-0597
+- unit-0598
+- unit-0599
+- unit-0600
+- unit-0601
+- unit-0602
+- unit-0603
+- unit-0604
+- unit-0605
+- unit-0606
+- unit-0607
+- unit-0608
+- unit-0609
+- unit-0610
+- unit-0611
+- unit-0612
+- unit-0613
+- unit-0614
+- unit-0615
+- unit-0616
+- unit-0617
+- unit-0618
+- unit-0619
+- unit-0620
+- unit-0621
+- unit-0622
+- unit-0623
+- unit-0624
+- unit-0625
+- unit-0626
+- unit-0627
+- unit-0628
+- unit-0629
+- unit-0630
+- unit-0631
+- unit-0632
+- unit-0633
+- unit-0634
+- unit-0635
+- unit-0636
+- unit-0637
+- unit-0638
+- unit-0639
+- unit-0640
+- unit-0641
+- unit-0642
+- unit-0643
+- unit-0644
+- unit-0645
+- unit-0646
+- unit-0647
+- unit-0648
+- unit-0649
+- unit-0650
+- unit-0651
+- unit-0652
+- unit-0653
+- unit-0654
+- unit-0655
+- unit-0656
+- unit-0657
+- unit-0658
+- unit-0659
+- unit-0660
+- unit-0661
+- unit-0662
+- unit-0663
+- unit-0664
+- unit-0665
+- unit-0666
+- unit-0667
+- unit-0668
+- unit-0669
+- unit-0670
+- unit-0671
+- unit-0672
+- unit-0673
+- unit-0674
+- unit-0675
+- unit-0676
+- unit-0677
+- unit-0678
+- unit-0679
+- unit-0680
+- unit-0681
+- unit-0682
+- unit-0683
+- unit-0684
+- unit-0685
+- unit-0686
+- unit-0687
+- unit-0688
+- unit-0689
+- unit-0690
+- unit-0691
+- unit-0692
+- unit-0693
+- unit-0694
+- unit-0695
+- unit-0696
+- unit-0697
+- unit-0698
+- unit-0699
+- unit-0700
+- unit-0701
+- unit-0702
+- unit-0703
+- unit-0704
+- unit-0705
+- unit-0706
+- unit-0707
+- unit-0708
+- unit-0709
+- unit-0710
+- unit-0711
+- unit-0712
+- unit-0713
+- unit-0714
+- unit-0715
+- unit-0716
+- unit-0717
+- unit-0718
+- unit-0719
+- unit-0720
+- unit-0721
+- unit-0722
+- unit-0723
+- unit-0724
+- unit-0725
+- unit-0726
+- unit-0727
+- unit-0728
+- unit-0729
+- unit-0730
+- unit-0731
+- unit-0732
+- unit-0733
+- unit-0734
+- unit-0735
+- unit-0736
+- unit-0737
+- unit-0738
+- unit-0739
+- unit-0740
+- unit-0741
+- unit-0742
+- unit-0743
+- unit-0744
+- unit-0745
+- unit-0746
+- unit-0747
+- unit-0748
+- unit-0749
+- unit-0750
+- unit-0751
+- unit-0752
+- unit-0753
+- unit-0754
+- unit-0755
+- unit-0756
+- unit-0757
+- unit-0758
+- unit-0759
+- unit-0760
+- unit-0761
+- unit-0762
+- unit-0763
+- unit-0764
+- unit-0765
+- unit-0766
+- unit-0767
+- unit-0768
+- unit-0769
+- unit-0770
+- unit-0771
+- unit-0772
+- unit-0773
+- unit-0774
+- unit-0775
+- unit-0776
+- unit-0777
+- unit-0778
+- unit-0779
+- unit-0780
+- unit-0781
+- unit-0782
+- unit-0783
+- unit-0784
+- unit-0785
+- unit-0786
+- unit-0787
+- unit-0788
+- unit-0789
+- unit-0790
+- unit-0791
+- unit-0792
+- unit-0793
+- unit-0794
+- unit-0795
+- unit-0796
+- unit-0797
+- unit-0798
+- unit-0799
+- unit-0800
+- unit-0801
+- unit-0802
+- unit-0803
+- unit-0804
+- unit-0805
+- unit-0806
+- unit-0807
+- unit-0808
+- unit-0809
+- unit-0810
+- unit-0811
+- unit-0812
+- unit-0813
+- unit-0814
+- unit-0815
+- unit-0816
+- unit-0817
+- unit-0818
+- unit-0819
+- unit-0820
+- unit-0821
+- unit-0822
+- unit-0823
+- unit-0824
+- unit-0825
+- unit-0826
+- unit-0827
+- unit-0828
+- unit-0829
+- unit-0830
+- unit-0831
+- unit-0832
+- unit-0833
+- unit-0834
+- unit-0835
+- unit-0836
+- unit-0837
+- unit-0838
+- unit-0839
+- unit-0840
+- unit-0841
+- unit-0842
+- unit-0843
+- unit-0844
+- unit-0845
+- unit-0846
+- unit-0847
+- unit-0848
+- unit-0849
+- unit-0850
+- unit-0851
+- unit-0852
+- unit-0853
+- unit-0854
+- unit-0855
+- unit-0856
+- unit-0857
+- unit-0858
+- unit-0859
+- unit-0860
+- unit-0861
+- unit-0862
+- unit-0863
+- unit-0864
+- unit-0865
+- unit-0866
+- unit-0867
+- unit-0868
+- unit-0869
+- unit-0870
+- unit-0871
+- unit-0872
+- unit-0873
+- unit-0874
+- unit-0875
+- unit-0876
+- unit-0877
+- unit-0878
+- unit-0879
+- unit-0880
+- unit-0881
+- unit-0882
+- unit-0883
+- unit-0884
+- unit-0885
+- unit-0886
+- unit-0887
+- unit-0888
+- unit-0889
+- unit-0890
+- unit-0891
+- unit-0892
+- unit-0893
+- unit-0894
+- unit-0895
+- unit-0896
+- unit-0897
+- unit-0898
+- unit-0899
+- unit-0900
+- unit-0901
+- unit-0902
+- unit-0903
+- unit-0904
+- unit-0905
+- unit-0906
+- unit-0907
+- unit-0908
+- unit-0909
+- unit-0910
+- unit-0911
+- unit-0912
+- unit-0913
+- unit-0914
+- unit-0915
+- unit-0916
+- unit-0917
+- unit-0918
+- unit-0919
+- unit-0920
+- unit-0921
+- unit-0922
+- unit-0923
+- unit-0924
+- unit-0925
+- unit-0926
+- unit-0927
+- unit-0928
+- unit-0929
+- unit-0930
+- unit-0931
+- unit-0932
+- unit-0933
+- unit-0934
+- unit-0935
+- unit-0936
+- unit-0937
+- unit-0938
+- unit-0939
+- unit-0940
+- unit-0941
+- unit-0942
+- unit-0943
+- unit-0944
+- unit-0945
+- unit-0946
+- unit-0947
+- unit-0948
+- unit-0949
+- unit-0950
+- unit-0951
+- unit-0952
+- unit-0953
+- unit-0954
+- unit-0955
+- unit-0956
+- unit-0957
+- unit-0958
+- unit-0959
+- unit-0960
+- unit-0961
+- unit-0962
+- unit-0963
+- unit-0964
+- unit-0965
+- unit-0966
+- unit-0967
+- unit-0968
+- unit-0969
+- unit-0970
+- unit-0971
+- unit-0972
+- unit-0973
+- unit-0974
+- unit-0975
+- unit-0976
+- unit-0977
+- unit-0978
+- unit-0979
+- unit-0980
+- unit-0981
+- unit-0982
+- unit-0983
+- unit-0984
+- unit-0985
+- unit-0986
+- unit-0987
+- unit-0988
+- unit-0989
+- unit-0990
+- unit-0991
+- unit-0992
+- unit-0993
+- unit-0994
+- unit-0995
+- unit-0996
+- unit-0997
+- unit-0998
+- unit-0999
+- unit-1000
+- unit-1001
+- unit-1002
+- unit-1003
+- unit-1004
+- unit-1005
+- unit-1006
+- unit-1007
+- unit-1008
+- unit-1009
+- unit-1010
+- unit-1011
+- unit-1012
+- unit-1013
+- unit-1014
+- unit-1015
+- unit-1016
+- unit-1017
+- unit-1018
+- unit-1019
+- unit-1020
+- unit-1021
+- unit-1022
+- unit-1023
+- unit-1024
+- unit-1025
+- unit-1026
+- unit-1027
+- unit-1028
+- unit-1029
+- unit-1030
+- unit-1031
+- unit-1032
+- unit-1033
+- unit-1034
+- unit-1035
+- unit-1036
+- unit-1037
+- unit-1038
+- unit-1039
+- unit-1040
+- unit-1041
+- unit-1042
+- unit-1043
+- unit-1044
+- unit-1045
+- unit-1046
+- unit-1047
+- unit-1048
+- unit-1049
+- unit-1050
+- unit-1051
+- unit-1052
+- unit-1053
+- unit-1054
+- unit-1055
+- unit-1056
+- unit-1057
+- unit-1058
+- unit-1059
+- unit-1060
+- unit-1061
+- unit-1062
+- unit-1063
+- unit-1064
+- unit-1065
+- unit-1066
+- unit-1067
+- unit-1068
+- unit-1069
+- unit-1070
+- unit-1071
+- unit-1072
+- unit-1073
+- unit-1074
+- unit-1075
+- unit-1076
+- unit-1077
+- unit-1078
+- unit-1079
+- unit-1080
+- unit-1081
+- unit-1082
+- unit-1083
+- unit-1084
+- unit-1085
+- unit-1086
+- unit-1087
+- unit-1088
+- unit-1089
+- unit-1090
+- unit-1091
+- unit-1092
+- unit-1093
+- unit-1094
+- unit-1095
+- unit-1096
+- unit-1097
+- unit-1098
+- unit-1099
+- unit-1100
+- unit-1101
+- unit-1102
+- unit-1103
+- unit-1104
+- unit-1105
+- unit-1106
+- unit-1107
+- unit-1108
+- unit-1109
+- unit-1110
+- unit-1111
+- unit-1112
+- unit-1113
+- unit-1114
+- unit-1115
+- unit-1116
+- unit-1117
+- unit-1118
+- unit-1119
+- unit-1120
+- unit-1121
+- unit-1122
+- unit-1123
+- unit-1124
+- unit-1125
+- unit-1126
+- unit-1127
+- unit-1128
+- unit-1129
+- unit-1130
+- unit-1131
+- unit-1132
+- unit-1133
+- unit-1134
+- unit-1135
+- unit-1136
+- unit-1137
+- unit-1138
+- unit-1139
+- unit-1140
+- unit-1141
+- unit-1142
+- unit-1143
+- unit-1144
+- unit-1145
+- unit-1146
+- unit-1147
+- unit-1148
+- unit-1149
+- unit-1150
+- unit-1151
+- unit-1152
+- unit-1153
+- unit-1154
+- unit-1155
+- unit-1156
+- unit-1157
+- unit-1158
+- unit-1159
+- unit-1160
+- unit-1161
+- unit-1162
+- unit-1163
+- unit-1164
+- unit-1165
+- unit-1166
+- unit-1167
+- unit-1168
+- unit-1169
+- unit-1170
+- unit-1171
+- unit-1172
+- unit-1173
+- unit-1174
+- unit-1175
+- unit-1176
+- unit-1177
+- unit-1178
+- unit-1179
+- unit-1180
+- unit-1181
+- unit-1182
+- unit-1183
+- unit-1184
+- unit-1185
+- unit-1186
+- unit-1187
+- unit-1188
+- unit-1189
+- unit-1190
+- unit-1191
+- unit-1192
+- unit-1193
+- unit-1194
+- unit-1195
+- unit-1196
+- unit-1197
+- unit-1198
+- unit-1199
+- unit-1200
+- unit-1201
+- unit-1202
+- unit-1203
+- unit-1204
+- unit-1205
+- unit-1206
+- unit-1207
+- unit-1208
+- unit-1209
+- unit-1210
+- unit-1211
+- unit-1212
+- unit-1213
+- unit-1214
+- unit-1215
+- unit-1216
+- unit-1217
+- unit-1218
+- unit-1219
+- unit-1220
+- unit-1221
+- unit-1222
+- unit-1223
+- unit-1224
+- unit-1225
+- unit-1226
+- unit-1227
+- unit-1228
+- unit-1229
+- unit-1230
+- unit-1231
+- unit-1232
+- unit-1233
+- unit-1234
+- unit-1235
+- unit-1236
+- unit-1237
+- unit-1238
+- unit-1239
+- unit-1240
+- unit-1241
+- unit-1242
+- unit-1243
+- unit-1244
+- unit-1245
+- unit-1246
+- unit-1247
+- unit-1248
+- unit-1249
+- unit-1250
+- unit-1251
+- unit-1252
+- unit-1253
+- unit-1254
+- unit-1255
+- unit-1256
+- unit-1257
+- unit-1258
+- unit-1259
+- unit-1260
+- unit-1261
+- unit-1262
+- unit-1263
+- unit-1264
+- unit-1265
+- unit-1266
+- unit-1267
+- unit-1268
+- unit-1269
+- unit-1270
+- unit-1271
+- unit-1272
+- unit-1273
+- unit-1274
+- unit-1275
+- unit-1276
+- unit-1277
+- unit-1278
+- unit-1279
+- unit-1280
+- unit-1281
+- unit-1282
+- unit-1283
+- unit-1284
+- unit-1285
+- unit-1286
+- unit-1287
+- unit-1288
+- unit-1289
+- unit-1290
+- unit-1291
+- unit-1292
+- unit-1293
+- unit-1294
+- unit-1295
+- unit-1296
+- unit-1297
+- unit-1298
+- unit-1299
+- unit-1300
+- unit-1301
+- unit-1302
+- unit-1303
+- unit-1304
+- unit-1305
+- unit-1306
+- unit-1307
+- unit-1308
+- unit-1309
+- unit-1310
+- unit-1311
+- unit-1312
+- unit-1313
+- unit-1314
+- unit-1315
+- unit-1316
+- unit-1317
+- unit-1318
+- unit-1319
+- unit-1320
+- unit-1321
+- unit-1322
+- unit-1323
+- unit-1324
+- unit-1325
+- unit-1326
+- unit-1327
+- unit-1328
+- unit-1329
+- unit-1330
+- unit-1331
+- unit-1332
+- unit-1333
+- unit-1334
+- unit-1335
+- unit-1336
+- unit-1337
+- unit-1338
+- unit-1339
+- unit-1340
+- unit-1341
+- unit-1342
+- unit-1343
+- unit-1344
+- unit-1345
+- unit-1346
+- unit-1347
+- unit-1348
+- unit-1349
+- unit-1350
+- unit-1351
+- unit-1352
+- unit-1353
+- unit-1354
+- unit-1355
+- unit-1356
+- unit-1357
+- unit-1358
+- unit-1359
+- unit-1360
+- unit-1361
+- unit-1362
+- unit-1363
+- unit-1364
+- unit-1365
+- unit-1366
+- unit-1367
+- unit-1368
+- unit-1369
+- unit-1370
+- unit-1371
+- unit-1372
+- unit-1373
+- unit-1374
+- unit-1375
+- unit-1376
+- unit-1377
+- unit-1378
+- unit-1379
+- unit-1380
+- unit-1381
+- unit-1382
+- unit-1383
+- unit-1384
+- unit-1385
+- unit-1386
+- unit-1387
+- unit-1388
+- unit-1389
+- unit-1390
+- unit-1391
+- unit-1392
+- unit-1393
+- unit-1394
+- unit-1395
+- unit-1396
+- unit-1397
+- unit-1398
+- unit-1399
+- unit-1400
+- unit-1401
+- unit-1402
+- unit-1403
+- unit-1404
+- unit-1405
+- unit-1406
+- unit-1407
+- unit-1408
+- unit-1409
+- unit-1410
+- unit-1411
+- unit-1412
+- unit-1413
+- unit-1414
+- unit-1415
+- unit-1416
+- unit-1417
+- unit-1418
+- unit-1419
+- unit-1420
+- unit-1421
+- unit-1422
+- unit-1423
+- unit-1424
+- unit-1425
+- unit-1426
+- unit-1427
+- unit-1428
+- unit-1429
+- unit-1430
+- unit-1431
+- unit-1432
+- unit-1433
+- unit-1434
+- unit-1435
+- unit-1436
+- unit-1437
+- unit-1438
+- unit-1439
+- unit-1440
+- unit-1441
+- unit-1442
+- unit-1443
+- unit-1444
+- unit-1445
+- unit-1446
+- unit-1447
+- unit-1448
+- unit-1449
+- unit-1450
+- unit-1451
+- unit-1452
+- unit-1453
+- unit-1454
+- unit-1455
+- unit-1456
+- unit-1457
+- unit-1458
+- unit-1459
+- unit-1460
+- unit-1461
+- unit-1462
+- unit-1463
+- unit-1464
+- unit-1465
+- unit-1466
+- unit-1467
+- unit-1468
+- unit-1469
+- unit-1470
+- unit-1471
+- unit-1472
+- unit-1473
+- unit-1474
+- unit-1475
+- unit-1476
+- unit-1477
+- unit-1478
+- unit-1479
+- unit-1480
+- unit-1481
+- unit-1482
+- unit-1483
+- unit-1484
+- unit-1485
+- unit-1486
+- unit-1487
+- unit-1488
+- unit-1489
+- unit-1490
+- unit-1491
+- unit-1492
+- unit-1493
+- unit-1494
+- unit-1495
+- unit-1496
+- unit-1497
+- unit-1498
+- unit-1499
+- unit-1500
+- unit-1501
+- unit-1502
+- unit-1503
+- unit-1504
+- unit-1505
+- unit-1506
+- unit-1507
+- unit-1508
+- unit-1509
+- unit-1510
+- unit-1511
+- unit-1512
+- unit-1513
+- unit-1514
+- unit-1515
+- unit-1516
+- unit-1517
+- unit-1518
+- unit-1519
+- unit-1520
+- unit-1521
+- unit-1522
+- unit-1523
+- unit-1524
+- unit-1525
+- unit-1526
+- unit-1527
+- unit-1528
+- unit-1529
+- unit-1530
+- unit-1531
+- unit-1532
+- unit-1533
+- unit-1534
+- unit-1535
+- unit-1536
+- unit-1537
+- unit-1538
+- unit-1539
+- unit-1540
+- unit-1541
+- unit-1542
+- unit-1543
+- unit-1544
+- unit-1545
+- unit-1546
+- unit-1547
+- unit-1548
+- unit-1549
+- unit-1550
+- unit-1551
+- unit-1552
+- unit-1553
+- unit-1554
+- unit-1555
+- unit-1556
+- unit-1557
+- unit-1558
+- unit-1559
+- unit-1560
+- unit-1561
+- unit-1562
+- unit-1563
+- unit-1564
+- unit-1565
+- unit-1566
+- unit-1567
+- unit-1568
+- unit-1569
+- unit-1570
+- unit-1571
+- unit-1572
+- unit-1573
+- unit-1574
+- unit-1575
+- unit-1576
+- unit-1577
+- unit-1578
+- unit-1579
+- unit-1580
+- unit-1581
+- unit-1582
+- unit-1583
+- unit-1584
+- unit-1585
+- unit-1586
+- unit-1587
+- unit-1588
+- unit-1589
+- unit-1590
+- unit-1591
+- unit-1592
+- unit-1593
+- unit-1594
+- unit-1595
+- unit-1596
+- unit-1597
+- unit-1598
+- unit-1599
+- unit-1600
+- unit-1601
+- unit-1602
+- unit-1603
+- unit-1604
+- unit-1605
+- unit-1606
+- unit-1607
+- unit-1608
+- unit-1609
+- unit-1610
+- unit-1611
+- unit-1612
+- unit-1613
+- unit-1614
+- unit-1615
+- unit-1616
+- unit-1617
+- unit-1618
+- unit-1619
+- unit-1620
+- unit-1621
+- unit-1622
+- unit-1623
+- unit-1624
+- unit-1625
+- unit-1626
+- unit-1627
+- unit-1628
+- unit-1629
+- unit-1630
+- unit-1631
+- unit-1632
+- unit-1633
+- unit-1634
+- unit-1635
+- unit-1636
+- unit-1637
+- unit-1638
+- unit-1639
+unread_unit_count: 0
+candidate_count: 3895
+progress_semantics: reviewed_units означает учёт всех структурных единиц по coverage. text_reviewed_units — чтение текста.
+  navigation_assessment — отдельная оценка навигации и производственных сведений. Нулевой остаток не означает чтения
+  всех библиографических работ или независимой проверки современных норм.
+additional_text_reviewed_units:
+- unit-1640
+- unit-1641
+- unit-1642
+- unit-1724
+- unit-1725
+- unit-1726
+- unit-1727
+- unit-1728
+- unit-1729
+- unit-1730
+- unit-1731
+- unit-1732
+- unit-1733
+- unit-1734
+- unit-1735
+- unit-1736
+- unit-1737
+- unit-1738
+- unit-1739
+- unit-1740
+- unit-1741
+- unit-1742
+- unit-1743
+- unit-1744
+- unit-1745
+- unit-1746
+- unit-1747
+- unit-1748
+- unit-1749
+- unit-1750
+- unit-1751
+- unit-1752
+- unit-1753
+- unit-1754
+- unit-1755
+- unit-1756
+- unit-1757
+- unit-1758
+- unit-1759
+- unit-1760
+- unit-1761
+- unit-1762
+- unit-1763
+- unit-1764
+- unit-1765
+- unit-1766
+- unit-1767
+- unit-1768
+- unit-1769
+- unit-1770
+- unit-1771
+- unit-1772
+- unit-1773
+- unit-1774
+- unit-1775
+- unit-1776
+- unit-1777
+- unit-1778
+- unit-1779
+- unit-1780
+- unit-1781
+- unit-1782
+- unit-1783
+- unit-1784
+- unit-1785
+- unit-1786
+- unit-1787
+- unit-1789
+navigation_assessment:
+  method: Проверены назначение, структура, начальные и конечные записи навигационных перечней. Все библиографические
+    записи сплошь не читались. Их содержание не выдаётся за извлечённые нормы перечисленных работ.
+  unit_ids:
+  - unit-1643
+  - unit-1644
+  - unit-1645
+  - unit-1646
+  - unit-1647
+  - unit-1648
+  - unit-1649
+  - unit-1650
+  - unit-1651
+  - unit-1652
+  - unit-1653
+  - unit-1654
+  - unit-1655
+  - unit-1656
+  - unit-1657
+  - unit-1658
+  - unit-1659
+  - unit-1660
+  - unit-1661
+  - unit-1662
+  - unit-1663
+  - unit-1664
+  - unit-1665
+  - unit-1666
+  - unit-1667
+  - unit-1668
+  - unit-1669
+  - unit-1670
+  - unit-1671
+  - unit-1672
+  - unit-1673
+  - unit-1674
+  - unit-1675
+  - unit-1676
+  - unit-1677
+  - unit-1678
+  - unit-1679
+  - unit-1680
+  - unit-1681
+  - unit-1682
+  - unit-1683
+  - unit-1684
+  - unit-1685
+  - unit-1686
+  - unit-1687
+  - unit-1688
+  - unit-1689
+  - unit-1690
+  - unit-1691
+  - unit-1692
+  - unit-1693
+  - unit-1694
+  - unit-1695
+  - unit-1696
+  - unit-1697
+  - unit-1698
+  - unit-1699
+  - unit-1700
+  - unit-1701
+  - unit-1702
+  - unit-1703
+  - unit-1704
+  - unit-1705
+  - unit-1706
+  - unit-1707
+  - unit-1708
+  - unit-1709
+  - unit-1710
+  - unit-1711
+  - unit-1712
+  - unit-1713
+  - unit-1714
+  - unit-1715
+  - unit-1716
+  - unit-1717
+  - unit-1718
+  - unit-1719
+  - unit-1720
+  - unit-1721
+  - unit-1722
+  - unit-1723
+  - unit-1788
+  - unit-1790
+  - unit-1791
+  - unit-1792
+  - unit-1793
+  classification: Навигация и производственные сведения, не самостоятельные правила проекта.
+status: complete
+final_statement_count: 3895
+lexical_facts_artifact:
+  path: .local/work/lexical-facts.local.yml
+  sha256: 0b870133276627b4f084b3358463caa25f5e3ea96be20f54602c94f3fcc3f143
+  count: 1463
+lexical_quality_notes:
+  confusable_script_statement_ids:
+  - MILCH-0625
+  - MILCH-0730
+  - MILCH-0807
+  - MILCH-0848
+  - MILCH-1095
+  - MILCH-1096
+  - MILCH-1097
+  - MILCH-1098
+  - MILCH-1099
+  - MILCH-1838
+  - MILCH-1853
+  - MILCH-1943
+  - MILCH-1944
+  - MILCH-1945
+  - MILCH-1946
+  - MILCH-1947
+  - MILCH-1948
+  - MILCH-1949
+  - MILCH-1950
+  handling: Исходные символы сохранены. Несовпадение алфавита отмечено как ограничение, а не молча исправлено.

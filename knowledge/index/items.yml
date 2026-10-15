@@ -4,6 +4,6 @@ items:
   path: data/milchin-cheltsova/documents/edition-5
   title: Пятое издание справочника
   date_published: null
-  workflow_stage: blocked
-  access: Локальная копия source.local.epub. Перед смысловой обработкой требуется
-    проверка правового основания и допустимого объёма.
+  workflow_stage: normalized
+  access: Локальная копия source.local.epub, предоставленная владельцем проекта. Обработка
+    разрешена в пределах allowed_use источника. Полный текст остаётся вне Git.
