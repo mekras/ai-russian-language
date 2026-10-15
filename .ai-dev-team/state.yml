@@ -1,5 +1,5 @@
 product: mekras/ai-dev-team
-applied_version: 0.29.3
+applied_version: 0.29.4
 updated_at: 2026-10-15
 
 project:
@@ -24,6 +24,9 @@ setup:
   visibility: public
   git:
     enabled: true
+  subagents:
+    status: creation_declined
+    reason: disabled_by_project_owner
   commit_messages:
     scheme: pro-git
   changelog:
