@@ -1,13 +1,13 @@
 lockfile_version: '2'
-generated_at: '2026-10-19T05:56:02.174564+00:00'
+generated_at: '2026-10-19T07:15:48.702786+00:00'
 apm_version: 0.33.0
 dependencies:
 - repo_url: mekras/ai-dev-team
   name: ai-dev-team
   host: github.com
-  resolved_commit: 75b69622feafe04fa483d3a3609ee210286b0d05
-  resolved_ref: 0.29.6
-  version: 0.29.6
+  resolved_commit: 8932ed8fe36854458dbaa8bd7558ef683e844ade
+  resolved_ref: 0.29.7
+  version: 0.29.7
   package_type: apm_package
   deployed_files:
   - .agents/skills/ait-analysis
@@ -759,11 +759,11 @@ dependencies:
     .agents/skills/ait-impact-analysis/references/selective-verification.md: sha256:29fd89e622cb34e0436d19c3999fea682bbd51fa65fbf7d1704d04e9aab48a90
     .agents/skills/ait-impact-analysis/scripts/impact_graph.py: sha256:0302a74a09c6c44ea9381b7ad1c8fe558d692c9d4fec60c512049c77723bc5a9
     .agents/skills/ait-impact-analysis/scripts/selective_verification.py: sha256:e7e67fad304b1f326694c59b9aff4d6f0df6fb58e9cc2fa3c422eafd07fd5e51
-    .agents/skills/ait-interface-design/SKILL.md: sha256:8e08ab0fcb4f14d2dc25dcbb023d9fcf848ca5a019a25be6d907289c0f9605ce
+    .agents/skills/ait-interface-design/SKILL.md: sha256:a3ffe0956a2d55614abd2d1ebc660dd0004f261ed1733ca08b2b8a70f914dad9
     .agents/skills/ait-interface-design/evals/fixtures/copy-action-with-layout-defect.html: sha256:d982026e0d3f0d9f5fd1d1e8e9719d483e2ddb4cbfc863f39944c7921846825b
-    .agents/skills/ait-interface-design/evals/result-scenarios.json: sha256:ee394bdfacb908acf00e8901ade471290a5aafdb209d4e535f3811dbf121e3ce
+    .agents/skills/ait-interface-design/evals/result-scenarios.json: sha256:015883a040d8e912922bc94fbe8a7d8e53984239bf0d468477fad139a6793454
     .agents/skills/ait-interface-design/evals/triggers.json: sha256:0819900bc0d8b768448380ca79e4be8b0e274e00b2595b144240a6a9eef481a4
-    .agents/skills/ait-interface-design/references/interface-design-workflow.md: sha256:a9a5e008557240ee63a971f07747bf56fe576687be1a353b6dffe8f3abf4dc6f
+    .agents/skills/ait-interface-design/references/interface-design-workflow.md: sha256:d4c64e5b1c5d74cb9bb8b38eacb09a4a40b15b60b5bba539351594f46c4dde86
     .agents/skills/ait-licensing/SKILL.md: sha256:f70b3e9d22b4832f916ed00ae44e00a2013538d394c0e054a9311558c364cb3f
     .agents/skills/ait-licensing/evals/triggers.json: sha256:425f51dbf95893558b55f113206af661abbfff7a52e438d906e03660532422ab
     .agents/skills/ait-licensing/references/license-comparison.md: sha256:2376bbdd543251073b59384720e0765c1f9ce3ad7a2e53addf8d5d8f83c50a22
@@ -942,12 +942,12 @@ dependencies:
     .agents/skills/ait-session-report-review/SKILL.md: sha256:5c2cd7e711935fb7f96a5eb0e2ce9ed9eacb467eaad93dc26ee4b95ec0279962
     .agents/skills/ait-session-report-review/evals/result-scenarios.json: sha256:9846132e5c7e70b47fd12c20fb1ef72d0ef21fb80bbd6a86cbce6b5aadad03a8
     .agents/skills/ait-session-report-review/evals/triggers.json: sha256:669c2e99fe2a17a8719454e8ed6b77a406fc060d2364f974f3121b2f4aca9aca
-    .agents/skills/ait-setup/SKILL.md: sha256:2fbf3d767fccd5158063e1750b07014a03e3c04d9a3226215d271d32a19c8054
+    .agents/skills/ait-setup/SKILL.md: sha256:d4bb1d22978fe0baeaac6df05bddde8e59d4334e2c8bb22c1ee4e3f24d769275
     .agents/skills/ait-setup/assets/minimal-files.md: sha256:d8cf333631330712af41fc66ea8f7f560f96f290af578c23f65453aad70b3438
-    .agents/skills/ait-setup/assets/project-AGENTS.md: sha256:33d8882a584ffc909a5e62355f2fd3723c7043021256f70bc4a99e4e9d2146ea
-    .agents/skills/ait-setup/evals/result-scenarios.json: sha256:f04dfc5a3c30b8c4dd7eaab4152dd5272897a0c61420f4bdb9079a5a0c69ed5e
+    .agents/skills/ait-setup/assets/project-AGENTS.md: sha256:a7e0164256843646156eb0b8a54aec9e50cb272734c9dbe50c55ee7b65251368
+    .agents/skills/ait-setup/evals/result-scenarios.json: sha256:f4d6a14d9184f0774ceb76732994bccb8e6d9f6a1a845b4070855cbec7e144be
     .agents/skills/ait-setup/evals/triggers.json: sha256:67aa2c447dbe50d782544c1f938ce8328e2959eac5b5daec0dd479482244c918
-    .agents/skills/ait-setup/references/setup-dialogue.md: sha256:3d2b6e70911f0ca64c4778825ec7a527d3c9324c75dfe4144216e7e5254a170b
+    .agents/skills/ait-setup/references/setup-dialogue.md: sha256:ef5b66b3cf94acabd76bb2d8049d294d5ccade59c8f01cd4b12c75894266db53
     .agents/skills/ait-twelve-factor/SKILL.md: sha256:71d3433780429be22abfef4c2444f24898b4eec64a1017c95ecb75dc24243ce0
     .agents/skills/ait-twelve-factor/evals/result-scenarios.json: sha256:567db8b843f685f9903119ad4fda9b4562c2b9e6cb691cf3e0f5fac91e83d336
     .agents/skills/ait-twelve-factor/evals/triggers.json: sha256:325cabbae6ce7d57d897458583fe0764142861f706fdcd21211fa0a0c056df08
@@ -1064,11 +1064,11 @@ dependencies:
     .claude/skills/ait-impact-analysis/references/selective-verification.md: sha256:29fd89e622cb34e0436d19c3999fea682bbd51fa65fbf7d1704d04e9aab48a90
     .claude/skills/ait-impact-analysis/scripts/impact_graph.py: sha256:0302a74a09c6c44ea9381b7ad1c8fe558d692c9d4fec60c512049c77723bc5a9
     .claude/skills/ait-impact-analysis/scripts/selective_verification.py: sha256:e7e67fad304b1f326694c59b9aff4d6f0df6fb58e9cc2fa3c422eafd07fd5e51
-    .claude/skills/ait-interface-design/SKILL.md: sha256:8e08ab0fcb4f14d2dc25dcbb023d9fcf848ca5a019a25be6d907289c0f9605ce
+    .claude/skills/ait-interface-design/SKILL.md: sha256:a3ffe0956a2d55614abd2d1ebc660dd0004f261ed1733ca08b2b8a70f914dad9
     .claude/skills/ait-interface-design/evals/fixtures/copy-action-with-layout-defect.html: sha256:d982026e0d3f0d9f5fd1d1e8e9719d483e2ddb4cbfc863f39944c7921846825b
-    .claude/skills/ait-interface-design/evals/result-scenarios.json: sha256:ee394bdfacb908acf00e8901ade471290a5aafdb209d4e535f3811dbf121e3ce
+    .claude/skills/ait-interface-design/evals/result-scenarios.json: sha256:015883a040d8e912922bc94fbe8a7d8e53984239bf0d468477fad139a6793454
     .claude/skills/ait-interface-design/evals/triggers.json: sha256:0819900bc0d8b768448380ca79e4be8b0e274e00b2595b144240a6a9eef481a4
-    .claude/skills/ait-interface-design/references/interface-design-workflow.md: sha256:a9a5e008557240ee63a971f07747bf56fe576687be1a353b6dffe8f3abf4dc6f
+    .claude/skills/ait-interface-design/references/interface-design-workflow.md: sha256:d4c64e5b1c5d74cb9bb8b38eacb09a4a40b15b60b5bba539351594f46c4dde86
     .claude/skills/ait-licensing/SKILL.md: sha256:f70b3e9d22b4832f916ed00ae44e00a2013538d394c0e054a9311558c364cb3f
     .claude/skills/ait-licensing/evals/triggers.json: sha256:425f51dbf95893558b55f113206af661abbfff7a52e438d906e03660532422ab
     .claude/skills/ait-licensing/references/license-comparison.md: sha256:2376bbdd543251073b59384720e0765c1f9ce3ad7a2e53addf8d5d8f83c50a22
@@ -1247,12 +1247,12 @@ dependencies:
     .claude/skills/ait-session-report-review/SKILL.md: sha256:5c2cd7e711935fb7f96a5eb0e2ce9ed9eacb467eaad93dc26ee4b95ec0279962
     .claude/skills/ait-session-report-review/evals/result-scenarios.json: sha256:9846132e5c7e70b47fd12c20fb1ef72d0ef21fb80bbd6a86cbce6b5aadad03a8
     .claude/skills/ait-session-report-review/evals/triggers.json: sha256:669c2e99fe2a17a8719454e8ed6b77a406fc060d2364f974f3121b2f4aca9aca
-    .claude/skills/ait-setup/SKILL.md: sha256:2fbf3d767fccd5158063e1750b07014a03e3c04d9a3226215d271d32a19c8054
+    .claude/skills/ait-setup/SKILL.md: sha256:d4bb1d22978fe0baeaac6df05bddde8e59d4334e2c8bb22c1ee4e3f24d769275
     .claude/skills/ait-setup/assets/minimal-files.md: sha256:d8cf333631330712af41fc66ea8f7f560f96f290af578c23f65453aad70b3438
-    .claude/skills/ait-setup/assets/project-AGENTS.md: sha256:33d8882a584ffc909a5e62355f2fd3723c7043021256f70bc4a99e4e9d2146ea
-    .claude/skills/ait-setup/evals/result-scenarios.json: sha256:f04dfc5a3c30b8c4dd7eaab4152dd5272897a0c61420f4bdb9079a5a0c69ed5e
+    .claude/skills/ait-setup/assets/project-AGENTS.md: sha256:a7e0164256843646156eb0b8a54aec9e50cb272734c9dbe50c55ee7b65251368
+    .claude/skills/ait-setup/evals/result-scenarios.json: sha256:f4d6a14d9184f0774ceb76732994bccb8e6d9f6a1a845b4070855cbec7e144be
     .claude/skills/ait-setup/evals/triggers.json: sha256:67aa2c447dbe50d782544c1f938ce8328e2959eac5b5daec0dd479482244c918
-    .claude/skills/ait-setup/references/setup-dialogue.md: sha256:3d2b6e70911f0ca64c4778825ec7a527d3c9324c75dfe4144216e7e5254a170b
+    .claude/skills/ait-setup/references/setup-dialogue.md: sha256:ef5b66b3cf94acabd76bb2d8049d294d5ccade59c8f01cd4b12c75894266db53
     .claude/skills/ait-twelve-factor/SKILL.md: sha256:71d3433780429be22abfef4c2444f24898b4eec64a1017c95ecb75dc24243ce0
     .claude/skills/ait-twelve-factor/evals/result-scenarios.json: sha256:567db8b843f685f9903119ad4fda9b4562c2b9e6cb691cf3e0f5fac91e83d336
     .claude/skills/ait-twelve-factor/evals/triggers.json: sha256:325cabbae6ce7d57d897458583fe0764142861f706fdcd21211fa0a0c056df08
@@ -1289,11 +1289,11 @@ dependencies:
     .codex/agents/statement-extractor.toml: sha256:93a102c56805353c4124104deb3d2ef6aeec070e38cb571366789b2aec3df247
     .codex/agents/technical-writer.toml: sha256:6d6601ab4c850e0c2f3cfcc3b373f996367349960158c9e9920720443562cbd8
     .codex/agents/ux-specialist.toml: sha256:fd4a62def6b061a5798dd24613d2955eb25f057648ea20c3f16da87ed65195e3
-  content_hash: sha256:08b82af70f90f071fe394cda6beccdb0836f64b1fa94093250cdbb5f0b3558ee
+  content_hash: sha256:7f51b67ce4ba7a23cac1bd6ce600436d2047057e111a0c1f37189c0dc0c72e03
   is_dev: true
-  constraint: 0.29.6
-  resolved_tag: 0.29.6
-  resolved_at: '2026-10-19T05:55:44+00:00'
+  constraint: 0.29.7
+  resolved_tag: 0.29.7
+  resolved_at: '2026-10-19T07:15:31+00:00'
   declared_license: MIT
 - repo_url: talkstream/ru-text
   name: ru-text
@@ -6200,7 +6200,7 @@ deployments:
   owners:
   - mekras/ai-dev-team
   active_owner: mekras/ai-dev-team
-  content_hash: sha256:8e08ab0fcb4f14d2dc25dcbb023d9fcf848ca5a019a25be6d907289c0f9605ce
+  content_hash: sha256:a3ffe0956a2d55614abd2d1ebc660dd0004f261ed1733ca08b2b8a70f914dad9
 - kind: project-relative
   target: agent-skills
   value: .agents/skills/ait-interface-design/evals/fixtures/copy-action-with-layout-defect.html
@@ -6218,7 +6218,7 @@ deployments:
   owners:
   - mekras/ai-dev-team
   active_owner: mekras/ai-dev-team
-  content_hash: sha256:ee394bdfacb908acf00e8901ade471290a5aafdb209d4e535f3811dbf121e3ce
+  content_hash: sha256:015883a040d8e912922bc94fbe8a7d8e53984239bf0d468477fad139a6793454
 - kind: project-relative
   target: agent-skills
   value: .agents/skills/ait-interface-design/evals/triggers.json
@@ -6236,7 +6236,7 @@ deployments:
   owners:
   - mekras/ai-dev-team
   active_owner: mekras/ai-dev-team
-  content_hash: sha256:a9a5e008557240ee63a971f07747bf56fe576687be1a353b6dffe8f3abf4dc6f
+  content_hash: sha256:d4c64e5b1c5d74cb9bb8b38eacb09a4a40b15b60b5bba539351594f46c4dde86
 - kind: project-relative
   target: agent-skills
   value: .agents/skills/ait-licensing
@@ -7928,7 +7928,7 @@ deployments:
   owners:
   - mekras/ai-dev-team
   active_owner: mekras/ai-dev-team
-  content_hash: sha256:2fbf3d767fccd5158063e1750b07014a03e3c04d9a3226215d271d32a19c8054
+  content_hash: sha256:d4bb1d22978fe0baeaac6df05bddde8e59d4334e2c8bb22c1ee4e3f24d769275
 - kind: project-relative
   target: agent-skills
   value: .agents/skills/ait-setup/assets/minimal-files.md
@@ -7946,7 +7946,7 @@ deployments:
   owners:
   - mekras/ai-dev-team
   active_owner: mekras/ai-dev-team
-  content_hash: sha256:33d8882a584ffc909a5e62355f2fd3723c7043021256f70bc4a99e4e9d2146ea
+  content_hash: sha256:a7e0164256843646156eb0b8a54aec9e50cb272734c9dbe50c55ee7b65251368
 - kind: project-relative
   target: agent-skills
   value: .agents/skills/ait-setup/evals/result-scenarios.json
@@ -7955,7 +7955,7 @@ deployments:
   owners:
   - mekras/ai-dev-team
   active_owner: mekras/ai-dev-team
-  content_hash: sha256:f04dfc5a3c30b8c4dd7eaab4152dd5272897a0c61420f4bdb9079a5a0c69ed5e
+  content_hash: sha256:f4d6a14d9184f0774ceb76732994bccb8e6d9f6a1a845b4070855cbec7e144be
 - kind: project-relative
   target: agent-skills
   value: .agents/skills/ait-setup/evals/triggers.json
@@ -7973,7 +7973,7 @@ deployments:
   owners:
   - mekras/ai-dev-team
   active_owner: mekras/ai-dev-team
-  content_hash: sha256:3d2b6e70911f0ca64c4778825ec7a527d3c9324c75dfe4144216e7e5254a170b
+  content_hash: sha256:ef5b66b3cf94acabd76bb2d8049d294d5ccade59c8f01cd4b12c75894266db53
 - kind: project-relative
   target: agent-skills
   value: .agents/skills/ait-twelve-factor
@@ -13312,7 +13312,7 @@ deployments:
   owners:
   - mekras/ai-dev-team
   active_owner: mekras/ai-dev-team
-  content_hash: sha256:8e08ab0fcb4f14d2dc25dcbb023d9fcf848ca5a019a25be6d907289c0f9605ce
+  content_hash: sha256:a3ffe0956a2d55614abd2d1ebc660dd0004f261ed1733ca08b2b8a70f914dad9
 - kind: project-relative
   target: claude
   value: .claude/skills/ait-interface-design/evals/fixtures/copy-action-with-layout-defect.html
@@ -13330,7 +13330,7 @@ deployments:
   owners:
   - mekras/ai-dev-team
   active_owner: mekras/ai-dev-team
-  content_hash: sha256:ee394bdfacb908acf00e8901ade471290a5aafdb209d4e535f3811dbf121e3ce
+  content_hash: sha256:015883a040d8e912922bc94fbe8a7d8e53984239bf0d468477fad139a6793454
 - kind: project-relative
   target: claude
   value: .claude/skills/ait-interface-design/evals/triggers.json
@@ -13348,7 +13348,7 @@ deployments:
   owners:
   - mekras/ai-dev-team
   active_owner: mekras/ai-dev-team
-  content_hash: sha256:a9a5e008557240ee63a971f07747bf56fe576687be1a353b6dffe8f3abf4dc6f
+  content_hash: sha256:d4c64e5b1c5d74cb9bb8b38eacb09a4a40b15b60b5bba539351594f46c4dde86
 - kind: project-relative
   target: claude
   value: .claude/skills/ait-licensing
@@ -15040,7 +15040,7 @@ deployments:
   owners:
   - mekras/ai-dev-team
   active_owner: mekras/ai-dev-team
-  content_hash: sha256:2fbf3d767fccd5158063e1750b07014a03e3c04d9a3226215d271d32a19c8054
+  content_hash: sha256:d4bb1d22978fe0baeaac6df05bddde8e59d4334e2c8bb22c1ee4e3f24d769275
 - kind: project-relative
   target: claude
   value: .claude/skills/ait-setup/assets/minimal-files.md
@@ -15058,7 +15058,7 @@ deployments:
   owners:
   - mekras/ai-dev-team
   active_owner: mekras/ai-dev-team
-  content_hash: sha256:33d8882a584ffc909a5e62355f2fd3723c7043021256f70bc4a99e4e9d2146ea
+  content_hash: sha256:a7e0164256843646156eb0b8a54aec9e50cb272734c9dbe50c55ee7b65251368
 - kind: project-relative
   target: claude
   value: .claude/skills/ait-setup/evals/result-scenarios.json
@@ -15067,7 +15067,7 @@ deployments:
   owners:
   - mekras/ai-dev-team
   active_owner: mekras/ai-dev-team
-  content_hash: sha256:f04dfc5a3c30b8c4dd7eaab4152dd5272897a0c61420f4bdb9079a5a0c69ed5e
+  content_hash: sha256:f4d6a14d9184f0774ceb76732994bccb8e6d9f6a1a845b4070855cbec7e144be
 - kind: project-relative
   target: claude
   value: .claude/skills/ait-setup/evals/triggers.json
@@ -15085,7 +15085,7 @@ deployments:
   owners:
   - mekras/ai-dev-team
   active_owner: mekras/ai-dev-team
-  content_hash: sha256:3d2b6e70911f0ca64c4778825ec7a527d3c9324c75dfe4144216e7e5254a170b
+  content_hash: sha256:ef5b66b3cf94acabd76bb2d8049d294d5ccade59c8f01cd4b12c75894266db53
 - kind: project-relative
   target: claude
   value: .claude/skills/ait-twelve-factor
