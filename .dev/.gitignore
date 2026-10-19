@@ -1,0 +1,6 @@
+.agents/
+.claude/
+.codex/
+.claude-plugin/
+tools/
+apm_modules/

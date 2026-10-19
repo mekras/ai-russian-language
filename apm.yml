@@ -11,11 +11,9 @@ target:
 includes: auto
 dependencies:
   apm:
-    - talkstream/ru-text#v2.4.0
+    - talkstream/ru-text#v2.10.10
   mcp: []
 scripts:
-  tests: "sh -c 'set -e; export PYTHONDONTWRITEBYTECODE=1; target=\"${APM_EVAL_PATH:-.apm/skills}\"; python3 tools/validate-python-artifacts.py; python3 .agents/skills/ai-setup-apm/scripts/eval-tools/check-eval-tools-drift.py; python3 tools/validate-hidden-unicode.py --exclude \"*.local\" --exclude \"*.local.*\"; python3 tools/validate-skill-descriptions.py \"$target\"; python3 tools/validate-trigger-evals.py \"$target\" --require-all; python3 tools/run_skill_evals.py \"$target\" --checks compose --validate-only; python3 tools/validate-python-artifacts.py'"
+  setup: "python3 tools/setup-apm.py"
+  tests: "sh -c 'set -e; export PYTHONDONTWRITEBYTECODE=1; target=\"${APM_EVAL_PATH:-.apm/skills}\"; python3 tools/validate-python-artifacts.py; python3 .dev/.agents/skills/ai-setup-apm/scripts/eval-tools/check-eval-tools-drift.py; python3 tools/setup-apm.py --check; python3 tools/test-apm-development.py; python3 tools/validate-hidden-unicode.py --exclude \".dev/.*\" --exclude \".dev/apm_modules\" --exclude \".dev/tools\" --exclude \"*.local\" --exclude \"*.local.*\"; python3 tools/validate-skill-descriptions.py \"$target\"; python3 tools/validate-trigger-evals.py \"$target\" --require-all; python3 tools/run_skill_evals.py \"$target\" --checks compose --validate-only; python3 tools/validate-python-artifacts.py'"
   evals: "python3 tools/run_skill_evals.py \"${APM_EVAL_PATH:-.apm/skills}\""
-devDependencies:
-  apm:
-    - mekras/ai-dev-team#0.29.7

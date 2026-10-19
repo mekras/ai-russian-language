@@ -9,6 +9,12 @@
       ".git/**",
       ".agents/**",
       ".claude/**",
+      ".dev/.agents/**",
+      ".dev/.claude/**",
+      ".dev/.codex/**",
+      ".dev/.claude-plugin/**",
+      ".dev/tools/**",
+      ".dev/apm_modules/**",
       "knowledge/**",
       "apm_modules/**"
     ]
@@ -85,6 +91,9 @@
       "representations": [
         { "path": ".editorconfig", "role": "canonical" },
         { "path": ".gitignore", "role": "canonical" },
+        { "path": ".dev/apm.yml", "role": "canonical" },
+        { "path": ".dev/.gitignore", "role": "canonical" },
+        { "path": ".dev/apm.lock.yaml", "role": "supporting" },
         { "path": "evals.sample.yml", "role": "supporting" }
       ],
       "checks": ["ait-code-construction"]
@@ -170,6 +179,13 @@
       "relation": "governs",
       "facets": ["semantic", "operation"],
       "rationale": "Принятые решения определяют порядок работы агентов с проектными изменениями."
+    },
+    {
+      "from": "decision-records",
+      "to": "package-delivery",
+      "relation": "governs",
+      "facets": ["semantic", "structure", "operation"],
+      "rationale": "Принятое разделение установок определяет зависимости и проверку поставки коллекции."
     },
     {
       "from": "language-skills",
