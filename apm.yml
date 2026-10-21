@@ -8,6 +8,7 @@ target:
   - agent-skills
   - claude
   - codex
+  - hermes
 includes: auto
 dependencies:
   apm:

@@ -39,6 +39,12 @@ apm install ai-russian-language@mekras --target codex
 apm install ai-russian-language@mekras --target claude
 ```
 
+Установить коллекцию из реестра для Hermes Agent:
+
+```bash
+apm install ai-russian-language@mekras --target hermes
+```
+
 Обновить уже установленную коллекцию:
 
 ```bash
